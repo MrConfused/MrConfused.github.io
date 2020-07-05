@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,IOS,OC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.什么是自动引用计数 自动引用计数（ ARC, Automatic Reference Counting ）是指内存管理中对引用采取自动计数的技术 “在LLVM编译器中设置ARC 为有效状态． 就不用再次输入入retain 或者是release 代码。”  条件：  使用Xcode 4.2 或以上版本． 使用LLVM 编译器3.0 或以上版本． 编译器中设置ARC 为有效．  2.内存管理&#x2F;引用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC高级编程-IOS与OS X多线程和内存管理--1.自动引用计数">
+<meta property="og:url" content="https://mrconfused.github.io/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--1.%E8%87%AA%E5%8A%A8%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="1.什么是自动引用计数 自动引用计数（ ARC, Automatic Reference Counting ）是指内存管理中对引用采取自动计数的技术 “在LLVM编译器中设置ARC 为有效状态． 就不用再次输入入retain 或者是release 代码。”  条件：  使用Xcode 4.2 或以上版本． 使用LLVM 编译器3.0 或以上版本． 编译器中设置ARC 为有效．  2.内存管理&#x2F;引用">
+<meta property="article:published_time" content="2020-07-03T01:31:49.527Z">
+<meta property="article:modified_time" content="2020-07-03T01:31:49.527Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="OC">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>OC高级编程-IOS与OS X多线程和内存管理--1.自动引用计数 | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--1.%E8%87%AA%E5%8A%A8%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">OC高级编程-IOS与OS X多线程和内存管理--1.自动引用计数</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-03T09:31:49+08:00">
+                2020-07-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/" itemprop="url" rel="index">
+                    <span itemprop="name">IOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-什么是自动引用计数"><a href="#1-什么是自动引用计数" class="headerlink" title="1.什么是自动引用计数"></a>1.什么是自动引用计数</h1><blockquote>
+<p>自动引用计数（ ARC, Automatic Reference Counting ）是指内存管理中对引用采<br>取自动计数的技术</p>
+<p>“在LLVM编译器中设置ARC 为有效状态． 就不用再次输入入retain 或者是release 代码。”</p>
+</blockquote>
+<p>条件：</p>
+<ul>
+<li>使用Xcode 4.2 或以上版本．</li>
+<li>使用LLVM 编译器3.0 或以上版本．</li>
+<li>编译器中设置ARC 为有效．</li>
+</ul>
+<h1 id="2-内存管理-引用计数"><a href="#2-内存管理-引用计数" class="headerlink" title="2.内存管理/引用计数"></a>2.内存管理/引用计数</h1><h2 id="2-1-内存管理的思考方式"><a href="#2-1-内存管理的思考方式" class="headerlink" title="2.1.内存管理的思考方式"></a>2.1.内存管理的思考方式</h2><ul>
+<li>自己能持有自己生成的对象或者非自己生成的对象。</li>
+<li>自己持有对象不需要时要释放。</li>
+<li>自己无法释放非自己持有的对象。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对象操作</th>
+<th>OC方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>生成并持有对象</td>
+<td><code>alloc/new/copy/mutableCopy</code>等</td>
+</tr>
+<tr>
+<td>持有对象</td>
+<td><code>retain</code></td>
+</tr>
+<tr>
+<td>释放对象</td>
+<td><code>release</code></td>
+</tr>
+<tr>
+<td>废弃对象</td>
+<td><code>dealloc</code></td>
+</tr>
+<tr>
+<td><center style="font-size:14px;color:#C0C0C0;text-decoration:underline"> 表1 对象操作与Objective-C 方法的对应 </center></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><code>copy</code>生成的对象不可变更，<code>mutableCopy</code>生成的对象可变更。<br>这些有关Objective-C 内存管理的方法，是包含在Cocoa 框架中的Foundation 框架类库的NSObject 类中。<br>OC 内存管理中的<code>alloc/retain/release/dealloc</code> 方法分别指代NSObject 类的<code>alloc</code> 类方法、<code>retain/release/dealloc</code> 实例方法。</p>
+<div align="center" style="line-height:0px">
+![图1.1 Cocoa 框架、Foundation 框架和NSObject 类的关系](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE1.1%20Cocoa%20%E6%A1%86%E6%9E%B6%E3%80%81Foundation%20%E6%A1%86%E6%9E%B6%E5%92%8CNSObject%20%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB.jpg?raw=true)
+<center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 图1.1 Cocoa 框架、Foundation 框架和NSObject 类的关系 </center>
+</div>
+
+<h3 id="2-1-1-持有自己生成的对象"><a href="#2-1-1-持有自己生成的对象" class="headerlink" title="2.1.1.持有自己生成的对象"></a>2.1.1.持有自己生成的对象</h3><blockquote>
+<p><strong>以<code>alloc, new, copy, mutableCopy</code>开头用驼峰拼写法命名的方法生成的对象只有自己持有</strong>。</p>
+</blockquote>
+<p>根据上述规则：<br>1.<code>allocMyObject, newTbatObject, copyThis, mutableCopyYourObject</code>方法生成的对象自己持有。<br>2.<code>allocate, newer, copying, mutableCopyed</code>开头的方法不会自己持有。</p>
+<h3 id="2-1-2-持有非自己生成的对象"><a href="#2-1-2-持有非自己生成的对象" class="headerlink" title="2.1.2.持有非自己生成的对象"></a>2.1.2.持有非自己生成的对象</h3><blockquote>
+<p><strong>通过<code>retain</code>方法可以持有非自己生成的对象</strong></p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">id</span> obj = [<span class="built_in">NSMutableArray</span> array]; <span class="comment">//生成对象</span></span><br><span class="line">[obj <span class="keyword">retain</span>]; <span class="comment">//持有对象</span></span><br></pre></td></tr></table></figure>
+
+<p>某个方法生成对象，并将其返还给调用方：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) allovObject</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> obj = [[<span class="built_in">NSObject</span> alloc] init]; <span class="comment">//用alloc生成并持有</span></span><br><span class="line">	<span class="keyword">return</span> obj; <span class="comment">//返回该对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对象存在，但自己并不持有：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) object</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> obj = [[<span class="built_in">NSObject</span> alloc] init]; <span class="comment">//生成并持有</span></span><br><span class="line">	[obj autorelease]; <span class="comment">//obj超出范围自动释放</span></span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-3-自己持有的对象不需要时，要释放"><a href="#2-1-3-自己持有的对象不需要时，要释放" class="headerlink" title="2.1.3.自己持有的对象不需要时，要释放"></a>2.1.3.自己持有的对象不需要时，要释放</h3><blockquote>
+<p><strong>通过<code>release</code>方法可以释放自己持有的对象</strong></p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[obj release];</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-4-无法释放非自己持有的对象"><a href="#2-1-4-无法释放非自己持有的对象" class="headerlink" title="2.1.4.无法释放非自己持有的对象"></a>2.1.4.无法释放非自己持有的对象</h3><p>若释放非自己持有的对象，或者某个对象释放之后再次释放，会导致程序崩溃。</p>
+<h2 id="2-2-alloc-retain-release-dealloc在GNUstep中的实现"><a href="#2-2-alloc-retain-release-dealloc在GNUstep中的实现" class="headerlink" title="2.2.alloc/retain/release/dealloc在GNUstep中的实现"></a>2.2.alloc/retain/release/dealloc在GNUstep中的实现</h2><pre><code>包含NSObject类的Foundation框架不公开。
+但是Foundation框架使用的Core Foundation框架，及通过调用Object类进行内存管理部分是公开的。
+GNUstep是Cocoa框架的互换框架，两者的行为及实现方式是一样的。
+
+GNUstep的引用计数是通过将引用计数放在内存块头部的变量中实现的。好处是：
+1. 代码量少
+2. 能统一管理引用计数用的内存块与对象用的内存块</code></pre><h3 id="2-2-1-alloc的实现"><a href="#2-2-1-alloc的实现" class="headerlink" title="2.2.1.alloc的实现"></a>2.2.1.<code>alloc</code>的实现</h3><figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m  alloc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">id</span>) alloc </span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> [<span class="keyword">self</span> allocWithZone: <span class="built_in">NSDefaultMallocZone</span>()];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>) allocWithZone:(<span class="built_in">NSZone</span>*)z</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">NSAllocateObject</span>(<span class="keyword">self</span>, <span class="number">0</span>, z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m  NSAllocateObject</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> obj_layout&#123;</span><br><span class="line">	<span class="built_in">NSUInteger</span> retained;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">id</span> <span class="built_in">NSAllocateObject</span>(Class aClass, <span class="built_in">NSUInteger</span> extraBytes, <span class="built_in">NSZone</span> *zone)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> size = 计算容纳对象所需内存大小;</span><br><span class="line">	<span class="keyword">id</span> new = <span class="built_in">NSZoneMalloc</span>(zone, size); <span class="comment">//分配空间</span></span><br><span class="line">	memset(new, <span class="number">0</span>, size); <span class="comment">//初始化内存</span></span><br><span class="line">	new = (<span class="keyword">id</span>)&amp;((<span class="keyword">struct</span> onj_layout *)new)[<span class="number">1</span>]; <span class="comment">//转换为对象指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>NSZone是为防止内存碎片化引入的结构，对内存分配区域本身进行多重化管理。
+但由于运行时系统中的内存管理本身已极具效率，因此使用NSZone可能导致效率降低及代码复杂。</code></pre><p>去掉NSZone后的alloc实现：</p>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m  alloc 简化版</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> obj_layout&#123;</span><br><span class="line">	<span class="built_in">NSUInteger</span> retained; <span class="comment">//保存引用计数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>) alloc</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> size = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> obj_layout) + 对象大小;</span><br><span class="line">	<span class="keyword">struct</span> obj_layout *p = (<span class="keyword">struct</span> obj_layout *)calloc(<span class="number">1</span>, size); <span class="comment">//将引用计数放在对象头部</span></span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">id</span>)(p+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-retainCount的实现"><a href="#2-2-2-retainCount的实现" class="headerlink" title="2.2.2.retainCount的实现"></a>2.2.2.<code>retainCount</code>的实现</h3><p>引用计数可通过<code>retainCount</code>获取：<code>[obj retainCount]</code>。<br>retainCount的实现：</p>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m  retainCount</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSUInteger</span>) retainCount</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">NSExtraRefCount</span>(<span class="keyword">self</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="built_in">NSUInteger</span> <span class="built_in">NSExtraRefCount</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> ((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained; <span class="comment">//获取对象头部的retained变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-retain的实现"><a href="#2-2-3-retain的实现" class="headerlink" title="2.2.3.retain的实现"></a>2.2.3.<code>retain</code>的实现</h3><blockquote>
+<p>若retained不超过int最大值，则使retained加1.</p>
+</blockquote>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m retain</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) <span class="keyword">retain</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">self</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained == <span class="built_in">UINT_MAX</span> - <span class="number">1</span>) <span class="comment">//安全性判断</span></span><br><span class="line">		[<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span> format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>];</span><br><span class="line">	((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-4-release的实现"><a href="#2-2-4-release的实现" class="headerlink" title="2.2.4.release的实现"></a>2.2.4.<code>release</code>的实现</h3><blockquote>
+<p>若retained为0，调用dealloc；否则使retained减1</p>
+</blockquote>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m release</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) release</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">self</span>))</span><br><span class="line">		[<span class="keyword">self</span> dealloc];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">BOOL</span> <span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained--;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-5-dealloc的实现"><a href="#2-2-5-dealloc的实现" class="headerlink" title="2.2.5.dealloc的实现"></a>2.2.5.<code>dealloc</code>的实现</h3><blockquote>
+<p>将<code>self</code>转换为obj_layout，并调用free()</p>
+</blockquote>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m dealloc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) dealloc</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">NSDeallocateObject</span>(<span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="built_in">NSDeallocateObject</span>(<span class="keyword">id</span> abObject)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">struct</span> obj_layout *o = &amp;((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>];</span><br><span class="line">	free(o);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-alloc-retain-release-dealloc在苹果中的实现"><a href="#2-3-alloc-retain-release-dealloc在苹果中的实现" class="headerlink" title="2.3.alloc/retain/release/dealloc在苹果中的实现"></a>2.3.alloc/retain/release/dealloc在苹果中的实现</h2><pre><code>苹果的引用计数是通过散列表(引用计数表)实现的。好处是：
+1. 内存块的分配无需考虑头部。
+2. 引用计数表中有内存块的地址，可从每个记录追溯到各对象的内存块。
+3. 有助于判断各内存块的持有者是否存在。</code></pre><h3 id="2-3-1-alloc的实现"><a href="#2-3-1-alloc的实现" class="headerlink" title="2.3.1.alloc的实现"></a>2.3.1.<code>alloc</code>的实现</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+alloc</span><br><span class="line">+allocWithZone</span><br><span class="line">class_createInstance</span><br><span class="line">calloc</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-2-retainCount-retain-release的实现"><a href="#2-3-2-retainCount-retain-release的实现" class="headerlink" title="2.3.2.retainCount/retain/release的实现"></a>2.3.2.<code>retainCount/retain/release</code>的实现</h3><blockquote>
+<p>先获取对象对应的散列表，然后按照不同操作进行分发</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSUInteger</span>) retainCount&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="built_in">NSUInteger</span>)__CFDoExternRefOpreation(OPERATION_retainCount, <span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>) <span class="keyword">retain</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">id</span>)__CFDoExternRefOpreation(OPERATION_retain, <span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>) release&#123;</span><br><span class="line">	<span class="keyword">return</span> __CFDoExternRefOpreation(OPERATION_release, <span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><figcaption><span>CF/CFRuntime.c __CFDoExternRefOperation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> __CFDoExternRefOpreation(uintptr_t op, <span class="keyword">id</span> obj)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">CFBasicHashRef</span> table = 获取对象对应的散列表(obj);</span><br><span class="line">	<span class="keyword">int</span> count;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">switch</span>(op)&#123;</span><br><span class="line">	<span class="keyword">case</span> OPERATION_retainCount:</span><br><span class="line">		count = <span class="built_in">CFBasicHashGetCountOfKey</span>(table, obj);</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	<span class="keyword">case</span> OPREATION_retain:</span><br><span class="line">		<span class="built_in">CFBasicHashAddValue</span>(table, obj);</span><br><span class="line">		<span class="keyword">return</span> obj;</span><br><span class="line">	<span class="keyword">case</span> OPREATION_release:</span><br><span class="line">		count = <span class="built_in">CFBasicHashRemoveValue</span>(table, obj);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>==count;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-autorelease"><a href="#2-4-autorelease" class="headerlink" title="2.4.autorelease"></a>2.4.autorelease</h2><blockquote>
+<p>类似于C语言中的局部变量，若变量超出作用域，自动被废弃。</p>
+<p>使用方法：</p>
+<ol>
+<li>生成并持有NSAutoreleasePool对象；<br><code>NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]</code></li>
+<li>调用已分配对象的autorelease方法；<br><code>[obj autorelease]</code></li>
+<li>废弃NSAutoreleasePool对象。<br><code>[pool drain]</code></li>
+</ol>
+</blockquote>
+<h3 id="2-4-1-autorelease在GNUstep中的实现"><a href="#2-4-1-autorelease在GNUstep中的实现" class="headerlink" title="2.4.1.autorelease在GNUstep中的实现"></a>2.4.1.autorelease在GNUstep中的实现</h3><blockquote>
+<p>调用NSAutoreleasePool的addObject类方法</p>
+</blockquote>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSObject.m autorelease</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) autorelease</span><br><span class="line">&#123;</span><br><span class="line">	[<span class="built_in">NSAutoreleasePool</span> addObject:<span class="keyword">self</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-1-1-addObject类方法的实现"><a href="#2-4-1-1-addObject类方法的实现" class="headerlink" title="2.4.1.1.addObject类方法的实现"></a>2.4.1.1.addObject类方法的实现</h4><figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSAutoreleasePool.m addObject类方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>) addObject:(<span class="keyword">id</span>)anObj</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">NSAutoreleasePool</span> *pool = 取得正在使用的<span class="built_in">NSAutoreleasePool</span>对象;</span><br><span class="line">	<span class="keyword">if</span>(pool != <span class="literal">nil</span>)&#123;</span><br><span class="line">		[pool addObject:anObj];</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"NSAutoreleasePool对象非存在状态下调用autorelease"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSAutoreleasePool.m addObject实例方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) addObject:(<span class="keyword">id</span>)anObj</span><br><span class="line">&#123;</span><br><span class="line">	[array addObject:anObj];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-1-2-drain方法的实现"><a href="#2-4-1-2-drain方法的实现" class="headerlink" title="2.4.1.2.drain方法的实现"></a>2.4.1.2.drain方法的实现</h4><blockquote>
+<p>对NSAutoreleasePool中的数组中的对象分别调用release，然后调用数组的release。</p>
+</blockquote>
+<figure class="highlight objectivec"><figcaption><span>GNUstep/modules/core/base/Source/NSAutoreleasePool.m drain</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) drain</span><br><span class="line">&#123;</span><br><span class="line">	[<span class="keyword">self</span> dealloc];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>) dealloc</span><br><span class="line">&#123;</span><br><span class="line">	[<span class="keyword">self</span> emptyPool];</span><br><span class="line">	[array release];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>) emptyPool</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">id</span> obj <span class="keyword">in</span> array)&#123;</span><br><span class="line">		[obj release];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-2-autorelease在苹果中的实现"><a href="#2-4-2-autorelease在苹果中的实现" class="headerlink" title="2.4.2.autorelease在苹果中的实现"></a>2.4.2.autorelease在苹果中的实现</h3><blockquote>
+<p>使用方法与NSAutoreleasePool类似：<br>1.先生成AutoreleasePoolPage对象，<br>2.然后调用autorelease，<br>3.最后废弃AutoreleasePoolPage对象</p>
+<p><code>_objc_autoreleasePoolPrint()</code>函数可用来调试查看AutoreleasePoolPage中对象的情况</p>
+</blockquote>
+<figure class="highlight objectivec"><figcaption><span>objc4/runtime/objc-arr.mm class AutoreleasePoolPage</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成AutoreleasePoolPage对象</span></span><br><span class="line"><span class="keyword">void</span> *objc_autoreleasePoolPush(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> AutoreleasePoolPage::push();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//废弃AutoreleasePoolPage对象</span></span><br><span class="line"><span class="keyword">void</span> objc_autoreleasePoolPage(<span class="keyword">void</span> *ctxt)</span><br><span class="line">&#123;</span><br><span class="line">	AutoreleasePoolPage::pop(ctxt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置autorelease</span></span><br><span class="line"><span class="keyword">id</span> *objc_autorelease(<span class="keyword">id</span> obj)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> AutoreleasePoolPage::autorelease(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> AutoreleasePoolPage&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> *push()&#123;</span><br><span class="line">		相当于生成或持有<span class="built_in">NSAutoreleasePool</span>对象;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> *pop(<span class="keyword">void</span> *token)&#123;</span><br><span class="line">		相当于废弃<span class="built_in">NSAutoreleasePool</span>对象;</span><br><span class="line">		releaseAll();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">id</span> autorelease(<span class="keyword">id</span> obj)&#123;</span><br><span class="line">		相当于<span class="built_in">NSAutoreleasePool</span>类的addObject 类方法;</span><br><span class="line">		AutoreleasePoolPage *autoreleasePoolPage = 取得正在使用的AutoreleasePoolPage实例;</span><br><span class="line">		autoreleasePoolPage-&gt;add(obj);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-ARC规则"><a href="#3-ARC规则" class="headerlink" title="3.ARC规则"></a>3.ARC规则</h1><pre><code>可对每个文件分别指定是否使用ARC，Xcide4.2默认对所有文件使用ARC
+
+设置ARC有效的编译方法：
+1. 使用clang（LLVM编译器）3.0或以上版本
+2. 指定编译器属性为“-fobjc-arc”</code></pre><h2 id="3-1-所有权修饰符"><a href="#3-1-所有权修饰符" class="headerlink" title="3.1.所有权修饰符"></a>3.1.所有权修饰符</h2><pre><code>ARC有效时，必须对id类型或其他对象类型附加所有权修饰符：
+1. __strong
+2. __weak
+3. __unsafe_unretained
+4. __autoreleasing</code></pre><h3 id="3-1-1-strong修饰符"><a href="#3-1-1-strong修饰符" class="headerlink" title="3.1.1.__strong修饰符"></a>3.1.1.__strong修饰符</h3><ol>
+<li><p>默认的修饰符。（不需要加上该修饰符即可实现“不必再次键入retain或者release”的目标）</p>
+</li>
+<li><p>附有__strong修饰符的obj，在超出其作用域时（即被废弃时），会释放该obj。</p>
+</li>
+<li><p>附有__strong修饰符的变量之间可以相互赋值。</p>
+</li>
+<li><p>无需额外工作即可直接用于类成员变量和方法参数。</p>
+</li>
+<li><p>能保证将附有该修饰符的变量初始化为nil：”id __strong obj;”等同于”id __strong obj = nil;”</p>
+<p> 无法解决“循环引用”的问题，容易导致内存泄漏。</p>
+</li>
+</ol>
+<h3 id="3-1-2-weak修饰符"><a href="#3-1-2-weak修饰符" class="headerlink" title="3.1.2.__weak修饰符"></a>3.1.2.__weak修饰符</h3><ol>
+<li>弱引用不持有对象实例</li>
+<li>用法：将<strong>strong修饰的变量赋值给</strong>weak修饰的变量</li>
+<li>优点：<br> a. 弱引用指向的对象被废弃时，弱引用自动失效并被赋nil<br> b. 使用附有__weak 修饰符的变量，即是使用注册到autoreleasepool 中的对象</li>
+<li>弱引用仅支持IOS5及OS X Lion以上版本</li>
+</ol>
+<h3 id="3-1-3-unsafe-unretained修饰符"><a href="#3-1-3-unsafe-unretained修饰符" class="headerlink" title="3.1.3.__unsafe_unretained修饰符"></a>3.1.3.__unsafe_unretained修饰符</h3><ol>
+<li>不安全的所有权修饰符，不能保证修饰的变量指向的对象是有效的。在指向的对象被废弃时，该变量仍指向原地址，造成悬垂指针。因此在使用该修饰符修饰的变量时，<strong>必须保证指向的对象确实存在</strong>。</li>
+<li>该修饰符修饰的变量，不属于编译器的内存管理对象</li>
+<li>在不支持弱引用的版本中可用该修饰符</li>
+</ol>
+<h3 id="3-1-4-autoreleasing修饰符"><a href="#3-1-4-autoreleasing修饰符" class="headerlink" title="3.1.4.__autoreleasing修饰符"></a>3.1.4.__autoreleasing修饰符</h3><ol>
+<li>在ARC无效时，要使用autorelease功能，必须使用NSAutoreleasePool或者AutoreleasePoolPage；在ARC有效时，要使用autorelease功能，可直接用__autoreleaseing修饰变量，然后用<code>@autoreleasepool{···}</code>块包裹该变量的使用。</li>
+</ol>
+<div align="center" style="line-height:0px">
+![图1.2 @autorel easepool 和附有＿autoreleasing 修饰符的变量](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE1.2%20@autorel%20easepool%20%E5%92%8C%E9%99%84%E6%9C%89%EF%BC%BFautoreleasing%20%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8F%98%E9%87%8F.jpg?raw=true)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline"> 图1.2 @autorel easepool 和附有＿autoreleasing 修饰符的变量 </center>
+</div>
+
+<ol start="2">
+<li>通常不需要显式地使用该修饰符：在@autoreleasepool块中，<ul>
+<li>编译器会将不是以<code>alloc/new/copy/mutableCopy</code>开头的方法所返回的对象自动注册到autoreleasePool中</li>
+<li>__weak修饰的对象会被注册到autoreleasePool中</li>
+<li>id的指针（<code>id *obj</code>）或者其他对象的指针（<code>NSObject **obj</code>）会被隐式的加上__autoreleasing<blockquote>
+<p><strong>id</strong>:是动态类型，相当于一个指针变量。<code>id obj</code> ==&gt;&gt; <code>NSObject *obj</code><br><strong>指针变量</strong>：指向其他对象的对象。类似与一个两节的盒子，第一节是该指针变量的地址，第二节是指向对象的内存地址。例如<code>Person *p = [[Person alloc] init]</code>中<code>p</code>就是指针变量，<code>*p</code>获得p指向的对象。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-1-5所有权修饰符总结"><a href="#3-1-5所有权修饰符总结" class="headerlink" title="3.1.5所有权修饰符总结"></a>3.1.5所有权修饰符总结</h3><blockquote>
+<p><strong>对象指针赋值时，要保证所有权修饰符一致</strong><br>除<code>__unsafe_unretained</code>修饰符之外的<code>__strong/__weak/__autoreleasing</code>修饰符均能保证其指定的变量初始化为<code>nil</code></p>
+</blockquote>
+<p>隐式的所有权推导：<br><code>id obj</code> ==&gt;&gt; <code>id __strong obj</code><br><code>id *obj</code> ==&gt;&gt; <code>id __autoreleasing obj</code><br><code>NSObject *obj</code> ==&gt;&gt; <code>NSObject __strong *obj</code><br><code>NSObject **obj</code> ==&gt;&gt; <code>NSObject * __autoreleasing *obj</code><br>下述代码会编译报错：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSError</span> *err = <span class="literal">nil</span>; <span class="comment">//err是__strong引用</span></span><br><span class="line"><span class="built_in">NSError</span> **pErr = &amp;err; <span class="comment">//*pErr是指针对象，是__autoreleasing类型</span></span><br></pre></td></tr></table></figure>
+<p>下述代码不会报错：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSError</span> *err = <span class="literal">nil</span>;</span><br><span class="line"><span class="built_in">NSError</span> *tmp = err; <span class="comment">//tmp是强引用</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>@autoreleasepool可嵌套使用<br>ARC无效时也可使用@autoreleasepool，因此<strong>无论ARC是否有效，均应使用@autoreleasepool</strong><br><strong>无论ARC是否有效，objc_autoreleasePoolPrint()均可使用</strong></p>
+</blockquote>
+<h2 id="3-2-规则"><a href="#3-2-规则" class="headerlink" title="3.2.规则"></a>3.2.规则</h2><blockquote>
+<p>在ARC有效时必须遵守以下规则</p>
+</blockquote>
+<ol>
+<li>不使用<code>retain/release/retainCount/autorelease</code></li>
+<li>不使用<code>NSAllocateObject/NSDeallocateObject</code></li>
+<li>不使用<code>NSZone</code></li>
+<li><strong>对象型变量</strong>不能作为<strong>结构体</strong>(struct/union)的成员</li>
+<li><strong>显示转换</strong><code>id</code>与<code>void*</code></li>
+<li>遵守内存管理的<strong>方法命名规则</strong></li>
+<li>使用<code>@autoreleasepool</code>代替NSAutoreleasePool</li>
+<li><strong>不显式调用</strong><code>dealloc</code></li>
+</ol>
+<h3 id="3-2-1-不使用retain-release-retainCount-autorelease"><a href="#3-2-1-不使用retain-release-retainCount-autorelease" class="headerlink" title="3.2.1.不使用retain/release/retainCount/autorelease"></a>3.2.1.不使用retain/release/retainCount/autorelease</h3><h3 id="3-2-2-不使用NSAllocateObject-NSDeallocateObject"><a href="#3-2-2-不使用NSAllocateObject-NSDeallocateObject" class="headerlink" title="3.2.2.不使用NSAllocateObject/NSDeallocateObject"></a>3.2.2.不使用NSAllocateObject/NSDeallocateObject</h3><p>这两个是OC底层实现对象的创建与销毁</p>
+<h3 id="3-2-3-不使用NSZone"><a href="#3-2-3-不使用NSZone" class="headerlink" title="3.2.3.不使用NSZone"></a>3.2.3.不使用NSZone</h3><h3 id="3-2-4-对象型变量不能作为结构体-struct-union-的成员"><a href="#3-2-4-对象型变量不能作为结构体-struct-union-的成员" class="headerlink" title="3.2.4.对象型变量不能作为结构体(struct/union)的成员"></a>3.2.4.对象型变量不能作为结构体(struct/union)的成员</h3><p>C语言中没有方法来管理结构体成员的生存周期。<br>可将对象型变量强转为<code>void*</code>放入结构体中。</p>
+<h3 id="3-2-5-显示转换id与void"><a href="#3-2-5-显示转换id与void" class="headerlink" title="3.2.5.显示转换id与void*"></a>3.2.5.显示转换id与void*</h3><ol>
+<li>使用<code>__bridge</code>转换：单纯地赋值<code>(__bridge void *)obj</code></li>
+<li>使用<code>__bridge_retained</code>：可使要转换的变量也持有所赋值的对象</li>
+<li>使用<code>__bridge_transfer</code>：被转换的变量所持有的对象在赋值之后及被释放</li>
+</ol>
+<p>这些转换多发生在OC与Core Foundation对象之间的转换。<br>OC与Core Foundation对象之间的转换可用以下函数来处理：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CFTypeRef</span> <span class="built_in">CFBridgeingRetain</span>(<span class="keyword">id</span> id_obj)&#123; <span class="comment">//oc对象转cf对象</span></span><br><span class="line">	<span class="keyword">return</span> (__bridge_retained <span class="built_in">CFTypeRef</span>)id_obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">id</span> <span class="built_in">CFBridgeRelease</span>(<span class="built_in">CFTypeRef</span> cf_obj)&#123; <span class="comment">//cf对象转oc对象</span></span><br><span class="line">	<span class="keyword">return</span> (__bridge_transfer <span class="keyword">id</span>)cf_obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-6-遵守内存管理的方法命名规则"><a href="#3-2-6-遵守内存管理的方法命名规则" class="headerlink" title="3.2.6.遵守内存管理的方法命名规则"></a>3.2.6.遵守内存管理的方法命名规则</h3><ol>
+<li>以alloc/new/copy/mutableCopy开头的方法在返回对象时，必须给调用方持有该对象。</li>
+<li>init开头的方法必须是实例方法，且必须返回对象，且返回的对象不注册到autoreleasePool中。只是用来对alloc方法返回的对象进行初始化并返回该对象。</li>
+</ol>
+<h3 id="3-2-7-使用-autoreleasepool代替NSAutoreleasePool"><a href="#3-2-7-使用-autoreleasepool代替NSAutoreleasePool" class="headerlink" title="3.2.7.使用@autoreleasepool代替NSAutoreleasePool"></a>3.2.7.使用@autoreleasepool代替NSAutoreleasePool</h3><h3 id="3-2-8-不显式调用dealloc"><a href="#3-2-8-不显式调用dealloc" class="headerlink" title="3.2.8.不显式调用dealloc"></a>3.2.8.不显式调用dealloc</h3><ol>
+<li>无论ARC是否有效，只有对象的所有者都不持有该对象，编译器就要调用dealloc将该对象销毁。</li>
+<li>dealloc中通过free来释放内存</li>
+<li>dealloc大多数情况适用于删除已注册的代理或观察对象。</li>
+<li>ARC无效时要用<code>[super dealloc]</code>，ARC有效时无法显示调用。</li>
+</ol>
+<h2 id="3-3-属性"><a href="#3-3-属性" class="headerlink" title="3.3.属性"></a>3.3.属性</h2><ol>
+<li>定义：属性是类中描述对象的抽象概念</li>
+<li>使用：<code>@property (nonatomic, strong) NSString *name;</code><br>此时<code>name</code>就是一个属性，编译器会自动创建其对应的实例变量（成员变量）<code>_name</code>，之后在操作<code>self.name</code>时就相当于操作<code>_name</code>.</li>
+<li>引入属性的原因：编译器遇到<code>@property</code>就会为这个属性添加<code>setter/getter</code>方法。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性声明的属性</th>
+<th>所有权修饰符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>assign</code></td>
+<td><code>__unsafe_unretained</code></td>
+</tr>
+<tr>
+<td><code>copy</code></td>
+<td><code>__strong</code>(但赋值的是被赋值的对象)</td>
+</tr>
+<tr>
+<td><code>retain</code></td>
+<td><code>__strong</code></td>
+</tr>
+<tr>
+<td><code>strong</code></td>
+<td><code>__strong</code></td>
+</tr>
+<tr>
+<td><code>unsafe_unretained</code></td>
+<td><code>__unsafe_unretained</code></td>
+</tr>
+<tr>
+<td><code>weak</code></td>
+<td><code>__weak</code></td>
+</tr>
+<tr>
+<td><center style="font-size:14px;color:#C0C0C0;text-decoration:underline"> 表2 属性声明的属性与所有权修饰符的对应关系 </center></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="3-4-数组"><a href="#3-4-数组" class="headerlink" title="3.4.数组"></a>3.4.数组</h2><ol>
+<li>将修饰符修饰的变量作为<strong>静态数组</strong>时，与对象是一样的，超出作用域时会被释放</li>
+<li>将<strong>__strong和__weak</strong>修饰符修饰的变量作为<strong>动态数组</strong>时，要用指针，需要手动分配内存并初始化（建议使用<code>calloc</code>或者<code>malloc + memset</code>），需要手动释放所有元素。</li>
+<li>__autoreleasing不要使用动态数组。</li>
+<li>__unsafe_unretained只能作为指针类型使用。</li>
+</ol>
+<h1 id="4-ARC的实现"><a href="#4-ARC的实现" class="headerlink" title="4.ARC的实现"></a>4.ARC的实现</h1><h2 id="4-1-strong修饰符"><a href="#4-1-strong修饰符" class="headerlink" title="4.1.__strong修饰符"></a>4.1.__strong修饰符</h2><p>对于alloc/new/copy/mutableCopy开头的自己生成并持有的方法，在创建对象时，会调用<code>alloc</code>和<code>init</code>方法，然后在作用域结束时插入<code>release</code>。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> __<span class="keyword">strong</span> obj = [[<span class="built_in">NSObject</span> alloc] init];</span><br><span class="line">&#125;</span><br><span class="line">=======&gt;&gt;&gt;&gt;&gt;&gt;<span class="comment">/*编译器的模拟代码*/</span></span><br><span class="line"><span class="keyword">id</span> obj = objc_msgSend(<span class="built_in">NSObject</span>, <span class="keyword">@selector</span>(alloc));</span><br><span class="line">objc_msgSend(obj, <span class="keyword">@selector</span>(init));</span><br><span class="line">objc_release(obj);</span><br></pre></td></tr></table></figure>
+
+<p>对于非自己生成并持有的方法创建对象时，编译器会调用<code>objc_retainAuroreleaseReturnValue</code>函数来<strong>持有</strong>注册到autoreleasepool中的对象，然后在作用域结束时调用release。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> __<span class="keyword">strong</span> obj = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line">&#125;</span><br><span class="line">=======&gt;&gt;&gt;&gt;&gt;&gt;<span class="comment">/*编译器的模拟代码*/</span></span><br><span class="line"><span class="keyword">id</span> obj = objc_msgSend(<span class="built_in">NSMutableArray</span>, <span class="keyword">@selector</span>(alloc));</span><br><span class="line">objc_retainAuroreleaseReturnValue(obj); <span class="comment">//持有pool中的对象</span></span><br><span class="line">objc_release(obj);</span><br></pre></td></tr></table></figure>
+
+<p><code>objc_auroreleaseReturnValue</code>函数用来<strong>返回</strong>注册到autoreleasepool中的对象，一般与objc_retainAuroreleaseReturnValue是成对出现的。<br>若在objc_auroreleaseReturnValue之后紧接着出现objc_retainAuroreleaseReturnValue函数，那么就<strong>不将返回的对象注册到autoreleasepool中</strong>，而是直接传递到方法调用方，达到了<strong>最优化</strong>。</p>
+<div align="center" style="line-height:0px">
+![图1.3 省略autoreleasepool注册](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE1.3%20%E7%9C%81%E7%95%A5autoreleasepool%E6%B3%A8%E5%86%8C.jpg?raw=true)
+<center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 图1.3 省略autoreleasepool注册 </center>
+</div>
+
+<h2 id="4-2-weak修饰符"><a href="#4-2-weak修饰符" class="headerlink" title="4.2.__weak修饰符"></a>4.2.__weak修饰符</h2><blockquote>
+<p>__weak在被废弃时会赋值为nil<br>使用__weak变量即使用autoreleasepool 中的对象</p>
+</blockquote>
+<p>用<code>objc_initWeak</code>初始化，在作用域结束时调用<code>objc_destroyWeak</code>。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> __<span class="keyword">weak</span> obj1 = obj;</span><br><span class="line">&#125;</span><br><span class="line">=======&gt;&gt;&gt;&gt;&gt;&gt;<span class="comment">/*编译器的模拟代码*/</span></span><br><span class="line"><span class="keyword">id</span> obj1;</span><br><span class="line">objc_initWeak(&amp;obj1, obj);</span><br><span class="line">objc_destroyWeak(&amp;obj1);</span><br></pre></td></tr></table></figure>
+
+<p><code>objc_initWeak(&amp;obj1, obj);</code> ==&gt;&gt; <code>obj1 = 0; objc_storeWeak(&amp;obj1, obj);</code><br><code>objc_destroyWeak(&amp;obj1, obj);</code> ==&gt;&gt; <code>objc_storeWeak(&amp;obj1, 0);</code></p>
+<p><code>objc_storeWeak</code>将第二参数的地址作为键值，把第一参数的地址注册到<strong>weak表</strong>（用散列表实现）中。</p>
+<h3 id="4-2-1-weak在被废弃时会赋值为nil"><a href="#4-2-1-weak在被废弃时会赋值为nil" class="headerlink" title="4.2.1.__weak在被废弃时会赋值为nil"></a>4.2.1.__weak在被废弃时会赋值为nil</h3><ol>
+<li>objc_release</li>
+<li>因为引用计数为0，所以执行dealloc</li>
+<li>_objc_rootDealloc</li>
+<li>object_dispose</li>
+<li>objc destructlnstance</li>
+<li>objc clear_ deallocating<br> 1）从weak 表中获取废弃对象的地址为键值的记录。<br> 2）将包含在记录中的所有附有__weak 修饰符变最的地址，赋值为nil 。<strong>（这一功能会使得当有大量弱引用变量时，会消耗CPU资源）</strong><br> 3）从weak 表中删除该记录。<br> 4）从引用计数表中删除废弃对象的地址为键值的记录。</li>
+</ol>
+<p>自己生成并持有的对象赋值给__weak变量时，自己无法持有该对象，编译器会发出警告，并将其赋值为nil。</p>
+<h3 id="4-2-2-使用-weak变量即使用autoreleasepool-中的对象"><a href="#4-2-2-使用-weak变量即使用autoreleasepool-中的对象" class="headerlink" title="4.2.2.使用__weak变量即使用autoreleasepool 中的对象"></a>4.2.2.使用__weak变量即使用autoreleasepool 中的对象</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> __<span class="keyword">weak</span> obj1 = obj;</span><br><span class="line">	<span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, obj1);</span><br><span class="line">&#125;</span><br><span class="line">=======&gt;&gt;&gt;&gt;&gt;&gt;<span class="comment">/*编译器的模拟代码*/</span></span><br><span class="line"><span class="keyword">id</span> obj1;</span><br><span class="line">objc_initWeak(&amp;obj1, obj);</span><br><span class="line"><span class="keyword">id</span> tmp = objc_loadWeakRetained(&amp;obj1); <span class="comment">//取出weak变量，并retain</span></span><br><span class="line">objc_autorelease(tmp); <span class="comment">//注册到autoreleasepool中</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, tmp);</span><br><span class="line">objc_destroyWeak(&amp;obj1);</span><br></pre></td></tr></table></figure>
+<p>如果大量地使用weak变量，注册到autoreleasepool 的对象也会大量增加， 因此在使用附有weak 修饰符的变量时，最好<strong>先暂时将weak变量赋值给strong变量，最后再使用strong变量</strong>。</p>
+<p>当<code>allowsWeakReference/retainWeakReference</code>实例方法返回NO时，不能使用__weak修饰符。</p>
+<h2 id="4-3-autoreleasing修饰符"><a href="#4-3-autoreleasing修饰符" class="headerlink" title="4.3.__autoreleasing修饰符"></a>4.3.__autoreleasing修饰符</h2><blockquote>
+<p>将对象赋值给附有autoreleasiag 变量等向于ARC 无效时调用对象的autorelease方法</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> __autoreleasing obj = [[<span class="built_in">NSObject</span> alloc] init];</span><br><span class="line">&#125;</span><br><span class="line">=======&gt;&gt;&gt;&gt;&gt;&gt;<span class="comment">/*编译器的模拟代码*/</span></span><br><span class="line"><span class="keyword">id</span> pool = objc_autoreleasePoolPush();</span><br><span class="line"><span class="keyword">id</span> obj = objc_msgSend(<span class="built_in">NSObject</span>, <span class="keyword">@selector</span>(alloc)) ;</span><br><span class="line">objc_msgSend(obj, <span class="keyword">@selector</span>(init));</span><br><span class="line">objc_autorelease(obj);</span><br><span class="line">objc_autoreleasePoolPop(pool) ;</span><br></pre></td></tr></table></figure>
+<p>在alloc/new/copy/mutableCopy 方法群之外的方法中使用注册到autoreleasepool 中的对象:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> __autoreleasing obj = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line">&#125;</span><br><span class="line">=======&gt;&gt;&gt;&gt;&gt;&gt;<span class="comment">/*编译器的模拟代码*/</span></span><br><span class="line"><span class="keyword">id</span> pool = objc_autoreleasePoolPush();</span><br><span class="line"><span class="keyword">id</span> obj = objc_msgSend(<span class="built_in">NSMutableArray</span>, <span class="keyword">@selector</span>(array)) ;</span><br><span class="line">objc_retainAutoreleasedReturnValue(obj);</span><br><span class="line">objc_autorelease(obj);</span><br><span class="line">objc_autoreleasePoolPop(pool) ;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-4-引用计数"><a href="#4-4-引用计数" class="headerlink" title="4.4.引用计数"></a>4.4.引用计数</h2><p>获取引用计数数值：<code>uintptr_t _objc_rootRetainCount(id obj)</code></p>
+<p>实际上并不能够完全信任该函数取得的数值：<br>1.对于己释放的对象以及不正确的对象地址，有时也返回“1”。<br>2.在多线程中使用对象的引用计数数值， 因为存有竞态条件的问题，所以取得的数值不一定完全可信。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/IOS/" rel="tag"><i class="fa fa-tag"></i> IOS</a>
+          
+            <a href="/tags/OC/" rel="tag"><i class="fa fa-tag"></i> OC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--2.Blocks.html" rel="next" title="OC高级编程-IOS与OS X多线程和内存管理--2.Blocks">
+                <i class="fa fa-chevron-left"></i> OC高级编程-IOS与OS X多线程和内存管理--2.Blocks
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/documentation-uikit-viewController-uiviewcontroller.html" rel="prev" title="UIViewController">
+                UIViewController <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-什么是自动引用计数"><span class="nav-text">1.什么是自动引用计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-内存管理-引用计数"><span class="nav-text">2.内存管理&#x2F;引用计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-内存管理的思考方式"><span class="nav-text">2.1.内存管理的思考方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-持有自己生成的对象"><span class="nav-text">2.1.1.持有自己生成的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-持有非自己生成的对象"><span class="nav-text">2.1.2.持有非自己生成的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-自己持有的对象不需要时，要释放"><span class="nav-text">2.1.3.自己持有的对象不需要时，要释放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-无法释放非自己持有的对象"><span class="nav-text">2.1.4.无法释放非自己持有的对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-alloc-retain-release-dealloc在GNUstep中的实现"><span class="nav-text">2.2.alloc&#x2F;retain&#x2F;release&#x2F;dealloc在GNUstep中的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-alloc的实现"><span class="nav-text">2.2.1.alloc的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-retainCount的实现"><span class="nav-text">2.2.2.retainCount的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-retain的实现"><span class="nav-text">2.2.3.retain的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-release的实现"><span class="nav-text">2.2.4.release的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-dealloc的实现"><span class="nav-text">2.2.5.dealloc的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-alloc-retain-release-dealloc在苹果中的实现"><span class="nav-text">2.3.alloc&#x2F;retain&#x2F;release&#x2F;dealloc在苹果中的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-alloc的实现"><span class="nav-text">2.3.1.alloc的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-retainCount-retain-release的实现"><span class="nav-text">2.3.2.retainCount&#x2F;retain&#x2F;release的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-autorelease"><span class="nav-text">2.4.autorelease</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-autorelease在GNUstep中的实现"><span class="nav-text">2.4.1.autorelease在GNUstep中的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-1-addObject类方法的实现"><span class="nav-text">2.4.1.1.addObject类方法的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-2-drain方法的实现"><span class="nav-text">2.4.1.2.drain方法的实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-autorelease在苹果中的实现"><span class="nav-text">2.4.2.autorelease在苹果中的实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ARC规则"><span class="nav-text">3.ARC规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-所有权修饰符"><span class="nav-text">3.1.所有权修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-strong修饰符"><span class="nav-text">3.1.1.__strong修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-weak修饰符"><span class="nav-text">3.1.2.__weak修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-unsafe-unretained修饰符"><span class="nav-text">3.1.3.__unsafe_unretained修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-autoreleasing修饰符"><span class="nav-text">3.1.4.__autoreleasing修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-5所有权修饰符总结"><span class="nav-text">3.1.5所有权修饰符总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-规则"><span class="nav-text">3.2.规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-不使用retain-release-retainCount-autorelease"><span class="nav-text">3.2.1.不使用retain&#x2F;release&#x2F;retainCount&#x2F;autorelease</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-不使用NSAllocateObject-NSDeallocateObject"><span class="nav-text">3.2.2.不使用NSAllocateObject&#x2F;NSDeallocateObject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-不使用NSZone"><span class="nav-text">3.2.3.不使用NSZone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-对象型变量不能作为结构体-struct-union-的成员"><span class="nav-text">3.2.4.对象型变量不能作为结构体(struct&#x2F;union)的成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-5-显示转换id与void"><span class="nav-text">3.2.5.显示转换id与void*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-6-遵守内存管理的方法命名规则"><span class="nav-text">3.2.6.遵守内存管理的方法命名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-7-使用-autoreleasepool代替NSAutoreleasePool"><span class="nav-text">3.2.7.使用@autoreleasepool代替NSAutoreleasePool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-8-不显式调用dealloc"><span class="nav-text">3.2.8.不显式调用dealloc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-属性"><span class="nav-text">3.3.属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-数组"><span class="nav-text">3.4.数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-ARC的实现"><span class="nav-text">4.ARC的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-strong修饰符"><span class="nav-text">4.1.__strong修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-weak修饰符"><span class="nav-text">4.2.__weak修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-weak在被废弃时会赋值为nil"><span class="nav-text">4.2.1.__weak在被废弃时会赋值为nil</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-使用-weak变量即使用autoreleasepool-中的对象"><span class="nav-text">4.2.2.使用__weak变量即使用autoreleasepool 中的对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-autoreleasing修饰符"><span class="nav-text">4.3.__autoreleasing修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-引用计数"><span class="nav-text">4.4.引用计数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

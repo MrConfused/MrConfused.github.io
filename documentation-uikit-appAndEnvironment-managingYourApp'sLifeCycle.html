@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="IOS,Documentation,UIkit,App and Environment," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Managing Your App’s Life Cycle官方文档  当app处在前台或后端时能响应系统通知，并且处理其他系统相关事件。  1.概述app所处的状态决定了他能做什么和不能做什么。当app状态变化时，UIKit通过调用委托对象的函数来通知你：  在IOS13及更新的版本中，基于scene的app使用UISceneDelegate对象来响应生命周期事件。 在IOS12及更早版本，使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Managing Your App&#39;s Life Cycle">
+<meta property="og:url" content="https://mrconfused.github.io/documentation-uikit-appAndEnvironment-managingYourApp'sLifeCycle.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="Managing Your App’s Life Cycle官方文档  当app处在前台或后端时能响应系统通知，并且处理其他系统相关事件。  1.概述app所处的状态决定了他能做什么和不能做什么。当app状态变化时，UIKit通过调用委托对象的函数来通知你：  在IOS13及更新的版本中，基于scene的app使用UISceneDelegate对象来响应生命周期事件。 在IOS12及更早版本，使用">
+<meta property="og:image" content="https://docs-assets.developer.apple.com/published/61283402a3/024b99c5-4ab6-4ee0-bb41-6e6426ec6a64.png">
+<meta property="og:image" content="https://docs-assets.developer.apple.com/published/c63cd35863/4d403429-fa30-4706-863f-5e3617ee21d0.png">
+<meta property="article:published_time" content="2020-07-03T01:31:49.528Z">
+<meta property="article:modified_time" content="2020-07-03T01:31:49.528Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="Documentation">
+<meta property="article:tag" content="UIkit">
+<meta property="article:tag" content="App and Environment">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://docs-assets.developer.apple.com/published/61283402a3/024b99c5-4ab6-4ee0-bb41-6e6426ec6a64.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>Managing Your App's Life Cycle | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/documentation-uikit-appAndEnvironment-managingYourApp'sLifeCycle.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Managing Your App's Life Cycle</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-03T09:31:49+08:00">
+                2020-07-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/" itemprop="url" rel="index">
+                    <span itemprop="name">IOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/Documentation/" itemprop="url" rel="index">
+                    <span itemprop="name">Documentation</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/Documentation/UIKit/" itemprop="url" rel="index">
+                    <span itemprop="name">UIKit</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/Documentation/UIKit/App-and-Environment/" itemprop="url" rel="index">
+                    <span itemprop="name">App and Environment</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle" target="_blank" rel="noopener">Managing Your App’s Life Cycle官方文档</a></p>
+<blockquote>
+<p>当app处在前台或后端时能响应系统通知，并且处理其他系统相关事件。</p>
+</blockquote>
+<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>app所处的状态决定了他能做什么和不能做什么。<br>当app状态变化时，UIKit通过调用委托对象的函数来通知你：</p>
+<ol>
+<li>在IOS13及更新的版本中，基于scene的app使用<a href="https://developer.apple.com/documentation/uikit/uiscenedelegate" target="_blank" rel="noopener">UISceneDelegate</a>对象来响应生命周期事件。</li>
+<li>在IOS12及更早版本，使用<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate" target="_blank" rel="noopener">UIApplicationDelegate</a>对象来响应生命周期事件。</li>
+</ol>
+<h1 id="2-响应基于场景的生命周期事件"><a href="#2-响应基于场景的生命周期事件" class="headerlink" title="2.响应基于场景的生命周期事件"></a>2.响应基于场景的生命周期事件</h1><p>如果app支持scenes，那么UIKit会为每个场景分配单独的生命周期事件。<br>一个场景代表app的UI在设备上运行的一个实例。<br>用户可以为每个app创建多个场景。<br>因为每个场景有他自己的生命周期，所以每个场景能够运行在不同的状态下。</p>
+<blockquote>
+<p><strong>注意：</strong><br>场景支持是一项可选功能。要启用的话需要按照<a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/specifying_the_scenes_your_app_supports" target="_blank" rel="noopener">Specifying the Scenes Your App Supports</a>的描述，将<a href="https://developer.apple.com/documentation/bundleresources/information_property_list/uiapplicationscenemanifest" target="_blank" rel="noopener">UIApplicationSceneManifest</a>添加到app的<code>Info.plist</code>文件中。</p>
+</blockquote>
+<p>下图表示场景的状态转换过程：</p>
+<ol>
+<li>当用户或者系统为app请求一个新的场景时，UIKit会创建该场景，并将其置于unattached状态。</li>
+<li>用户请求的场景会迅速移到前台，显示在屏幕上。<br>系统请求的场景通常会移到后台，以便于处理事件。</li>
+<li>当用户关闭界面时，UIKit会将相关的场景移到background 状态，并最终置于suspended 状态。</li>
+<li>UIKit可以随时断开background状态或suspended状态的场景的连接，以回收其资源，从而使该场景返回unattached状态。</li>
+</ol>
+<p><img src="https://docs-assets.developer.apple.com/published/61283402a3/024b99c5-4ab6-4ee0-bb41-6e6426ec6a64.png" alt="An illustration showing the state transitions for a scene-based app. Scenes start in the unattached state and move to the foreground-active or background state. The foreground-inactive state acts as a transition state."></p>
+<p>使用场景转换来够执行以下任务：</p>
+<ol>
+<li>当UIKit为app连接了一个场景时，要配置场景的初始化UI，并加载场景所需数据。</li>
+<li>当场景转到foreground-active状态时，要配置UI并准备和用户交互。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_foreground" target="_blank" rel="noopener">Preparing Your UI to Run in the Foreground</a>。</li>
+<li>退出foreground-active状态之后，要保存数据并quiet 你的app的行为。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_background" target="_blank" rel="noopener">Preparing Your UI to Run in the Background</a>。</li>
+<li>在进入background状态之后，要结束关键任务、尽可能多的释放内存、并为app snapshot做好准备。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_background" target="_blank" rel="noopener">Preparing Your UI to Run in the Background</a>。</li>
+<li>断开场景连接时，要清除相关的共享资源。</li>
+<li>除了场景相关的事件，你也必须使用<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate" target="_blank" rel="noopener"><code>UIApplicationDelegate</code></a>对象响应app的启动。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app" target="_blank" rel="noopener">Responding to the Launch of Your App</a>。</li>
+</ol>
+<h1 id="3-响应基于app的生命周期事件"><a href="#3-响应基于app的生命周期事件" class="headerlink" title="3.响应基于app的生命周期事件"></a>3.响应基于app的生命周期事件</h1><p>在IOS12及早期不支持场景的版本，UIKit将所有的生命周期事件分配给 <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate" target="_blank" rel="noopener"><code>UIApplicationDelegate</code></a>对象。</p>
+<p>app delegate 管理着app的所有窗口（包括显示在单独屏幕上的窗口），这就导致了app状态的转换影响着app的所有UI（包括外接显示器的内容）。</p>
+<p>下图表示包含app delegate对象的状态转换过程：</p>
+<ol>
+<li>启动之后，系统根据UI是否要显示在屏幕上将app置于inactive 或者background状态。</li>
+<li>启动到前台时，系统自动将app转到active 状态。</li>
+<li>之后，状态一直在active 和background 直接切换，直到app结束。</li>
+</ol>
+<p><img src="https://docs-assets.developer.apple.com/published/c63cd35863/4d403429-fa30-4706-863f-5e3617ee21d0.png" alt="An illustration showing the state transitions for an app without scenes. The app launches into the active or background state. An app transitions through the inactive state. "></p>
+<p>使用app转换来完成以下工作：</p>
+<ol>
+<li>登陆时，初始化app的数据结构和UI。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app" target="_blank" rel="noopener">Responding to the Launch of Your App</a>。</li>
+<li>在活动状态时，要将UI配置完成，并准备和用户交互。参考 <a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_foreground" target="_blank" rel="noopener">Preparing Your UI to Run in the Foreground</a>。</li>
+<li>deactivation之后，要保存数据，并且quiet 你的app的行为。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_background" target="_blank" rel="noopener">Preparing Your UI to Run in the Background</a>。</li>
+<li>进入background 状态之后，要结束关键任务、尽可能多的释放内存、并为app snapshot做好准备。参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_background" target="_blank" rel="noopener">Preparing Your UI to Run in the Background</a>。</li>
+<li>结束时，立即停止所有工作，释放共享资源。参考<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623111-applicationwillterminate" target="_blank" rel="noopener"><code>applicationWillTerminate(_:)</code></a>。</li>
+</ol>
+<h1 id="4-响应其他重要事件"><a href="#4-响应其他重要事件" class="headerlink" title="4.响应其他重要事件"></a>4.响应其他重要事件</h1><p>除了处理生命周期事件之外，app也要准备处理下述事件。</p>
+<p>使用<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate" target="_blank" rel="noopener"><code>UIApplicationDelegate</code></a>对象能处理下述大部分事件。有些情况也要使用通知来处理，以便于能够从app其他部分进行响应。</p>
+<h2 id="4-1-Memory-warnings"><a href="#4-1-Memory-warnings" class="headerlink" title="4.1 Memory warnings"></a>4.1 Memory warnings</h2><p>当内存使用过高时，会受到内存警告。<br>此时需要减少app使用的内存。</p>
+<p>参考<a href="https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle/responding_to_memory_warnings" target="_blank" rel="noopener">Responding to Memory Warnings</a>。</p>
+<h2 id="4-2-Protected-data-becomes-available-unavailable"><a href="#4-2-Protected-data-becomes-available-unavailable" class="headerlink" title="4.2 Protected data becomes available/unavailable"></a>4.2 Protected data becomes available/unavailable</h2><p>当用户锁定或者解锁设备时，会收到该事件。</p>
+<p>参考 <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623044-applicationprotecteddatadidbecom" target="_blank" rel="noopener"><code>applicationProtectedDataDidBecomeAvailable(_:)</code></a>和<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623019-applicationprotecteddatawillbeco" target="_blank" rel="noopener"><code>applicationProtectedDataWillBecomeUnavailable(_:)</code></a>。</p>
+<h2 id="4-3-Handoff-tasks"><a href="#4-3-Handoff-tasks" class="headerlink" title="4.3 Handoff tasks"></a>4.3 Handoff tasks</h2><p>当 <a href="https://developer.apple.com/documentation/foundation/nsuseractivity" target="_blank" rel="noopener"><code>NSUserActivity</code></a>对象需要被处理时，收到该事件。</p>
+<p>参考<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622963-application" target="_blank" rel="noopener"><code>application(_:didUpdate:)</code></a>。</p>
+<h2 id="4-4-Time-changes"><a href="#4-4-Time-changes" class="headerlink" title="4.4 Time changes"></a>4.4 Time changes</h2><p>当接收到的几种不同的时间变化时，收到该事件。例如当运营商发送时间更新时。</p>
+<p>参考<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622992-applicationsignificanttimechange" target="_blank" rel="noopener"><code>applicationSignificantTimeChange(_:)</code></a>。</p>
+<h2 id="4-5-Open-URLs"><a href="#4-5-Open-URLs" class="headerlink" title="4.5 Open URLs"></a>4.5 Open URLs</h2><p>当app需要打开资源时，收到该事件。</p>
+<p>参考 <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application" target="_blank" rel="noopener"><code>application(_:open:options:)</code></a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IOS/" rel="tag"><i class="fa fa-tag"></i> IOS</a>
+          
+            <a href="/tags/Documentation/" rel="tag"><i class="fa fa-tag"></i> Documentation</a>
+          
+            <a href="/tags/UIkit/" rel="tag"><i class="fa fa-tag"></i> UIkit</a>
+          
+            <a href="/tags/App-and-Environment/" rel="tag"><i class="fa fa-tag"></i> App and Environment</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/documentation-uikit-appAndEnvironment-uiapplicationdelegate.html" rel="next" title="UIApplicationDelegate">
+                <i class="fa fa-chevron-left"></i> UIApplicationDelegate
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--4.ARC%E3%80%81Blocks%E3%80%81GCD%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html" rel="prev" title="OC高级编程-IOS与OS_X多线程和内存管理--4.ARC、Blocks、GCD使用范例">
+                OC高级编程-IOS与OS_X多线程和内存管理--4.ARC、Blocks、GCD使用范例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-概述"><span class="nav-text">1.概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-响应基于场景的生命周期事件"><span class="nav-text">2.响应基于场景的生命周期事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-响应基于app的生命周期事件"><span class="nav-text">3.响应基于app的生命周期事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-响应其他重要事件"><span class="nav-text">4.响应其他重要事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Memory-warnings"><span class="nav-text">4.1 Memory warnings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Protected-data-becomes-available-unavailable"><span class="nav-text">4.2 Protected data becomes available&#x2F;unavailable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Handoff-tasks"><span class="nav-text">4.3 Handoff tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Time-changes"><span class="nav-text">4.4 Time changes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-Open-URLs"><span class="nav-text">4.5 Open URLs</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

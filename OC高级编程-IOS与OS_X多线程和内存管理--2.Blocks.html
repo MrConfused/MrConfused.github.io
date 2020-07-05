@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,IOS,OC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 Blocks概要1.1 什么是Blocks Blocks是C语言的扩充功能，带有局部变量的匿名函数，相当于C++中的Lambda表达式。Blocks 提供了类似由C++和Objective-C 类生成实例或对象来保持变量值的方法，其代码量与编写C 语言函数差不多。  C++和Objective-C要想保持变量的值，必须要使用类、静态变量、全局变量，但是代码量太多。而Blocks则相当于函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC高级编程-IOS与OS X多线程和内存管理--2.Blocks">
+<meta property="og:url" content="https://mrconfused.github.io/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--2.Blocks.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="1 Blocks概要1.1 什么是Blocks Blocks是C语言的扩充功能，带有局部变量的匿名函数，相当于C++中的Lambda表达式。Blocks 提供了类似由C++和Objective-C 类生成实例或对象来保持变量值的方法，其代码量与编写C 语言函数差不多。  C++和Objective-C要想保持变量的值，必须要使用类、静态变量、全局变量，但是代码量太多。而Blocks则相当于函数。">
+<meta property="article:published_time" content="2020-07-03T01:31:49.527Z">
+<meta property="article:modified_time" content="2020-07-03T01:31:49.527Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="OC">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>OC高级编程-IOS与OS X多线程和内存管理--2.Blocks | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--2.Blocks.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">OC高级编程-IOS与OS X多线程和内存管理--2.Blocks</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-03T09:31:49+08:00">
+                2020-07-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/" itemprop="url" rel="index">
+                    <span itemprop="name">IOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Blocks概要"><a href="#1-Blocks概要" class="headerlink" title="1 Blocks概要"></a>1 Blocks概要</h1><h2 id="1-1-什么是Blocks"><a href="#1-1-什么是Blocks" class="headerlink" title="1.1 什么是Blocks"></a>1.1 什么是Blocks</h2><blockquote>
+<p>Blocks是C语言的扩充功能，带有局部变量的匿名函数，相当于C++中的Lambda表达式。<br>Blocks 提供了类似由C++和Objective-C 类生成实例或对象来<strong>保持变量值</strong>的方法，其代码量与编写C 语言<strong>函数</strong>差不多。</p>
+</blockquote>
+<p>C++和Objective-C要想保持变量的值，必须要使用类、静态变量、全局变量，但是代码量太多。而Blocks则相当于函数。</p>
+<table>
+<thead>
+<tr>
+<th>程序语言</th>
+<th>Block的名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C+ Blocks</td>
+<td>Block</td>
+</tr>
+<tr>
+<td>Smalltalk</td>
+<td>Block</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>Block</td>
+</tr>
+<tr>
+<td>LISP</td>
+<td>Lambda</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Lambda</td>
+</tr>
+<tr>
+<td>C++ 11</td>
+<td>Lambda</td>
+</tr>
+<tr>
+<td>Javascript</td>
+<td>Anonymous function</td>
+</tr>
+<tr>
+<td><center style="font-size:14px;color:#C0C0C0"> 表1 其他程序中Block的名称 </center></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="2-Blocks模式"><a href="#2-Blocks模式" class="headerlink" title="2 Blocks模式"></a>2 Blocks模式</h1><h2 id="2-1-Block语法"><a href="#2-1-Block语法" class="headerlink" title="2.1 Block语法"></a>2.1 Block语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">^ 返回值类型 参数列表 表达式</span><br><span class="line">^ void (int a) &#123;···&#125;</span><br></pre></td></tr></table></figure>
+<p>“返回值类型”可省略。<br>若没有参数，“参数列表”可省略。</p>
+<h2 id="2-2-Block类型变量"><a href="#2-2-Block类型变量" class="headerlink" title="2.2 Block类型变量"></a>2.2 Block类型变量</h2><blockquote>
+<p>类型为Block的变量，可相互赋值</p>
+</blockquote>
+<p>作用：自动变量、函数参数、静态变量、静态全局变量、全局变量</p>
+<figure class="highlight objectivec"><figcaption><span>Block类型的变量的声明与使用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (^blk)(<span class="keyword">int</span>) = ^(<span class="keyword">int</span> counts)&#123;<span class="keyword">return</span> count+<span class="number">1</span>;&#125;;</span><br><span class="line"><span class="keyword">int</span> (^blk1)(<span class="keyword">int</span>) = blk;</span><br><span class="line"><span class="keyword">int</span> (^blk2)(<span class="keyword">int</span>);</span><br><span class="line">blk2 = blk1; <span class="comment">//Block类型可相互赋值</span></span><br><span class="line"><span class="keyword">int</span> result = blk(<span class="number">10</span>); <span class="comment">//Block类型变量的使用类似于函数指针</span></span><br></pre></td></tr></table></figure>
+
+<p>由于Block类型变量在函数参数和返回值中使用时，记述方式极为复杂，可用typedef来解决：<br><code>typedf int (^blk_t)(int);</code><br>则在使用时：<br><code>void func(int (^blk)(int)){}</code>==&gt;&gt;<code>void func(blk_t blk){}</code><br><code>int (^func() (int)){}</code>==&gt;&gt;<code>blk_t func(){}</code></p>
+<p>有Block类型变量，也有Block指针类型变量：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">blk_t *blkptr = &amp;blk; <span class="comment">//Block指针定义</span></span><br><span class="line"><span class="keyword">int</span> a = (*blkptr)(<span class="number">10</span>); <span class="comment">//Block指针调用</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-3-截获自动变量值"><a href="#2-3-截获自动变量值" class="headerlink" title="2.3 截获自动变量值"></a>2.3 截获自动变量值</h2><p>Block语法保存的是局部变量的瞬时值，之后即使该变量改变，Block中的变量值也不变。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> val = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">void</span> (^blk)(<span class="keyword">void</span>) = ^&#123;result = val;&#125;;</span><br><span class="line">blk(); <span class="comment">//result为10，blk截获到val的值</span></span><br><span class="line">val = <span class="number">2</span>；</span><br><span class="line">blk(); <span class="comment">//result仍然为10</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-4-block说明符"><a href="#2-4-block说明符" class="headerlink" title="2.4 __block说明符"></a>2.4 __block说明符</h2><p>在Block块中无法改变被捕获的变量的值。<br>若想在Block中改变该变量的值，需要给其附加上<code>__block</code>说明符。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__block <span class="keyword">int</span> val = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">void</span> (^blk)(<span class="keyword">void</span>) = ^&#123;val = <span class="number">1</span>;&#125;;</span><br><span class="line">blk(); <span class="comment">//val值变为1</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-5-截获的自动变量"><a href="#2-5-截获的自动变量" class="headerlink" title="2.5 截获的自动变量"></a>2.5 截获的自动变量</h2><p>给截获的自动变量赋值会报错，但是调用截获的自动变量的自身的<strong>更改其对象的方法</strong>则不会报错。<br>截获C语言的数组时，也会报错，可用指针来解决。</p>
+<h1 id="3-Blocks的实现"><a href="#3-Blocks的实现" class="headerlink" title="3 Blocks的实现"></a>3 Blocks的实现</h1><h2 id="3-1-Block的实质"><a href="#3-1-Block的实质" class="headerlink" title="3.1 Block的实质"></a>3.1 Block的实质</h2><blockquote>
+<p>Block即为Objective-C的对象</p>
+</blockquote>
+<p>clang （LLVM编译器）通过“－rewrite-objc ” 选项就能将含有Block 语法的源代码变换为C++的源代码（是使用了struct 结构的C 语言源代码）。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Block语法</span></span><br><span class="line"><span class="keyword">int</span> main()&#123;</span><br><span class="line">	<span class="keyword">void</span> (^blk)(<span class="keyword">void</span>) = ^&#123;printf(<span class="string">"Block\n"</span>);&#125;;</span><br><span class="line">	blk();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//^&#123;printf("Block\n") 转换后的代码。</span></span><br><span class="line"><span class="comment">//__cself为指向Block的变量，相当于C++的this、OC的self。</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(<span class="keyword">struct</span> __main_block_impl_0 *__cself)&#123;</span><br><span class="line">	printf(<span class="string">"Block\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//__main_block_impl_0结构体</span></span><br><span class="line">    <span class="keyword">struct</span> __main_block_impl_0 &#123;</span><br><span class="line">        <span class="keyword">struct</span> __block_impl impl;</span><br><span class="line">        <span class="keyword">struct</span> __main_block_desc_0* Desc;</span><br><span class="line">    &#125;;</span><br><span class="line">        <span class="comment">//__block_impl结构体</span></span><br><span class="line">        <span class="keyword">struct</span> __block_impl &#123;</span><br><span class="line">            <span class="keyword">void</span> *isa;<span class="comment">//指向对象所属的类,根据这个类模板能够创建出实例变量、实例方法等</span></span><br><span class="line">            <span class="keyword">int</span> Flags;<span class="comment">//某些标注</span></span><br><span class="line">            <span class="keyword">int</span> Reserved;<span class="comment">//版本升级所需区域</span></span><br><span class="line">            <span class="keyword">void</span> *FuncPtr;<span class="comment">//函数指针</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//__main_block_desc_0结构体</span></span><br><span class="line">        <span class="keyword">struct</span> __main_block_desc_0 &#123;</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">long</span> reserved;</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">long</span> Block_size;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//__main_block_impl_0的构造函数</span></span><br><span class="line">        __main_block_impl_0(<span class="keyword">void</span> *fp, </span><br><span class="line">        		<span class="keyword">struct</span> __main_block_desc_0 *desc, </span><br><span class="line">        		<span class="keyword">int</span> flags=<span class="number">0</span>)&#123;</span><br><span class="line">            impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">            impl.Flags = flags;</span><br><span class="line">            impl.FuncPtr = fp;</span><br><span class="line">            Desc = desc;</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="comment">//_NSConcreteStackBlock相当于class_t结构体实例</span></span><br><span class="line">            <span class="keyword">struct</span> class_t &#123;</span><br><span class="line">                <span class="keyword">struct</span> class_t *isa;</span><br><span class="line">                <span class="keyword">struct</span> class_t *superclass;</span><br><span class="line">                Cache cache;</span><br><span class="line">                IMP *vtable;</span><br><span class="line">                uintptr_t data_NEVER_USE;</span><br><span class="line">            &#125;;</span><br><span class="line">        <span class="comment">//__main_block_impl_0构造函数的调用</span></span><br><span class="line">        <span class="comment">//第一个参数：Block语法转换的C语言函数指针</span></span><br><span class="line">        <span class="comment">//第二个参数：作为静态全局变量初始化的＿main_block_desc_0 结构体实例指针</span></span><br><span class="line">        <span class="keyword">struct</span> __main_block_impl_0 tmp = </span><br><span class="line">            __main_block_impl_0(__main_block_func_0, &amp;__main_block_desc_0_DATA);</span><br><span class="line">        <span class="keyword">struct</span> __main_block_impl_0 *blk = &amp;tmp;</span><br><span class="line">            <span class="comment">//__main_block_desc_0_DATA</span></span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">struct</span> __main_block_desc_0 __main_block_desc_0_DATA = &#123;</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                <span class="keyword">sizeof</span>(<span class="keyword">struct</span> __main_block_impl_0)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Block结构体可记为</span></span><br><span class="line">    <span class="keyword">struct</span> __main_block_impl_0 &#123;</span><br><span class="line">        <span class="keyword">void</span> *isa;</span><br><span class="line">        <span class="keyword">int</span> Flag;</span><br><span class="line">        <span class="keyword">int</span> Reserve;</span><br><span class="line">        <span class="keyword">void</span> *FuncPtr;</span><br><span class="line">        <span class="keyword">struct</span> __main_block_desc_0* Desc;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//blk() 转换后的代码。使用函数指针调用函数</span></span><br><span class="line">(*blk-&gt;impl.FuncPtr)(blk);<span class="comment">//blk作为FuncPtr的参数__cself的实参</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-2-截获自动变量值"><a href="#3-2-截获自动变量值" class="headerlink" title="3.2 截获自动变量值"></a>3.2 截获自动变量值</h2><blockquote>
+<p>Block语法中使用的自动变量会追加到__main_block_impl_0结构体中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    int dmy &#x3D; 256;</span><br><span class="line">    int val &#x3D; 10;</span><br><span class="line">    const chat *fmt &#x3D; &quot;val &#x3D; %d\n&quot;;</span><br><span class="line">    void (^blk)(void) &#x3D; &amp;__main_block_impl_0(</span><br><span class="line">        __main_block_func_0,</span><br><span class="line">        &amp;__main_block_desc_0_DATA,</span><br><span class="line">        fmt,</span><br><span class="line">        val);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct __main_block_impl_0 &#123;</span><br><span class="line">    struct __block_impl impl;</span><br><span class="line">    struct __main_block_desc_0* Desc;</span><br><span class="line">    const char *fmt; &#x2F;&#x2F;*</span><br><span class="line">    int val; &#x2F;&#x2F;*</span><br><span class="line">    __main_block_impl_0(void *fp, </span><br><span class="line">			struct __main_block_desc_0 *desc, </span><br><span class="line">			const char *_fmt,</span><br><span class="line">			int _val,</span><br><span class="line">			int flags&#x3D;0) : fmt(_fmt), val(_val)&#123;&#x2F;&#x2F;此处自动变量被截获</span><br><span class="line">        impl.isa &#x3D; &amp;_NSConcreteStackBlock;</span><br><span class="line">        impl.Flags &#x3D; flags;</span><br><span class="line">        impl.FuncPtr &#x3D; fp;</span><br><span class="line">        Desc &#x3D; desc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">static struct __main_block_func_0(struct __main_block_impl_0 *__cself)&#123;</span><br><span class="line">    const chat *fmt &#x3D; __cself-&gt;fmt;</span><br><span class="line">    int val &#x3D; __cself-&gt;val;</span><br><span class="line">    printf(fmt, val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static struct __main_block_desc_0 &#123;</span><br><span class="line">    unsigned long reserved;</span><br><span class="line">    unsigned long Block_size;</span><br><span class="line">&#125; ____main_block_desc_0_DATA &#x3D; &#123;</span><br><span class="line">    0,</span><br><span class="line">    sizeof(struct __main_block_impl_0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Block的匿名函数<code>^{printf(fmt, val)}</code>会被转换为：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(<span class="keyword">struct</span> __main_block_impl_0 *__cself)&#123;</span><br><span class="line">    vonst chat *fmt = __cself-&gt;fmt;</span><br><span class="line">    <span class="keyword">int</span> val = __cself-&gt;val;</span><br><span class="line">    printf(fmt, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-block说明符"><a href="#3-3-block说明符" class="headerlink" title="3.3 __block说明符"></a>3.3 __block说明符</h2><blockquote>
+<p>Block中不能改变截获的自动变量，可用“__block存储域说明符”来解决。</p>
+</blockquote>
+<p>C语言中的存储类说明符有：<code>typedef, extern, static, auto, register</code><br><code>__block</code>将该变量变成栈上生成的__Block_byref_val_0结构体类型的变量，相当于该结构体持有原变量。</p>
+<p><strong>访问__block变量：</strong>__Block_byref_val_0结构体有个成员变量__forwarding，__forwarding变量指向实例自身，通过它来访问__block变量的值。</p>
+<div align="center" style="line-height:0px">
+    ![图2.1 访问__block变量 ](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE2.1%20%E8%AE%BF%E9%97%AE__block%E5%8F%98%E9%87%8F.jpg?raw=true)
+    <center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 
+        图2.1 访问__block变量
+    </center>
+</div>
+
+<h2 id="3-4-Block存储域"><a href="#3-4-Block存储域" class="headerlink" title="3.4 Block存储域"></a>3.4 Block存储域</h2><h3 id="3-4-1-Block与-block变量"><a href="#3-4-1-Block与-block变量" class="headerlink" title="3.4.1 Block与__block变量"></a>3.4.1 Block与__block变量</h3><center style=" font-size:14px;color:#C0C0C0"> 
+    表1 Block与__block变量的实质
+</center>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>实质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Block</td>
+<td>栈上Block的结构体实例</td>
+</tr>
+<tr>
+<td>__block变量</td>
+<td>栈上__block变量的结构体实例</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-2-Block的类及其存储域"><a href="#3-4-2-Block的类及其存储域" class="headerlink" title="3.4.2 Block的类及其存储域"></a>3.4.2 Block的类及其存储域</h3><center style=" font-size:14px;color:#C0C0C0"> 
+    表2 Block的类
+</center>
+
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>设置对象的存储域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_NSConcreteStackBlock</code></td>
+<td>栈</td>
+</tr>
+<tr>
+<td><code>_NSConcreteGlobalBlock</code></td>
+<td>程序的数据区域（.data 区）</td>
+</tr>
+<tr>
+<td><code>_NSConcreteMallocBlock</code></td>
+<td>堆</td>
+</tr>
+</tbody></table>
+<div align="center" style="line-height:0px">
+![图2.2 设置Block的存储域 ](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE2.2%20%E8%AE%BE%E7%BD%AEBlock%E7%9A%84%E5%AD%98%E5%82%A8%E5%9F%9F.jpg?raw=true)
+<center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 
+图2.2 设置Block的存储域
+    <p></p>
+</center>
+</div>
+
+<h4 id="3-4-2-1-NSConcreteGlobalBlock"><a href="#3-4-2-1-NSConcreteGlobalBlock" class="headerlink" title="3.4.2.1 _NSConcreteGlobalBlock"></a>3.4.2.1 _NSConcreteGlobalBlock</h4><p>在<strong>全局变量处使用Block</strong>时，或者<strong>Block在函数内但不截获自动变量</strong>时，生成的Block是<code>_NSConcreteGlobalBlock</code>对象，Block结构体的成员变量isa 的初始化：<code>impl.isa = &amp;_NSConcreteGlobalBlock;</code></p>
+<h4 id="3-4-2-2-NSConcreteMallocBlock"><a href="#3-4-2-2-NSConcreteMallocBlock" class="headerlink" title="3.4.2.2 _NSConcreteMallocBlock"></a>3.4.2.2 _NSConcreteMallocBlock</h4><div align="center" style="line-height:0px">
+    ![图2.3 从栈复制到堆上的Block与__block变量.png ](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE2.3%20%E4%BB%8E%E6%A0%88%E5%A4%8D%E5%88%B6%E5%88%B0%E5%A0%86%E4%B8%8A%E7%9A%84Block%E4%B8%8E__block%E5%8F%98%E9%87%8F.png?raw=true)
+    <center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 
+    图2.3 从栈复制到堆上的Block与__block变量
+    </center>
+    <p></p>
+</div>
+
+<p>设置在栈上的Block和__block变量在作用域结束时会被废弃，通过将其<strong>复制到堆上</strong>可解决此问题。<br>1.复制到堆上的Block 将_NSConcreteMallocBlock类对象写入Block 结构体实例的成员变量isa。<br>2.__block 变量通过结构体成员变量__forwarding ，只要__forwarding 指向堆上的结构体实例，就可以实现无论__block 变量配置在栈上还是堆上时都能够正确地访问__block  变量。</p>
+<h4 id="3-4-2-3-何时栈上的Block-会复制到堆？"><a href="#3-4-2-3-何时栈上的Block-会复制到堆？" class="headerlink" title="3.4.2.3 何时栈上的Block 会复制到堆？"></a>3.4.2.3 何时栈上的Block 会复制到堆？</h4><ol>
+<li>调用Block 的copy 实例方法时。</li>
+<li>Block 作为函数返回值返回时。</li>
+<li>将Block 赋值给附有__strong 修饰符id 类型的类或Block 类型成员变量时。</li>
+<li>在方法名中含有usingBlock 的Cocoa 框架方法或Grand Central Dispatch 的API 中传递Block 时。</li>
+</ol>
+<p><strong>大多数情况</strong>下编译器会适当地进行判断（如上述2、3、4），<strong>自动调用<code>＿Block_copy</code>函数</strong>将Block从栈复制到堆上。</p>
+<h4 id="3-4-2-4-调用copy方法手动将Block复制到堆"><a href="#3-4-2-4-调用copy方法手动将Block复制到堆" class="headerlink" title="3.4.2.4 调用copy方法手动将Block复制到堆"></a>3.4.2.4 调用<code>copy</code>方法手动将Block复制到堆</h4><p><strong>向方法或函数的参数中传递Block</strong> 时，编译器<strong>不能判断</strong>是否自动生成复制代码，需要手动生成：<br>使用第一章中的<code>copy</code>方法：<code>blk = [blk copy];</code>或者<code>[^{···} copy]</code></p>
+<p>但是如果在方法或函数中适当地复制了传递过来的参数，那么就不必在调用该方法或函数前手动复制了。如以下方法不用手动复制。</p>
+<ol>
+<li>Cocoa 框架的方法且方法名中含有usingBlock 等时。</li>
+<li>Grand Central Dispatch 的API。</li>
+</ol>
+<p>对于己在堆上或者数据区的Block ，调用copy 方法又会如何呢？</p>
+<center style=" font-size:14px;color:#C0C0C0"> 
+表3 不同存储位置的Block调用Copy后的处理
+</center>
+
+<table>
+<thead>
+<tr>
+<th>Block的类</th>
+<th>副本原存储位置</th>
+<th>复制效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_NSConcreteStackBlock</code></td>
+<td>栈</td>
+<td>从栈复制到堆</td>
+</tr>
+<tr>
+<td><code>_NSConcreteGlobalBlock</code></td>
+<td>程序的数据区域</td>
+<td>什么都不做</td>
+</tr>
+<tr>
+<td><code>_NSConcreteMallocBlock</code></td>
+<td>堆</td>
+<td>引用计数增加</td>
+</tr>
+</tbody></table>
+<p>不管Block 配置在何处，用copy 方法复制都不会引起任何问题。<strong>在不确定时调用copy方法即可</strong>。</p>
+<h2 id="3-5-block变量存储域"><a href="#3-5-block变量存储域" class="headerlink" title="3.5 __block变量存储域"></a>3.5 __block变量存储域</h2><h3 id="3-5-1-一个Block-中使用-block-变量"><a href="#3-5-1-一个Block-中使用-block-变量" class="headerlink" title="3.5.1 一个Block 中使用__block 变量"></a>3.5.1 一个Block 中使用__block 变量</h3><p>若在一个Block 中使用__block 变量，则当该Block 从栈复制到堆时，使用的<strong>所有__block变量也全部被从栈复制到堆</strong>。 此时， <strong>Block 持有__block 变量</strong>。<br>即使在该Block 己复制到堆的情形下，复制Block 也对所使用的__block 变量<strong>没有任何影响</strong>。</p>
+<center style=" font-size:14px;color:#C0C0C0"> 
+    表4 __block变量复制到堆上时的影响
+</center>
+
+<table>
+<thead>
+<tr>
+<th>__block变量的存储域</th>
+<th>从栈复制到堆上的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>栈</td>
+<td>从栈复制到堆，并被Block持有</td>
+</tr>
+<tr>
+<td>堆</td>
+<td>被Block持有</td>
+</tr>
+</tbody></table>
+<div align="center" style="line-height:0px">
+    ![图2.4 将Block从栈复制到堆时对__block变量的影响.png ](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE2.4%20%E5%B0%86Block%E4%BB%8E%E6%A0%88%E5%A4%8D%E5%88%B6%E5%88%B0%E5%A0%86%E6%97%B6%E5%AF%B9__block%E5%8F%98%E9%87%8F%E7%9A%84%E5%BD%B1%E5%93%8D.png?raw=true)
+    <center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 
+        图2.4 将Block从栈复制到堆时对__block变量的影响
+    </center>
+    <p></p>
+</div>
+
+
+<h3 id="3-5-2-多个Block-中使用-block-变量"><a href="#3-5-2-多个Block-中使用-block-变量" class="headerlink" title="3.5.2 多个Block 中使用__block 变量"></a>3.5.2 多个Block 中使用__block 变量</h3><p>在多个Block 中使用__block 变量时，因为最先会将所有的Block 配置在栈上， 所以__block变量也会配置在栈上。<br>在任何一个Block 从栈复制到堆时， __block 变量也会一并从栈复制到堆并被该Block 所持有。<br>当剩下的Block 从栈复制到堆时，被复制的Block 持有__block 变量，并增加__block 变量的引用计数。<br>如果配置在堆上的Block 被废弃，那么它所使用的__block 变量也就被释放。</p>
+<h3 id="3-5-3-为何不管-block-变量配置在栈上还是在堆上，都能够正确地访问该变量？"><a href="#3-5-3-为何不管-block-变量配置在栈上还是在堆上，都能够正确地访问该变量？" class="headerlink" title="3.5.3 为何不管__block 变量配置在栈上还是在堆上，都能够正确地访问该变量？"></a>3.5.3 为何不管__block 变量配置在栈上还是在堆上，都能够正确地访问该变量？</h3><p>在__block 变量从栈复制到堆上时， <strong>会将成员变量__forwarding 的值替换为堆上的__block 变量结构体实例的地址</strong>。</p>
+<div align="center" style="line-height:0px">
+    ![图2.5 将Block从栈复制到堆时对__forwarding的影响.png ](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE2.5%20%E5%B0%86Block%E4%BB%8E%E6%A0%88%E5%A4%8D%E5%88%B6%E5%88%B0%E5%A0%86%E6%97%B6%E5%AF%B9__forwarding%E7%9A%84%E5%BD%B1%E5%93%8D.png?raw=true)
+    <center style=" font-size:14px;color:#C0C0C0;text-decoration:underline"> 
+        图2.5 将Block从栈复制到堆时对__forwarding的影响
+    </center>
+    <p></p>
+</div>
+
+<h2 id="3-6-截获对象"><a href="#3-6-截获对象" class="headerlink" title="3.6 截获对象"></a>3.6 截获对象</h2><p>通过使用附有__strong 修饰符的自动变量， Block 中截获的对象就能够超出其变量作用域而存在。<br>通过<code>BLOCK_FIELD_IS_OBJECT</code> 和<code>BLOCK_FIELD_IS_BYREF</code> 参数，区分copy 函数和dispose 函数的对象类型是<strong>对象</strong>还是<strong>__block 变量</strong>。</p>
+<h2 id="3-7-block变量与对象"><a href="#3-7-block变量与对象" class="headerlink" title="3.7 __block变量与对象"></a>3.7 __block变量与对象</h2><h2 id="3-8-Block循环引用"><a href="#3-8-Block循环引用" class="headerlink" title="3.8 Block循环引用"></a>3.8 Block循环引用</h2><p>若一个<strong>持有Block的对象</strong>，当他从栈复制到堆上后，Block将持有该对象，导致循环引用。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//持有Block的对象</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> (^blk_t)(<span class="keyword">void</span>);</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MyObj</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">	blk_t blk;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//其初始化函数</span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MyObj</span></span></span><br><span class="line"><span class="comment">//blk持有强引用Block，会导致循环引用</span></span><br><span class="line">- (<span class="keyword">id</span>) init&#123;</span><br><span class="line">	<span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">	blk = ^&#123;<span class="built_in">NSLog</span>(<span class="string">@"self = %@"</span>, <span class="keyword">self</span>);&#125;;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//解决方法一：通过弱引用</span></span><br><span class="line">        - (<span class="keyword">id</span>) init&#123;</span><br><span class="line">            <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">            <span class="keyword">id</span> __<span class="keyword">weak</span> tmp = <span class="keyword">self</span>; <span class="comment">//将self赋值给弱引用</span></span><br><span class="line">            blk = ^&#123;<span class="built_in">NSLog</span>(<span class="string">@"self = %@"</span>, tmp);&#125;;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//解决方法二：通过__block变量</span></span><br><span class="line">        - (<span class="keyword">id</span>) init&#123;</span><br><span class="line">            <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">            __block <span class="keyword">id</span> tmp = <span class="keyword">self</span>; <span class="comment">//将self赋值给__block变量，tmp持有self</span></span><br><span class="line">            blk = ^&#123;</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"self = %@"</span>, tmp);<span class="comment">//Block持有tmp</span></span><br><span class="line">                tmp = <span class="literal">nil</span>;</span><br><span class="line">            &#125;;<span class="comment">//self持有Block</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        - (<span class="keyword">void</span>) execBlock&#123;</span><br><span class="line">            blk();<span class="comment">//执行赋值给blk的Block，nil赋值给tmp，tmp不在持有self，解决循环引用</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> main()&#123;</span><br><span class="line">            <span class="keyword">id</span> o = [[MyObj alloc] init];</span><br><span class="line">            [o execBlock];</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>编译器会检测出循环引用。<br>使用__block变量的<strong>优点</strong>：</p>
+<ol>
+<li>通过__block 变量可控制对象的持有期间。</li>
+<li>在不能使用__weak 修饰符的环境中不使用__unsafe_unretained 修饰符即可(不必担心悬垂指针）。</li>
+<li>在执行Block 时可动态地决定是否将nil 或其他对象赋值在__block 变量中。</li>
+</ol>
+<p>使用__block变量的<strong>缺点</strong>：必须执行Block。</p>
+<h2 id="3-9-copy-release"><a href="#3-9-copy-release" class="headerlink" title="3.9 copy/release"></a>3.9 copy/release</h2><blockquote>
+<p>ARC 无效时，一般需要手动将Block 从栈复制到堆。用<code>copy</code>实例方法来复制．用<code>release</code>实例方法来释放。</p>
+</blockquote>
+<p>只要Block 有一次复制并配置在<strong>堆</strong>上，就可通过<code>retain</code>实例方法持有该Block。</p>
+<p>对于配置在<strong>栈</strong>上的Block，使用<code>copy</code>实例方法来持有Block。</p>
+<blockquote>
+<p>ARC 无效时，使用__block 说明符来避免Block 中的循环引用。</p>
+</blockquote>
+<p>当Block 从栈复制到堆时，若Block 使用的变量为附有__block 说明符的id 类型或对象类型的自动变量，不会被retain ；若不是，则被retain。</p>
+<p>且此时不需要执行Block。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/IOS/" rel="tag"><i class="fa fa-tag"></i> IOS</a>
+          
+            <a href="/tags/OC/" rel="tag"><i class="fa fa-tag"></i> OC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--3.GrandCentralDispatch.html" rel="next" title="OC高级编程-IOS与OS X多线程和内存管理--3.GrandCentralDispatch">
+                <i class="fa fa-chevron-left"></i> OC高级编程-IOS与OS X多线程和内存管理--3.GrandCentralDispatch
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--1.%E8%87%AA%E5%8A%A8%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.html" rel="prev" title="OC高级编程-IOS与OS X多线程和内存管理--1.自动引用计数">
+                OC高级编程-IOS与OS X多线程和内存管理--1.自动引用计数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Blocks概要"><span class="nav-text">1 Blocks概要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是Blocks"><span class="nav-text">1.1 什么是Blocks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Blocks模式"><span class="nav-text">2 Blocks模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Block语法"><span class="nav-text">2.1 Block语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Block类型变量"><span class="nav-text">2.2 Block类型变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-截获自动变量值"><span class="nav-text">2.3 截获自动变量值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-block说明符"><span class="nav-text">2.4 __block说明符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-截获的自动变量"><span class="nav-text">2.5 截获的自动变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Blocks的实现"><span class="nav-text">3 Blocks的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Block的实质"><span class="nav-text">3.1 Block的实质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-截获自动变量值"><span class="nav-text">3.2 截获自动变量值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-block说明符"><span class="nav-text">3.3 __block说明符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-Block存储域"><span class="nav-text">3.4 Block存储域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-Block与-block变量"><span class="nav-text">3.4.1 Block与__block变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-Block的类及其存储域"><span class="nav-text">3.4.2 Block的类及其存储域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-1-NSConcreteGlobalBlock"><span class="nav-text">3.4.2.1 _NSConcreteGlobalBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-2-NSConcreteMallocBlock"><span class="nav-text">3.4.2.2 _NSConcreteMallocBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-3-何时栈上的Block-会复制到堆？"><span class="nav-text">3.4.2.3 何时栈上的Block 会复制到堆？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-4-调用copy方法手动将Block复制到堆"><span class="nav-text">3.4.2.4 调用copy方法手动将Block复制到堆</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-block变量存储域"><span class="nav-text">3.5 __block变量存储域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-一个Block-中使用-block-变量"><span class="nav-text">3.5.1 一个Block 中使用__block 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-多个Block-中使用-block-变量"><span class="nav-text">3.5.2 多个Block 中使用__block 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-3-为何不管-block-变量配置在栈上还是在堆上，都能够正确地访问该变量？"><span class="nav-text">3.5.3 为何不管__block 变量配置在栈上还是在堆上，都能够正确地访问该变量？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-截获对象"><span class="nav-text">3.6 截获对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-block变量与对象"><span class="nav-text">3.7 __block变量与对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-Block循环引用"><span class="nav-text">3.8 Block循环引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9-copy-release"><span class="nav-text">3.9 copy&#x2F;release</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

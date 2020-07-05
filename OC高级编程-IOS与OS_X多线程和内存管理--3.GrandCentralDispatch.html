@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,IOS,OC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.Grand Central Dispatch概要1.1 什么是GCD Grand Central Dispatch ( GCD）是异步执行任务的技术之一。 一般将应用程序中记述的线程管理用的代码在系统级中实现。开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中， GCD 就能生成必要的线程并计划执行任务。由于线程管理是作为系统的一部分来实现的，因此可统一管理，也可执行任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC高级编程-IOS与OS X多线程和内存管理--3.GrandCentralDispatch">
+<meta property="og:url" content="https://mrconfused.github.io/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--3.GrandCentralDispatch.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="1.Grand Central Dispatch概要1.1 什么是GCD Grand Central Dispatch ( GCD）是异步执行任务的技术之一。 一般将应用程序中记述的线程管理用的代码在系统级中实现。开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中， GCD 就能生成必要的线程并计划执行任务。由于线程管理是作为系统的一部分来实现的，因此可统一管理，也可执行任务">
+<meta property="article:published_time" content="2020-07-03T01:31:49.527Z">
+<meta property="article:modified_time" content="2020-07-03T01:31:49.528Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="OC">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>OC高级编程-IOS与OS X多线程和内存管理--3.GrandCentralDispatch | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--3.GrandCentralDispatch.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">OC高级编程-IOS与OS X多线程和内存管理--3.GrandCentralDispatch</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-03T09:31:49+08:00">
+                2020-07-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/" itemprop="url" rel="index">
+                    <span itemprop="name">IOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOS/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Grand-Central-Dispatch概要"><a href="#1-Grand-Central-Dispatch概要" class="headerlink" title="1.Grand Central Dispatch概要"></a>1.Grand Central Dispatch概要</h1><h2 id="1-1-什么是GCD"><a href="#1-1-什么是GCD" class="headerlink" title="1.1 什么是GCD"></a>1.1 什么是GCD</h2><blockquote>
+<p>Grand Central Dispatch ( GCD）是异步执行任务的技术之一。 一般将应用程序中记述的线程管理用的代码在<strong>系统级</strong>中实现。开发者只需要定义想执行的任务并追加到适当的Dispatch Queue中， GCD 就能生成必要的线程并计划执行任务。由于线程管理是作为系统的一部分来实现的，因此可统一管理，也可执行任务，这样就比以前的线程更有效率。</p>
+</blockquote>
+<h2 id="1-2-多线程编程"><a href="#1-2-多线程编程" class="headerlink" title="1.2 多线程编程"></a>1.2 多线程编程</h2><p><strong>线程</strong>：1个CPU 执行的CPU 命令列为一条无分叉路径。<br><strong>多线程</strong>：这种无分叉路径不只1 条，存在有多条。<br><strong>上下文切换</strong>：CPU切换执行路径时，执行中路径的<em>状态（例如CPU 的寄存器等信息）保存</em>到各自路径专用的内存块中，以及从切换目标路径专用的内存块中<em>复原CPU 寄存器等信息</em>，继续执行切换路径的CPU 命令列。<br><strong>多线程编程</strong>：使用多线程的程序可以在某个线程和其他线程之间<em>反复多次进行上下文切换</em>，因此看上去就好像1个CPU 核能够并列地执行多个线程一样。<br><strong>长时间的处理不在主线程中执行而在其他线程中执行</strong>：长时间的处理会妨碍主线程中被称为RunLoop 的主循环的执行，从而导致不能更新用户界面、应用程序的画面长时间停滞等问题。<br>若<strong>过多使用多线程</strong>，会消耗大量内存，引起大量的上下文切换，大幅度降低系统的响应性能。</p>
+<h1 id="2-GCD的API"><a href="#2-GCD的API" class="headerlink" title="2.GCD的API"></a>2.GCD的API</h1><h2 id="2-1-Dispatch-Queue"><a href="#2-1-Dispatch-Queue" class="headerlink" title="2.1 Dispatch Queue"></a>2.1 Dispatch Queue</h2><blockquote>
+<p>开发者要做的只是定义想执行的任务并追加到适当的Dispatch Queue 中。</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向queue中追加要执行的任务</span></span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, ^&#123;</span><br><span class="line">	<span class="comment">//要执行的任务</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Dispatch Queue是执行处理的等待队列，按照FIFO来处理。</p>
+</blockquote>
+<center style=" font-size:14px;color:#C0C0C0"> 
+    表1 Dispatch Queue的种类
+</center>
+
+<table>
+<thead>
+<tr>
+<th>Dispatch Queue的种类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Serial Dispatch Queue</td>
+<td>等待现在执行中处理结束</td>
+</tr>
+<tr>
+<td>Concurrent Dispatch Queue</td>
+<td>不等待现在执行中处理结束</td>
+</tr>
+</tbody></table>
+<div align="center" style="line-height:0px">
+    ![图3.1 SerialDispatchQueue、ConcurrentDispatchQueue 和线程的关系](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE3.1%20SerialDispatchQueue%E3%80%81ConcurrentDispatchQueue%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%85%B3%E7%B3%BB.png?raw=true)
+    <center style=" font-size:14px;color:#C0C0C0"> 
+        图3.1 SerialDispatchQueue、ConcurrentDispatchQueue 和线程的关系
+    </center>
+    <p></p>
+</div>
+
+<p><strong>Serial Dispatch Queue</strong>可用于解决多线程的<strong>数据竞争问题</strong>（多个线程竞争同一个资源）；但是若生成了多个Serial Dispatch Queue，那么就能同时执行多个线程，因此<strong>绝不能大量生成</strong>Serial Dispatch Queue。</p>
+<p><strong>Concurrent Dispatch Queue</strong>适用于<strong>没有数据竞争问题</strong>的情况，而且不管有多少个Concurrent Dispatch Queue，XNU内核只使用有效管理的线程，<strong>不会同时执行过多线程</strong>。</p>
+<h2 id="2-2-dispatch-queue-create"><a href="#2-2-dispatch-queue-create" class="headerlink" title="2.2 dispatch_queue_create"></a>2.2 dispatch_queue_create</h2><blockquote>
+<p>用于生成Dispatch Queue</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> mySerialDispatchQueue = </span><br><span class="line">	dispatch_queue_create(<span class="string">"com.example.gcd.MySerialDispatchQueue"</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一个参数：指定Dispatch Queue的名称，推荐使用应用程序ID这种逆序全程域名( FQDN ， fully qualified domain name）。</li>
+<li>第二个参数：指定Dispatch Queue的类型。<code>NULL</code>生成Serial Dispatch Queue，<code>DISPATCH_QUEUE_CONCURRENT</code>生成Concurrent Dispatch Queue</li>
+<li>返回值类型为<code>dispatch_queue_t</code>。</li>
+</ul>
+<p>在通过函数获取Dispatch Queue 以及其他名称中含有create 的API 生成的对象时，有必要通过<code>dispatch_retain</code>函数持有，并在不需要时通过<code>dispatch_release</code>函数释放．</p>
+<p>注意<strong>不能过多生成Serial Dispatch Queue</strong>。</p>
+<h2 id="2-3-Main-Dispatch-Queue-Global-Dispatch-Queue"><a href="#2-3-Main-Dispatch-Queue-Global-Dispatch-Queue" class="headerlink" title="2.3 Main Dispatch Queue/Global Dispatch Queue"></a>2.3 Main Dispatch Queue/Global Dispatch Queue</h2><blockquote>
+<p>获取系统标准提供的Dispatch Queue。<br><strong>Main Dispatch Queue</strong>：是在主线程中执行的Dispatch Queue，只有一个。追加到其中的线程会在主线程的RunLoop中执行，因此要将用户界面的操作追加到其中。<br><strong>Global Dispatch Queue</strong>：所有应用程序都能使用的Dispatch Queue。有四个执行优先级：高、默认、低、后台。在向其中追加处理时要选择对应优先级的Global Dispatch Queue。</p>
+</blockquote>
+<center style=" font-size:14px;color:#C0C0C0"> 
+    表2 系统提供的Dispatch Queue的种类
+</center>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>Dispatch Queue的种类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Main Dispatch Queue</td>
+<td>Serial Dispatch Queue</td>
+<td>主线程执行</td>
+</tr>
+<tr>
+<td>Global Dispatch Queue (High Priority)</td>
+<td>Concurrent Dispatch Queue</td>
+<td>执行优先级：最高</td>
+</tr>
+<tr>
+<td>Global Dispatch Queue (Default Priority)</td>
+<td>Concurrent Dispatch Queue</td>
+<td>执行优先级：默认</td>
+</tr>
+<tr>
+<td>Global Dispatch Queue (Low Priority)</td>
+<td>Concurrent Dispatch Queue</td>
+<td>执行优先级：低</td>
+</tr>
+<tr>
+<td>Global Dispatch Queue (Background Priority)</td>
+<td>Concurrent Dispatch Queue</td>
+<td>执行优先级：后台</td>
+</tr>
+</tbody></table>
+<figure class="highlight objectivec"><figcaption><span>各种Dispatch的获取</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> myDispatchQueue;</span><br><span class="line"><span class="comment">//Main Dispatch Queue的获取</span></span><br><span class="line">myDispatchQueue = dispatch_get_main_queue();</span><br><span class="line"><span class="comment">//Global Dispatch Queue (高优先级)的获取</span></span><br><span class="line">myDispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//Global Dispatch Queue (默认优先级)的获取</span></span><br><span class="line">myDispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//Global Dispatch Queue (低优先级)的获取</span></span><br><span class="line">myDispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//Global Dispatch Queue (高优先级)的获取</span></span><br><span class="line">myDispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>对于Main Dispatch Queue 和Global Dispatch Queue 执行dispatch_retain 函数和dispatch_release 函数不会引起任何变化， 也不会有任何问题。</p>
+<figure class="highlight objectivec"><figcaption><span>使用Main Dispatch Queue 和Global Dispatch Queue示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^&#123;</span><br><span class="line">	<span class="comment">//可并行执行的处理</span></span><br><span class="line">	<span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">		<span class="comment">//只能在主线程中执行的处理</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-dispatch-set-target-queue"><a href="#2-4-dispatch-set-target-queue" class="headerlink" title="2.4 dispatch_set_target_queue"></a>2.4 dispatch_set_target_queue</h2><blockquote>
+<p>变更dispatch_queue_create生成的Dispatch Queue的优先级。<br>或者作成Dispatch Queue的执行阶层（可用来防止多个Serial Dispatch Queue之间并行处理）。</p>
+</blockquote>
+<p>dispatch_queue_create生成的Dispatch Queue的优先级与默认的Global Dispatch Queue优先级相同。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dispatch_set_target_queue(mySerialDispatchQueue, globalDispatchQueueLow);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一个参数：要变更优先级的Dispatch Queue。</li>
+<li>第二个参数：与要使用的执行优先级相同优先级的Dispatch Queue。<h2 id="2-5-dispatch-after"><a href="#2-5-dispatch-after" class="headerlink" title="2.5 dispatch_after"></a>2.5 dispatch_after</h2><blockquote>
+<p>在指定的时间追加处理到Dispatch Queue。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, <span class="number">3</span>ull * <span class="built_in">NSEC_PER_SEC</span>);</span><br><span class="line">dispatch_after(time, dispatch_get_main_queue(), ^&#123;···&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一个参数：指定的时间。</li>
+<li>第二个参数：要追加到的Dispatch Queue。</li>
+<li>第三个参数：要执行处理的Block（用<code>dispatch_time()</code>或者<code>dispatch_walltime()</code>生成）。</li>
+</ul>
+<p><code>dispatch_time</code>函数能够获取从第一个参数指定的时间开始，到第二个参数指定的时间（默认为纳秒）后的时间。<code>ull</code>表示“unsigned long long”，<code>NSEC_PER_SEC</code>表示以秒为单位，<code>NSEC_PER_MSEC</code>表示以毫秒为单位。</p>
+<p><code>dispatch_walltime()</code>函数用于计算绝对时间。</p>
+<h2 id="2-6-Dispatch-Group"><a href="#2-6-Dispatch-Group" class="headerlink" title="2.6 Dispatch Group"></a>2.6 Dispatch Group</h2><blockquote>
+<p>追加到Dispatch Queue 中的多个处理全部结束后想执行结束处理。</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line">dispatch_group_t group = dispatch_group_create();<span class="comment">//生成group</span></span><br><span class="line"></span><br><span class="line">dispatch_group_async(group, queue, blk0);<span class="comment">//将blk追加到queue，将queue追加到group</span></span><br><span class="line">dispatch_group_async(group, queue, blk1);</span><br><span class="line">dispatch_group_async(group, queue, blk2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//group中的所有queue处理完成后通知main_queue进行处理。使用dispatch_group_wait也可。</span></span><br><span class="line">dispatch_group_notify(group, dispatch_get_main_queue, blkDone);</span><br><span class="line">dispatch_release(group);<span class="comment">//释放group</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-7-dispatch-barrier-async"><a href="#2-7-dispatch-barrier-async" class="headerlink" title="2.7 dispatch_barrier_async"></a>2.7 dispatch_barrier_async</h2><blockquote>
+<p>可实现高效率的数据库访问和文件访问。<br>同Concurrent Dispatch Queue一起使用，当该queue上的并行执行的处理全部结束后，再将指定的处理追加到queue中，指定的处理执行完成之后，再开始并行执行。</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(”com.example.gcd.ForBarrier”, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line"></span><br><span class="line"><span class="comment">//blk0和blk1并行读取完成之后，执行blk进行写操作，写入完成之后blk2和blk3再次并行读取</span></span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, blk0_for_reading);</span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, blk1_for_reading);</span><br><span class="line">dispatch_barrier_async(queue, blk_for_writing);<span class="comment">//写操作</span></span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, blk2_for_reading);</span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, blk3_for_reading);</span><br><span class="line"></span><br><span class="line">dispatch_release(queue);</span><br></pre></td></tr></table></figure>
+<h2 id="2-8-dispatch-sync"><a href="#2-8-dispatch-sync" class="headerlink" title="2.8 dispatch_sync"></a>2.8 dispatch_sync</h2><blockquote>
+<p><code>dispatch_async</code>：将指定的Block非同步地追加到指定的Dispatch Queue中，不做任何等待。<br><code>dispatch_sync</code>：将指定的Block同步地追加到指定的Dispatch Queue中，Block执行完成之前，dispatch_sync一直等待。<strong>容易出现死锁</strong></p>
+</blockquote>
+<h2 id="2-9-dispatch-apply"><a href="#2-9-dispatch-apply" class="headerlink" title="2.9 dispatch_apply"></a>2.9 dispatch_apply</h2><blockquote>
+<p>按指定的次数将指定的Block 追加到指定的Dispatch Queue 中，并等待全部处理执行结束。</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line">dispatch_apply(<span class="number">10</span>, queue, ^(size_t index)&#123;<span class="comment">//0-9分别作为参数传入index</span></span><br><span class="line">	<span class="built_in">NSLog</span>(<span class="string">@"%zu"</span>, index);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"done"</span>);</span><br><span class="line"><span class="comment">//执行结果为：4 1 0 3 5 2 6 8 9 7 done</span></span><br></pre></td></tr></table></figure>
+<p>由于dispatch_apply同dispatch_sync一样，会等待执行结束，因此推荐在dispatch_async 函数中非同步地执行dispatch_apply 函数。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(globalQueue, ^&#123;</span><br><span class="line"></span><br><span class="line">	dispatch_apply([array count], globalQueue, ^(size_t index)&#123;</span><br><span class="line">		<span class="comment">//并行处理array中的对象</span></span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"%zu: %@"</span>, index, [array objectAtIndex:index]);</span><br><span class="line">	&#125;);<span class="comment">//dispatch_apply全部处理结束，才会继续执行下面代码</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//在Main Dispatch Queue中非同步执行界面更新</span></span><br><span class="line">	<span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"done"</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="2-10-dispatch-suspend-dispatch-resume"><a href="#2-10-dispatch-suspend-dispatch-resume" class="headerlink" title="2.10 dispatch_suspend / dispatch_resume"></a>2.10 dispatch_suspend / dispatch_resume</h2><blockquote>
+<p> 在追加处理的过程中，有时希望不执行己追加的处理。例如演算结果被Block 截获时， 一些处理会对这个演算结果造成影响。<br> <code>dispatch_suspend</code>挂起指定的Dispatch Queue。<br> <code>dispatch_resume</code>恢复指定的Dispatch Queue。</p>
+</blockquote>
+<h2 id="2-11-Dispatch-Semaphore"><a href="#2-11-Dispatch-Semaphore" class="headerlink" title="2.11 Dispatch Semaphore"></a>2.11 Dispatch Semaphore</h2><blockquote>
+<p>Dispatch Semaphore是持有计数的信号，用来对多线程资源进行更细粒度的控制。<br>计数为0时等待，大于等于1时将其减去1而不等待。</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建，参数表示计数的初始值，也需要使用dispatch_retain和dispatch_release来进行内存管理</span></span><br><span class="line">dispatch_semaphore_t semaphore = dispatch_semaphore_create(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用方法一：等待指定时间</span></span><br><span class="line">    <span class="keyword">long</span> result = dispatch_semaphore_wait(semaphore, time);</span><br><span class="line">    <span class="keyword">if</span>(result == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">//计数不为0，可执行需要进行排他控制的处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//计数为0，因此在达到指定时间为止待机</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用方法二：永久等待，直到计数大于等于1</span></span><br><span class="line">    <span class="comment">//一直等待，直到计数大于等于1，将计数设为0，并返回</span></span><br><span class="line">    dispatch_semaphore_wait(semaphore, DISPATCH_TIME＿FOREVER);</span><br><span class="line">    <span class="comment">//计数为0，不会有其他线程进行操作，可放心处理</span></span><br><span class="line">    [array addObject: [<span class="built_in">NSNumber</span> numberWithlnt:i]];</span><br><span class="line">    <span class="comment">//将计数加1，通知其他线程可进行处理</span></span><br><span class="line">    dispatch_semaphore_signal(semaphore) ;</span><br><span class="line">    </span><br><span class="line">dispatch_release(semaphore);</span><br></pre></td></tr></table></figure>
+<h2 id="2-12-dispatch-once"><a href="#2-12-dispatch-once" class="headerlink" title="2.12 dispatch_once"></a>2.12 dispatch_once</h2><blockquote>
+<p>保证应用程序只执行一次指定处理。<br>生成单例对象使用。</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> pred;</span><br><span class="line"><span class="built_in">dispatch_once</span>(&amp;pred, ^&#123;</span><br><span class="line">	<span class="comment">//初始化</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="2-13-Dispatch-I-0"><a href="#2-13-Dispatch-I-0" class="headerlink" title="2.13 Dispatch I/0"></a>2.13 Dispatch I/0</h2><blockquote>
+<p>多线程并行读取大文件。</p>
+</blockquote>
+<h1 id="3-GCD的实现"><a href="#3-GCD的实现" class="headerlink" title="3.GCD的实现"></a>3.GCD的实现</h1><h2 id="3-1-Dispatch-Queue"><a href="#3-1-Dispatch-Queue" class="headerlink" title="3.1 Dispatch Queue"></a>3.1 Dispatch Queue</h2><center style=" font-size:14px;color:#C0C0C0"> 
+表3 用于实现Dispatch Queue 而使用的软件组件
+</center>
+
+<table>
+<thead>
+<tr>
+<th>组件名称</th>
+<th>提供计数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>libdispatch</td>
+<td>Dispatch Queue</td>
+</tr>
+<tr>
+<td>Libc (pthreads)</td>
+<td>pthread_workqueue</td>
+</tr>
+<tr>
+<td>XNU内核</td>
+<td>workqueue</td>
+</tr>
+</tbody></table>
+<p>　　我们使用的GCD的API全部包含在libdispatch 库中的C 语言函数。<br>　　<strong>Dispatch Queue</strong> 通过结构体和链表，被实现为FIFO 队列。FlFO 队列管理是通过dispatch_async 等函数所追加的Block 。<br>　　<strong>Block</strong> 先加入<strong>Dispatch Continuation</strong> 这一dispatch_continuation_t类型结构体中，然后再加入<strong>FIFO 队列</strong>。<br>　　该Dispatch Continuation 相当于执行上下文，用于记忆Block 所属的Dispatch Group 和其他一些信息。</p>
+<p>Global Dispatch Queue 有如下8 种：</p>
+<ul>
+<li>Global Dispatch Queue (High Priority )</li>
+<li>Global Dispatch Queue (Default Priority )</li>
+<li>Global Dispatch Queue (Low Priority)</li>
+<li>Global Dispatch Queue (Background Priority )</li>
+<li>Global Dispatch Queue (High Overcommit Priority )</li>
+<li>Global Dispatch Queue (Default Overcommit Priority )</li>
+<li>Global Dispatch Queue (Low Overcommit Priority )</li>
+<li>Global Dispatch Queue (Background Overcommit Priority)<br>　　附有<strong>Overcommit</strong> 的Global Dispatch Queue 使用在Serial Dispatch Queue 中，不管系统状态如何，都会强制生成线程的Dispatch Queue。<br>　　这8 种Global Dispatch Queue <strong>各使用1个pthread_workqueue</strong>。GCD 初始化时，使用<code>pthread_workqueue_create_np</code> 函数生成pthread_workqueue。<br>　　pthread_workqueue 包含在Libc 提供的pthreads API 中。其使用<code>bsdthread_register</code> 和<code>workq_open</code> 系统调用，在初始化XNU 内核的workqueue 之后获取workqueue 信息。</li>
+</ul>
+<p>XNU 内核持有4 种workqueue.</p>
+<ul>
+<li>WORKQUEUE_HIGH_PRIOQUEUE</li>
+<li>WORKQUEUE_DEFAULT_PRIOQUEUE</li>
+<li>WORKQUEUE_LOW_PRIOQUElJE</li>
+<li>WORKQUEUE_BG_PRJOQUEUE</li>
+</ul>
+<h3 id="3-1-1-Dispatch-Queue-执行的大概过程"><a href="#3-1-1-Dispatch-Queue-执行的大概过程" class="headerlink" title="3.1.1 Dispatch Queue 执行的大概过程"></a>3.1.1 Dispatch Queue 执行的大概过程</h3><ol>
+<li>当在<strong>Global Dispatch Queue 中执行Block 时</strong>，<strong>libdispatch</strong> 从Global Dispatch Queue <strong>自身的FlFO 队列</strong>中取出<strong>Dispatch Continuation</strong>，调用<code>pthread_workqueue_additem_np</code>函数，使用<code>workq_kernreturn</code>系统调用，通知workqueue将该Global Dispatch Queue 自身、符合其优先级的workqueue 信息以及为执行Dispatch Continuation 的回调函数等传递给参数。通知XNU 内核基于系统状态判断是否要生成线程。如果是Overcommit优先级的Global Dispatch Queue, workqueue 则始终生成线程。</li>
+<li>workqueue 的线程执行<code>pthread_workqueue</code>函数，该函数调用libdispatch 的回调函数。在该回调函数中执行加入到Dispatch Continuation 的Block。</li>
+<li>Block 执行结束后，进行通知Dispatch Group 结束、释放Dispatch Continuation 等处理，开始准备执行加入到Global Dispatch Queue 中的下一个Block。<div align="center" style="line-height:0px">
+ ![图3.2 Global Dispatch Queue 与pthread_workqueue、workqueue 的关系](https://github.com/MrConfused/img/blob/master/IOS/OC/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9B%BE3.2%20Global%20Dispatch%20Queue%20%E4%B8%8Epthread_workqueue%E3%80%81workqueue%20%E7%9A%84%E5%85%B3%E7%B3%BB.png?raw=true)
+ <center style=" font-size:14px;color:#C0C0C0"> 
+     图3.2 Global Dispatch Queue 与pthread_workqueue、workqueue 的关系
+ </center>
+</div>
+
+</li>
+</ol>
+<h2 id="3-2-Dispatch-Source"><a href="#3-2-Dispatch-Source" class="headerlink" title="3.2 Dispatch Source"></a>3.2 Dispatch Source</h2><blockquote>
+<p>Dispatch Source是BSD系内核惯有功能kqueue 的包装。<br>kqueue 是在XNU 内核中发生各种事件时，在应用程序编程方执行处理的技术。<br>其CPU 负荷非常小，尽量不占用资源。kqueue 可以说是应用程序处理XNU 内核中发生的各种事件的方法<br>中最优秀的一种。<br>Dispatch Source 与Dispatch Queue 不同，是可以取消的。而且取消时必须执行的处理可指定为回调用的Block 形式。</p>
+</blockquote>
+<center style=" font-size:14px;color:#C0C0C0"> 
+表4 Dispatch Source 可处理的事件
+</center>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DISPATCH_SOURCE_TYPE_DATA_ADD</td>
+<td>变量增加</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_DATA_OR</td>
+<td>变量OR</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_MACH_SEND</td>
+<td>MACH端口发送</td>
+</tr>
+<tr>
+<td>DISPATCH SOURCE_TYPE_MACH_RECV</td>
+<td>MACH端口接收</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_PROC</td>
+<td>检测到与进程相关的事件</td>
+</tr>
+<tr>
+<td>DISPATCH SOURCE TYPE_READ</td>
+<td>可读取文件映像</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_SIGNAL</td>
+<td>接收信号</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_TIMER</td>
+<td>定时器</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_VNODE</td>
+<td>文件系统有变更</td>
+</tr>
+<tr>
+<td>DISPATCH_SOURCE_TYPE_WRITE</td>
+<td>可写入文件映像</td>
+</tr>
+<tr>
+<td>事件发生时，在指定的Dispatch Queue 中可执行事件的处理。</td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight objectivec"><figcaption><span>使用DISPATCH_SOURCE_TYPE_READ，异步读取文件映像。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">__block size_t total = <span class="number">0</span>;</span><br><span class="line">size_t size = 要读取的字节数;</span><br><span class="line"><span class="keyword">char</span> *buff = (<span class="keyword">char</span> *)malloc(size);</span><br><span class="line">fcnt1(sockfd, F_SETFL, <span class="number">0</span>_NONBLOCK);<span class="comment">//设定为异步映像</span></span><br><span class="line"><span class="comment">//获取用于追加事件处理的queue</span></span><br><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//基于READ事件，作成Dispatch Source</span></span><br><span class="line">dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, sockfd, <span class="number">0</span>, queue);</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定发生READ事件时执行的处理</span></span><br><span class="line">dispatch_source_set_event_handler(source, ^&#123;</span><br><span class="line">	size_t available = dispatch_source_get_data(source);<span class="comment">//获取可读取的字节数</span></span><br><span class="line">	<span class="keyword">int</span> length = read(sockfd, buff, available);<span class="comment">//从映像中读取</span></span><br><span class="line">	<span class="keyword">if</span>(length &lt; <span class="number">0</span>)&#123; <span class="comment">//错误处理</span></span><br><span class="line">		dispatch_source_cancel(source);</span><br><span class="line">	&#125;</span><br><span class="line">	total += length;</span><br><span class="line">	<span class="keyword">if</span>(total == size)&#123;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * buff的处理</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		dispatch_source_cancel(source);<span class="comment">//处理结束，取消Dispatch Source</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定取消Dispatch source 时的处理</span></span><br><span class="line">dispatch_source_set_cancel_handler(source, ^&#123;</span><br><span class="line">	free(buff);</span><br><span class="line">	close(sockfd);</span><br><span class="line">	dispatch_release(source);<span class="comment">//释放放Dispatch Source自身</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">dispatch_resume(source); <span class="comment">//启动Dispatch Source</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><figcaption><span>使用DISPATCH_SOURCE_TYPE_TJMER 的定时器。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定DIS PATCH_SOURCE_TYPE_TIMER ，作成Dispatch Source。</span></span><br><span class="line"><span class="comment">//在定时器经过指定时间的设定Main Dispatch Queue 为追加处理的Dispatch Queue</span></span><br><span class="line">dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, <span class="number">0</span>, <span class="number">0</span>, dispatch_get_main_queue());</span><br><span class="line"></span><br><span class="line">dispatch_source_set_timer(timer,</span><br><span class="line">    dispatch_time(DISPATCH_TIME_NOW, l5ull * <span class="built_in">NSEC_PER_SEC</span>), <span class="comment">//将定时器设定为15秒后。</span></span><br><span class="line">    DISPATCH_TIME_FOREVER, <span class="comment">//不指定为重复。</span></span><br><span class="line">    lull * <span class="built_in">NSEC</span> PER SEC);<span class="comment">//允许迟延1秒。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//指定定时器指定时间内执行的处理</span></span><br><span class="line">dispatch_source_set_event_handler(timer, ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"wakeup!"</span>);</span><br><span class="line">    dispatch_source_cancel(timer);<span class="comment">//取消Dispatch Source</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定取消Dispatch Source 时的处理</span></span><br><span class="line">dispatch_source_set_cancel_handler(source, ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"canceled!"</span>);</span><br><span class="line">    dispatch_release(timer);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">dispatch_resume(source); <span class="comment">//启动Dispatch Source</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/IOS/" rel="tag"><i class="fa fa-tag"></i> IOS</a>
+          
+            <a href="/tags/OC/" rel="tag"><i class="fa fa-tag"></i> OC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Git%E7%AC%94%E8%AE%B0-%E5%BB%96%E9%9B%AA%E5%B3%B0%E7%9A%84Git%E6%95%99%E7%A8%8B.html" rel="next" title="Git笔记-廖雪峰的Git教程">
+                <i class="fa fa-chevron-left"></i> Git笔记-廖雪峰的Git教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/OC%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-IOS%E4%B8%8EOS_X%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86--2.Blocks.html" rel="prev" title="OC高级编程-IOS与OS X多线程和内存管理--2.Blocks">
+                OC高级编程-IOS与OS X多线程和内存管理--2.Blocks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Grand-Central-Dispatch概要"><span class="nav-text">1.Grand Central Dispatch概要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是GCD"><span class="nav-text">1.1 什么是GCD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-多线程编程"><span class="nav-text">1.2 多线程编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-GCD的API"><span class="nav-text">2.GCD的API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Dispatch-Queue"><span class="nav-text">2.1 Dispatch Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-dispatch-queue-create"><span class="nav-text">2.2 dispatch_queue_create</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Main-Dispatch-Queue-Global-Dispatch-Queue"><span class="nav-text">2.3 Main Dispatch Queue&#x2F;Global Dispatch Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-dispatch-set-target-queue"><span class="nav-text">2.4 dispatch_set_target_queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-dispatch-after"><span class="nav-text">2.5 dispatch_after</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-Dispatch-Group"><span class="nav-text">2.6 Dispatch Group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-dispatch-barrier-async"><span class="nav-text">2.7 dispatch_barrier_async</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-dispatch-sync"><span class="nav-text">2.8 dispatch_sync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-dispatch-apply"><span class="nav-text">2.9 dispatch_apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-dispatch-suspend-dispatch-resume"><span class="nav-text">2.10 dispatch_suspend &#x2F; dispatch_resume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-Dispatch-Semaphore"><span class="nav-text">2.11 Dispatch Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-dispatch-once"><span class="nav-text">2.12 dispatch_once</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13-Dispatch-I-0"><span class="nav-text">2.13 Dispatch I&#x2F;0</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-GCD的实现"><span class="nav-text">3.GCD的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Dispatch-Queue"><span class="nav-text">3.1 Dispatch Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-Dispatch-Queue-执行的大概过程"><span class="nav-text">3.1.1 Dispatch Queue 执行的大概过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Dispatch-Source"><span class="nav-text">3.2 Dispatch Source</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
