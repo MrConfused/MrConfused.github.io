@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新牛笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS新牛笔记">
+<meta property="og:url" content="https://mrconfused.github.io/iOS-%E6%96%B0%E7%89%9B%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="新牛笔记">
+<meta property="article:published_time" content="2020-08-13T09:56:44.000Z">
+<meta property="article:modified_time" content="2020-08-13T09:56:44.000Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>iOS新牛笔记 | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/iOS-%E6%96%B0%E7%89%9B%E7%AC%94%E8%AE%B0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS新牛笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-13T17:56:44+08:00">
+                2020-08-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  新牛笔记
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1、Swift"><a href="#1、Swift" class="headerlink" title="1、Swift"></a>1、Swift</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ul>
+<li>自定义的数据结构可实现CustomStringConvertable协议来提供自定义的转字符串逻辑</li>
+<li>代码中书写json字符串时，用多行字符串很方便</li>
+</ul>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><ul>
+<li>swift中的集合是不可变的。</li>
+<li>mutating方法实质上是创建了一个新的副本</li>
+</ul>
+<h2 id="Function-amp-Closure"><a href="#Function-amp-Closure" class="headerlink" title="Function &amp; Closure"></a>Function &amp; Closure</h2><ul>
+<li>函数永远不会返回，可标为 -&gt;Never</li>
+<li>数组的map方法</li>
+</ul>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><ul>
+<li>final关键字</li>
+<li>子类的指定构造器要调用父类的指定构造器</li>
+</ul>
+<h2 id="Struct"><a href="#Struct" class="headerlink" title="Struct"></a>Struct</h2><ul>
+<li>值类型</li>
+<li>不能继承</li>
+<li>内存分配在栈上，创建销毁成本极低</li>
+</ul>
+<h2 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h2><ul>
+<li>原始值（rawValue），<code>enum SomeEnum: Int { }</code>中的Int表示原始值类型为Int<ul>
+<li>Int类型的原始值，默认从0开始，递增1</li>
+<li>String类型的原始值，默认为枚举的名字</li>
+<li>也可手动指定原始值</li>
+<li>也可创建不关联原始值的枚举</li>
+</ul>
+</li>
+<li>关联值。<code>case loaded(Data)</code></li>
+<li>模式匹配。<ul>
+<li>通过<code>switch</code>或者<code>if case</code>取出关联值</li>
+</ul>
+</li>
+<li>Optional是一个有关联值的枚举<ul>
+<li>要用<code>if let</code>取出封装的值</li>
+</ul>
+</li>
+</ul>
+<h2 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h2><ul>
+<li>{ get }</li>
+<li>{ get set }</li>
+<li>通过extension为协议提供默认的实现，标准库中大量使用了这样的设计</li>
+</ul>
+<h2 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h2><ul>
+<li><p>weak定义的属性必须是可选类型</p>
+</li>
+<li><p>在闭包中捕获变量时一定要用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span> </span><br><span class="line">		<span class="keyword">guard</span> <span class="keyword">let</span> strongSelf = <span class="keyword">self</span> <span class="keyword">else</span> &#123; &#125;</span><br><span class="line">		<span class="comment">// code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="2、View-amp-Life-Cycle"><a href="#2、View-amp-Life-Cycle" class="headerlink" title="2、View &amp; Life-Cycle"></a>2、View &amp; Life-Cycle</h1><p>loadView -&gt; viewDidLoad -&gt; viewWillAppear -&gt; viewWillLayoutSubview -&gt; viewDidLayoutSubview -&gt; viewDidAppear</p>
+<h2 id="UITabBarController"><a href="#UITabBarController" class="headerlink" title="UITabBarController"></a>UITabBarController</h2><h2 id="UINavigationController"><a href="#UINavigationController" class="headerlink" title="UINavigationController"></a>UINavigationController</h2><h4 id="controller1-push-controller2-的生命周期："><a href="#controller1-push-controller2-的生命周期：" class="headerlink" title="[controller1].push(controller2)的生命周期："></a>[controller1].push(controller2)的生命周期：</h4><p>2.loadView -&gt; 2.viewDidLoad -&gt; 1.viewWillDisappear -&gt; 2.viewWillAppear -&gt; 2.viewWillLayoutSubViews -&gt; 2.viewDidLayoutSubviews -&gt; 1.viewDidDisappear -&gt; 2.viewDidAppear</p>
+<h4 id="controller1-controller2-pop-的生命周期："><a href="#controller1-controller2-pop-的生命周期：" class="headerlink" title="[controller1, controller2],pop()的生命周期："></a>[controller1, controller2],pop()的生命周期：</h4><p>2.viewWillDisappear -&gt; 1.viewWillAppear -&gt; 2.viewDidDisappear -&gt; 1.viewDidAppear</p>
+<h2 id="ChildViewController"><a href="#ChildViewController" class="headerlink" title="ChildViewController"></a>ChildViewController</h2><h2 id="viewController之间的通信"><a href="#viewController之间的通信" class="headerlink" title="viewController之间的通信"></a>viewController之间的通信</h2><h4 id="Vc1-gt-vc2"><a href="#Vc1-gt-vc2" class="headerlink" title="Vc1 -&gt; vc2 :"></a>Vc1 -&gt; vc2 :</h4><ul>
+<li>初始化</li>
+<li>属性</li>
+</ul>
+<h4 id="Vc2-gt-vc1"><a href="#Vc2-gt-vc1" class="headerlink" title="Vc2 -&gt; vc1:"></a>Vc2 -&gt; vc1:</h4><ul>
+<li><p>Notification: </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.post(</span><br><span class="line">    name: <span class="type">AViewController</span>.notificationName,</span><br><span class="line">    object: <span class="literal">nil</span>,    <span class="comment">//通知的发出者</span></span><br><span class="line">    userInfo:[<span class="string">"data"</span>: <span class="number">42</span>, <span class="string">"isImportant"</span>: <span class="literal">true</span>]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(</span><br><span class="line">    <span class="keyword">self</span>,   <span class="comment">//观察的对象</span></span><br><span class="line">    selector: #selector(onNotification(notification:)), <span class="comment">//通知响应函数</span></span><br><span class="line">    name: <span class="type">AViewController</span>.notificationName, <span class="comment">//通知名称</span></span><br><span class="line">    object: <span class="literal">nil</span> <span class="comment">//可以指定从特定的对象接收通知</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>delegate</p>
+<p>A实现代理</p>
+<p>B调用A的代理（weak），并将数据传给参数</p>
+</li>
+<li><p>closure</p>
+<p>A给B的闭包赋值，实现闭包的处理逻辑</p>
+<p>B定义闭包属性，将数据传给闭包参数</p>
+</li>
+</ul>
+<h1 id="3、UIView-amp-Layout"><a href="#3、UIView-amp-Layout" class="headerlink" title="3、UIView &amp; Layout"></a>3、UIView &amp; Layout</h1><ul>
+<li>frame：视图在父view坐标系中的大小和位置</li>
+<li>bounds：视图在本身坐标系中的大小和位置</li>
+<li>center：视图的中心点在父view中的位置</li>
+<li>CALayer：每个视图都有一个layer属性，只呈现内容，不处理事件</li>
+<li>transform：矩阵的平移、缩放、缩放、旋转等变换<ul>
+<li>旋转之后，view的frame会变化，bounds和center不变</li>
+<li>由于transform是基于视图中心点为原点的坐标，因此在变换时，首先将坐标系变为以左上角为原点的坐标系；然后将新坐标和frame相乘，得到转换后的frame；再将新的frame变为以中心点为原点的坐标，即得到最终结果</li>
+</ul>
+</li>
+</ul>
+<h2 id="ScrollView"><a href="#ScrollView" class="headerlink" title="ScrollView"></a>ScrollView</h2><ul>
+<li><p>contentOffSet：滑动距离</p>
+<p>contentOffset = scrollView.bounds.origin</p>
+</li>
+<li><p>在将子视图添加到scrollView中时，若立即获取其大小，则为0，因为还没有被渲染到屏幕上；此时可调用<code>layoutIfNeeded</code>方法来强制绘制，即可获得正确大小。</p>
+</li>
+<li><p>添加subview到时候，会讲当前view到layout标记为无效，下次需要重新layoutSubviews</p>
+</li>
+</ul>
+<h3 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h3><ol>
+<li>计算每个view的frame并更新，不能主动调用</li>
+<li>从superview到subviews（自上到下）顺序发生，会对每个view调用layoutSubviews方法</li>
+<li>setNeedsLayout，将当前layout设置为无效</li>
+<li>layoutIfNeeded，如果layout被标记为无效，会立即调用layoutSubviews</li>
+<li>重写layoutSubViews方法注意事项<ul>
+<li>调用super.layoutSubviews()</li>
+<li>不要调用setNeedsLayout或者setNeedsUpdateConstraints方法，否则会导致无限循环调用</li>
+<li>不要修改外部view的约束</li>
+</ul>
+</li>
+</ol>
+<h2 id="UILabel"><a href="#UILabel" class="headerlink" title="UILabel"></a>UILabel</h2><ul>
+<li>numberOfLines</li>
+<li>lineBreakMode</li>
+<li>contentMode</li>
+</ul>
+<h2 id="UIControl"><a href="#UIControl" class="headerlink" title="UIControl"></a>UIControl</h2><ul>
+<li><p>Event：</p>
+<p>touchUpInside：在控件之内触摸并抬起事件</p>
+<p>touchUpOutside：在控件之外触摸抬起事件</p>
+<p>touchDown：单点触摸按下事件，点触屏幕</p>
+<p>editingDidBegin: textField 编辑开始</p>
+<p>editingChanged：textField 内容变化</p>
+<p>editingDidEnd：textField 编辑结束</p>
+</li>
+<li><p>State：</p>
+<p>normal //普通状态</p>
+<p>highlighted //触摸状态</p>
+<p>disabled //禁用状态</p>
+<p>selected //选中状态</p>
+</li>
+<li><p>addTarget</p>
+</li>
+<li><p>removeTarget</p>
+</li>
+</ul>
+<h2 id="UIButton"><a href="#UIButton" class="headerlink" title="UIButton"></a>UIButton</h2><h2 id="UITextField"><a href="#UITextField" class="headerlink" title="UITextField"></a>UITextField</h2><ul>
+<li>addTarget</li>
+<li>UITextFieldDelegate</li>
+</ul>
+<h2 id="UITextView"><a href="#UITextView" class="headerlink" title="UITextView"></a>UITextView</h2><ul>
+<li>多行输入</li>
+<li>selectable</li>
+<li>editable</li>
+</ul>
+<h2 id="UISlider"><a href="#UISlider" class="headerlink" title="UISlider"></a>UISlider</h2><ul>
+<li>滑动条、进度条</li>
+<li>可设置进度圆点、当前进度和剩余进度的颜色、图片</li>
+</ul>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><ul>
+<li>原理：Cassowary算法</li>
+</ul>
+<h3 id="SnapKit"><a href="#SnapKit" class="headerlink" title="SnapKit"></a>SnapKit</h3><ul>
+<li><p>有父视图才能添加约束</p>
+</li>
+<li><p>创建约束和更新约束的对应关系不能变</p>
+</li>
+<li><p>在有可能产生压缩行为时，要指定约束的优先级</p>
+<p>约束优先级范围1~1000, 默认值为最高1000<br>抗压缩, 默认优先级750, 优先级越高越不容易被压缩<br>抗拉伸, 默认优先级250, 优先级越高越不容易被拉伸</p>
+</li>
+<li><p>建议：</p>
+<p>尽量与同级view或者superview建立约束<br>如果view需要删除或者隐藏掉，尽量使用隐藏，而不使用removeFromSuperview</p>
+</li>
+</ul>
+<h2 id="UIStackView"><a href="#UIStackView" class="headerlink" title="UIStackView"></a>UIStackView</h2><ul>
+<li><p>alignment，对齐方式</p>
+<p>fill，拉伸填满</p>
+<p>center，居中</p>
+<p>firstBaseline、lastBaseline，在axis为horizontal的时候有效，代表按照第一行、最后一行baseline对齐</p>
+<p>.top、bottom 当 axis 是 horizontal 的时候，按 上、下 方向对齐</p>
+<p>.leading、trailing 当 axis 是 vertical 的时候，按 头、尾 方向对齐</p>
+</li>
+<li><p>spacing，间距</p>
+</li>
+<li><p>distribution，排列方式</p>
+<p>fill，默认，按照抗压缩、拉伸优先级填满<br>equalSpacing，等间距布局，如果放不下，按照抗压缩优先级压缩<br>fillEqually，等宽、高布局<br>equalCentering，等中线间距布局，间距不小于spacing，如果放不下，按照抗压缩优先级压缩<br>fillProportionally，根据intrinsic content size按比例布局</p>
+</li>
+</ul>
+<h1 id="4、Advanced-View"><a href="#4、Advanced-View" class="headerlink" title="4、Advanced View"></a>4、Advanced View</h1><h2 id="Touches"><a href="#Touches" class="headerlink" title="Touches"></a>Touches</h2><ul>
+<li><p>事件的传递：IOKit.framework –(IOHIDEvent)–&gt; SpringBoard –(mach port)–&gt; App进程 –(RunLoop注册Source1，接收消息后调用 _UIApplicationHandleEventQueue() 将 IOHIDEvent 封装成 UIEvent)–&gt; 分发</p>
+</li>
+<li><p>收到事件后，会按照UIApplication -&gt; UIWindow -&gt; subviews.reversed()，从顶至底确定第一响应者</p>
+</li>
+<li><p>触摸事件：</p>
+<p>touchesBegan</p>
+<p>touchesMoved</p>
+<p>touchesEnded</p>
+<p>touchesCanceled</p>
+</li>
+<li><p>手势：</p>
+<p>tap</p>
+<p>longPress</p>
+<p>pan</p>
+<p>pinch</p>
+<p>rotate</p>
+</li>
+<li><p>添加多个手势，可用<code>require(toFail:)</code>定义他们的依赖关系</p>
+</li>
+</ul>
+<h2 id="Rendering"><a href="#Rendering" class="headerlink" title="Rendering"></a>Rendering</h2><ul>
+<li>CPU 计算好显示内容提交到 GPU，GPU 渲染完成后将渲染结果放入帧缓冲区，随后视频控制器会按照 VSync 信号逐行读取帧缓冲区的数据，经过可能的数模转换传递给显示器显示。</li>
+<li>如果两次屏幕刷新之间执行了一个长任务，那其中就会有一帧被跳过去，造成界面卡顿的感觉。</li>
+</ul>
+<h2 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h2><ul>
+<li><p>每个UIView都有一个CALayer</p>
+<p>UIView的父类UIResponder处理用户的交互</p>
+<p>CALayer处理屏幕的显示</p>
+</li>
+<li><p>UIView 的 bounds、frame、transform、backgroundColor 其实都是基于 CALayer 的封装。</p>
+</li>
+</ul>
+<h3 id="drawRect"><a href="#drawRect" class="headerlink" title="drawRect()"></a>drawRect()</h3><ul>
+<li>把 Context 看成画布，利用 Core Graphics 进行绘制</li>
+<li>调用该函数时，CALayer会分配一个backing store，通过core graphics使用cpu将内容写入；然后backing store会反复在屏幕上渲染，直到<code>setNeedsDisplay</code>被调用，表示backing store需要更新</li>
+</ul>
+<h2 id="Creating-Image"><a href="#Creating-Image" class="headerlink" title="Creating Image"></a>Creating Image</h2><ul>
+<li><code>init(named:)</code>：图片放在bundle中，会自动缓存，适合多次使用的图片</li>
+<li><code>init(contentsOfFile:)</code>：图片放在磁盘中，适合较大的数据</li>
+<li>图片格式：<ul>
+<li>JPEG：有损压缩，压缩率高，解压耗时；适用于从网络下载</li>
+<li>PNG：无损压缩，解码简单，支持Alpha通道；适用于包内的图片</li>
+</ul>
+</li>
+<li><code>resizableImages(withCapInsets:resizingMode:)</code>：<ul>
+<li>用于背景，可根据内容自动缩小或者扩大</li>
+</ul>
+</li>
+</ul>
+<h2 id="orientation"><a href="#orientation" class="headerlink" title="orientation"></a>orientation</h2><ul>
+<li>当方向改变时，UIKit会调用window的根视图控制器的<a href="https://developer.apple.com/documentation/uikit/uicontentcontainer/1621466-viewwilltransitiontosize" target="_blank" rel="noopener"><code>viewWillTransitionToSize:withTransitionCoordinator:</code></a>和<a href="https://developer.apple.com/documentation/uikit/uicontentcontainer/1621511-willtransitiontotraitcollection" target="_blank" rel="noopener"><code>willTransitionToTraitCollection:withTransitionCoordinator:</code></a>函数，根视图控制器又会向下传播消息，通知子视图控制器。</li>
+<li>设置app支持的方向：<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623107-application" target="_blank" rel="noopener"><code>func application(UIApplication, supportedInterfaceOrientationsFor: UIWindow?)</code></a></li>
+<li>设置视图控制器支持的方向：<a href="https://developer.apple.com/documentation/uikit/uiviewcontroller/1621435-supportedinterfaceorientations" target="_blank" rel="noopener"><code>var supportedInterfaceOrientations</code></a></li>
+</ul>
+<h1 id="5、List-View-amp-Storage"><a href="#5、List-View-amp-Storage" class="headerlink" title="5、List View &amp; Storage"></a>5、List View &amp; Storage</h1><h2 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h2><ul>
+<li><p>DataSource</p>
+<ul>
+<li><p>管理数据、提供cell</p>
+</li>
+<li><p>IndexPath</p>
+<p>cell</p>
+<p>section header/footer</p>
+<p>index</p>
+</li>
+</ul>
+</li>
+<li><p>UITableViewDiffableDataSource：自动判断数据的不同，效率更高</p>
+</li>
+<li><p>Delegate</p>
+<ul>
+<li>header and footer <strong>views</strong></li>
+<li><strong>heights</strong> for rows, headers, and footer</li>
+<li>height estimates</li>
+<li>row selections、swipes and other <strong>actions</strong></li>
+<li><strong>editing</strong> the table’s content</li>
+</ul>
+</li>
+<li><p>自定义Cell</p>
+<ul>
+<li><p>Reuse</p>
+<p><code>register(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String)</code></p>
+<p><code>tableview.dequeueReusableCell(withIdentifier identifier: String,  for indexPath: IndexPath)</code></p>
+<p>重用时会自动调用<code>cell.prepareForReuse</code></p>
+<p>当cell消失或者tableView滑动时，会把cell添加到reuse queue</p>
+</li>
+<li><p>Update</p>
+<p>reloadData/reloadSection/reloadRows</p>
+<p>beginUpdate/endUpdate</p>
+<ul>
+<li><p>insertRows/insertSections</p>
+</li>
+<li><p>deleteRows/deleteSections</p>
+</li>
+<li><p>moveRows/moveSections</p>
+</li>
+</ul>
+<p>performBatchUpdates</p>
+<p><strong>datasource and operation must consistent</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h2><ul>
+<li><p>DataSource</p>
+</li>
+<li><p>Delegate</p>
+</li>
+<li><p>UICollectionViewDiffableDataSource</p>
+</li>
+<li><p>Flow layout</p>
+<ul>
+<li><p>Configure</p>
+<p>item大小</p>
+<p>滚动方向</p>
+<p>section间距</p>
+<p>最小行间距</p>
+<p>最小item间距</p>
+</li>
+<li><p>UICollectionViewDelegateFlowLayout</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Codec"><a href="#Codec" class="headerlink" title="Codec"></a>Codec</h2><ul>
+<li><p>Json -&gt; model</p>
+<p><code>decoder.decode(type, from: jsonData)</code></p>
+<p>decoder.keyDecodingStrategy：设置命名规则转换</p>
+<p>decoder.dateDecodingStrategy：日期转换格式</p>
+</li>
+<li><p>Model -&gt; Json</p>
+<p><code>encoder.encode(structure)</code></p>
+</li>
+<li><p>CodingKey</p>
+<p>json的key和数据结构中的key不同，可在结构中<code>enum CodingKeys: string, CodingKey { }</code></p>
+</li>
+<li><p>手动Decode</p>
+<p><code>init(from decoder: Decoder) throws { }</code></p>
+</li>
+<li><p>手动Encode</p>
+<p><code>func encode(to encoder: Encoder) throws { }</code></p>
+</li>
+</ul>
+<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2><ul>
+<li><p>File </p>
+</li>
+<li><ul>
+<li>Bundle </li>
+<li>Document</li>
+<li>Cache </li>
+</ul>
+</li>
+<li><p>Database</p>
+</li>
+<li><ul>
+<li>SQLite</li>
+<li>CoreData</li>
+</ul>
+</li>
+<li><p>UserDefaults</p>
+<ul>
+<li>单例：<code>UserDefaults.standard</code></li>
+<li>set</li>
+<li>get</li>
+</ul>
+</li>
+</ul>
+<h1 id="6、多线程和网络"><a href="#6、多线程和网络" class="headerlink" title="6、多线程和网络"></a>6、多线程和网络</h1><p>Pthread, NSThread, GCD, NSOperation</p>
+<h2 id="GCD的使用步骤："><a href="#GCD的使用步骤：" class="headerlink" title="GCD的使用步骤："></a>GCD的使用步骤：</h2><ul>
+<li>选择调度队列</li>
+<li>选择执行方式</li>
+<li>添加要执行的任务</li>
+<li>任务被执行</li>
+</ul>
+<h2 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h2><h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><ul>
+<li><p>apple原生</p>
+<ul>
+<li>URLConnection</li>
+<li>URLSession<ul>
+<li>URLSession</li>
+<li>URLSessionConfiguration</li>
+<li>URLSessionTask</li>
+</ul>
+</li>
+<li>CFNetwork</li>
+</ul>
+</li>
+<li><p>第三方框架</p>
+<ul>
+<li><p>AFNetworking</p>
+<ul>
+<li><p>AFURLSessionManager</p>
+<p>创建并管理一个URLSession对象，</p>
+<p>遵循 URLSessionTaskDelegate，URLSessionDataDelegate，URLSessionDownloadDelegate，URLSessionDelegate 等协议</p>
+</li>
+<li><p>AFHTTPSessionManger</p>
+<p>AFURLSessionManager的子类</p>
+</li>
+</ul>
+</li>
+<li><p>YTKNetworking</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考</p>
+<ul>
+<li><ul>
+<li><a href="https://juejin.im/post/5a90de68f265da4e9b592b40" target="_blank" rel="noopener">iOS 多线程：GCD详尽总结</a></li>
+<li><a href="https://blog.devtang.com/2012/02/22/use-gcd/" target="_blank" rel="noopener">使用GCD</a></li>
+<li><a href="https://www.jianshu.com/p/0b0d9b1f1f19" target="_blank" rel="noopener">关于iOS多线程，你看我就够了</a></li>
+<li><a href="https://developer.apple.com/documentation/dispatch" target="_blank" rel="noopener">Dispatch</a></li>
+<li><a href="https://github.com/ming1016/study/wiki/细说GCD（Grand-Central-Dispatch）如何用" target="_blank" rel="noopener">细说GCD（Grand Central Dispatch）如何使用</a></li>
+<li><a href="https://www.raywenderlich.com/567-urlsession-tutorial-getting-started" target="_blank" rel="noopener">URLSession Tutorial: Getting Started</a></li>
+<li><a href="http://southpeak.github.io/2014/07/11/url-load-system-1/" target="_blank" rel="noopener">URL 加载系统之一：基本结构</a></li>
+<li><a href="http://southpeak.github.io/2014/07/11/url-load-system-2/" target="_blank" rel="noopener">URL 加载系统之二：NSURLSession</a></li>
+<li><a href="https://juejin.im/entry/589d1aa161ff4b006b37408e" target="_blank" rel="noopener">iOS 网络请求之 AFNetworking 3.x 使用</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="7、设计与架构"><a href="#7、设计与架构" class="headerlink" title="7、设计与架构"></a>7、设计与架构</h1><h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ul>
+<li><p>ETC：Easier To Change</p>
+</li>
+<li><p>DRY：Don’t Repeat Yourself</p>
+</li>
+<li></li>
+<li><p>正交性：相互独立</p>
+<ul>
+<li><p>解耦</p>
+<p>避免继承，</p>
+<p>用接口表达多态：protocol</p>
+<p>用委托提供服务：HAS-A胜过IS-A</p>
+<p>用extension进行功能扩展</p>
+</li>
+</ul>
+</li>
+<li><p>SPR：Single Responsibility Principle</p>
+<p>任何一个模块都有且仅有一个被修改的原因</p>
+</li>
+<li><p>KISS： Keep It Simple Stupid</p>
+<p>一次做一件事（正交性）</p>
+</li>
+<li><p>OCP：Open Close Principle</p>
+<p>对扩展开放，对修改关闭</p>
+</li>
+<li><p>LSP：里氏替换原则</p>
+<p>使用父类的地方都可以使用子类替换</p>
+</li>
+<li><p>ISP：接口隔离</p>
+<p>不应该强迫客户依赖于它们不用的方法</p>
+</li>
+<li><p>DIP：依赖反转</p>
+<p>高层次不应依赖于低层次的模块，他们都应依赖于抽象</p>
+<p>具体实现依赖于抽象</p>
+</li>
+</ul>
+<h2 id="App架构"><a href="#App架构" class="headerlink" title="App架构"></a>App架构</h2><h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>![image-20200813172008749](/Users/ltp/Library/Application Support/typora-user-images/image-20200813172008749.png)</p>
+<ol>
+<li><p>构建</p>
+<p>View Controller 负责创建 Model 和 View</p>
+</li>
+<li><p>更新Model</p>
+<p>View Controller 通过 target/action 或者 delegate 接受 View 事件，改变自身内部状态、更改 Model</p>
+</li>
+<li><p>改变View</p>
+<p>View Controller 通过订阅 Model 通知，在通知到达时改变 View 层级</p>
+</li>
+<li><p>ViewState</p>
+<p>与 Model 无关的状态放在 View 或者 View Controller 中，只影响 View 或 View Controller 状态的 action 则不需要通过 Model 进行传递</p>
+</li>
+<li><p>测试</p>
+<p>由于边界缺失，View Controller 难以测试，尤其是单元测试和接口测试</p>
+</li>
+</ol>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>![image-20200813172104969](/Users/ltp/Library/Application Support/typora-user-images/image-20200813172104969.png)</p>
+<ol>
+<li><p>构建</p>
+<p>Model 属于 View Model，View Controller 不需要为 View 准备和获取数据，而是将 View 绑定到 View Model 相应的属性上去</p>
+</li>
+<li><p>更新Model</p>
+<p>当 View Controller 接受 View 事件时，将调用 View Model 的方法，由 View Model 改变自身内部状态或更改 Model</p>
+</li>
+<li><p>改变View</p>
+<p>View Model 将负责观察 Model，并将 Model 的通知转变为 View Controller 可以理解的形式，View Controller 在通知到达时改变 View 层级</p>
+</li>
+<li><p>ViewState</p>
+<p>View Controller 中将没有任何 View State，由 View 或 View Model 维护</p>
+</li>
+<li><p>测试</p>
+<p>View Model 和 View/View Controller 是解耦合的， 接受 Action更新 Model，并最终更新 View 使用的值，都是状态，因此能独立测试</p>
+</li>
+</ol>
+<p>![image-20200813173230419](/Users/ltp/Library/Application Support/typora-user-images/image-20200813173230419.png)</p>
+<h1 id="8、单元测试"><a href="#8、单元测试" class="headerlink" title="8、单元测试"></a>8、单元测试</h1><h2 id="敏捷开发和自动化测试"><a href="#敏捷开发和自动化测试" class="headerlink" title="敏捷开发和自动化测试"></a>敏捷开发和自动化测试</h2><ul>
+<li>迭代</li>
+</ul>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><ul>
+<li>单测是一些操作的集合，有一个可观察到结果</li>
+<li>有参数和返回结果才能测</li>
+<li>Given -&gt; 函数名</li>
+<li>When -&gt;  参数</li>
+<li>Then -&gt; 断言结果</li>
+</ul>
+<h2 id="Test-Double"><a href="#Test-Double" class="headerlink" title="Test Double"></a>Test Double</h2><ul>
+<li><p>工具：Cuckoo和Nimble</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clazz</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getValue</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1024</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">callWithNoResult</span><span class="params">(value: Int)</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"called with \(value)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testClazz</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> mock = <span class="type">MockClazz</span>()</span><br><span class="line">    <span class="comment">//插桩</span></span><br><span class="line">    stub(mock) &#123; stub <span class="keyword">in</span></span><br><span class="line">        when(stub).getValue().thenReturn(<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//断言</span></span><br><span class="line">    <span class="type">XCTAssert</span>(mock.getValue() == <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    stub(mock) &#123; stub <span class="keyword">in</span></span><br><span class="line">        when(stub).callWithNoResult(value: any()).thenDoNothing()</span><br><span class="line">    &#125;</span><br><span class="line">    mock.callWithNoResult(value: <span class="number">1024</span>)</span><br><span class="line">    verify(mock, times(<span class="number">1</span>)).callWithNoResult(value: <span class="number">1024</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Stub</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//协议</span></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">RandomIntGenerator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">random</span><span class="params">(fromExclude: Int, toExclude: Int)</span></span> -&gt; <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现协议</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InnerRandomIntGenerator</span>: <span class="title">RandomIntGenerator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">random</span><span class="params">(fromExclude: Int, toExclude: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Int</span>.random(<span class="keyword">in</span>: (fromExclude + <span class="number">1</span>)..&lt;toExclude)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mock一个数据</span></span><br><span class="line"><span class="keyword">let</span> mockRandomIntGenerator = <span class="type">MockRandomIntGenerator</span>()</span><br><span class="line">stub(mockRandomIntGenerator) &#123; stub <span class="keyword">in</span></span><br><span class="line">    when(stub).random(fromExclude: <span class="number">0</span>, toExclude: <span class="number">15</span>).thenReturn(<span class="number">3</span>)</span><br><span class="line">    when(stub).random(fromExclude: <span class="number">3</span>, toExclude: <span class="number">15</span>).thenReturn(<span class="number">5</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用mock的数据</span></span><br><span class="line"><span class="keyword">let</span> (m, n) = generateRandom2NumberNotEqualBetween(</span><br><span class="line">    x, y, randomGenerator: mockRandomIntGenerator)!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mock</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//协议</span></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">StringElementsPrinter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showElements</span><span class="params">(printElements: [String])</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现协议</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InnerStringElementsPrinter</span>: <span class="title">StringElementsPrinter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showElements</span><span class="params">(printElements: [String])</span></span> &#123;</span><br><span class="line">        printElements.forEach &#123;</span><br><span class="line">            <span class="built_in">print</span>($<span class="number">0</span>, terminator: <span class="string">""</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">""</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义使用协议的函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">showLines</span><span class="params">(printLines: [[String]], printer: StringElementsPrinter)</span></span> &#123;</span><br><span class="line">    printLines.forEach &#123;</span><br><span class="line">        printer.showElements(printElements: $<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mock数据</span></span><br><span class="line"><span class="keyword">let</span> mockStringElementsPrinter = <span class="type">MockStringElementsPrinter</span>()</span><br><span class="line">stub(mockStringElementsPrinter) &#123; stub <span class="keyword">in</span></span><br><span class="line">    when(stub).showElements(printElements: any()).thenDoNothing()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用mock</span></span><br><span class="line">showLines(printLines: printLines, printer: mockStringElementsPrinter)</span><br><span class="line">verify(mockStringElementsPrinter, times(<span class="number">3</span>))</span><br><span class="line">    .showElements(printElements: any())</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/iOS-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92.html" rel="next" title="视图控制器之间的数据传递">
+                <i class="fa fa-chevron-left"></i> 视图控制器之间的数据传递
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Git%E7%A7%80.html" rel="prev" title="Git秀">
+                Git秀 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、Swift"><span class="nav-text">1、Swift</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-amp-Closure"><span class="nav-text">Function &amp; Closure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-text">Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Struct"><span class="nav-text">Struct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enum"><span class="nav-text">Enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol"><span class="nav-text">Protocol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARC"><span class="nav-text">ARC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、View-amp-Life-Cycle"><span class="nav-text">2、View &amp; Life-Cycle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UITabBarController"><span class="nav-text">UITabBarController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UINavigationController"><span class="nav-text">UINavigationController</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#controller1-push-controller2-的生命周期："><span class="nav-text">[controller1].push(controller2)的生命周期：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#controller1-controller2-pop-的生命周期："><span class="nav-text">[controller1, controller2],pop()的生命周期：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChildViewController"><span class="nav-text">ChildViewController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewController之间的通信"><span class="nav-text">viewController之间的通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vc1-gt-vc2"><span class="nav-text">Vc1 -&gt; vc2 :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vc2-gt-vc1"><span class="nav-text">Vc2 -&gt; vc1:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、UIView-amp-Layout"><span class="nav-text">3、UIView &amp; Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ScrollView"><span class="nav-text">ScrollView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#layoutSubviews"><span class="nav-text">layoutSubviews</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UILabel"><span class="nav-text">UILabel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIControl"><span class="nav-text">UIControl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIButton"><span class="nav-text">UIButton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UITextField"><span class="nav-text">UITextField</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UITextView"><span class="nav-text">UITextView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISlider"><span class="nav-text">UISlider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout"><span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SnapKit"><span class="nav-text">SnapKit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIStackView"><span class="nav-text">UIStackView</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、Advanced-View"><span class="nav-text">4、Advanced View</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Touches"><span class="nav-text">Touches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rendering"><span class="nav-text">Rendering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CALayer"><span class="nav-text">CALayer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#drawRect"><span class="nav-text">drawRect()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-Image"><span class="nav-text">Creating Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orientation"><span class="nav-text">orientation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、List-View-amp-Storage"><span class="nav-text">5、List View &amp; Storage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UITableView"><span class="nav-text">UITableView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UICollectionView"><span class="nav-text">UICollectionView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codec"><span class="nav-text">Codec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage"><span class="nav-text">Storage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、多线程和网络"><span class="nav-text">6、多线程和网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GCD的使用步骤："><span class="nav-text">GCD的使用步骤：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求"><span class="nav-text">网络请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求"><span class="nav-text">HTTP请求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7、设计与架构"><span class="nav-text">7、设计与架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则"><span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App架构"><span class="nav-text">App架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC"><span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM"><span class="nav-text">MVVM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8、单元测试"><span class="nav-text">8、单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷开发和自动化测试"><span class="nav-text">敏捷开发和自动化测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-Double"><span class="nav-text">Test Double</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

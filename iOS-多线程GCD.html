@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="多线程GCD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-多线程GCD">
+<meta property="og:url" content="https://mrconfused.github.io/iOS-%E5%A4%9A%E7%BA%BF%E7%A8%8BGCD.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="多线程GCD">
+<meta property="article:published_time" content="2020-08-05T07:34:06.000Z">
+<meta property="article:modified_time" content="2020-08-05T07:34:06.000Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>iOS-多线程GCD | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/iOS-%E5%A4%9A%E7%BA%BF%E7%A8%8BGCD.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS-多线程GCD</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-05T15:34:06+08:00">
+                2020-08-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  多线程GCD
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1、GCD（Grand-Central-Dispatch）"><a href="#1、GCD（Grand-Central-Dispatch）" class="headerlink" title="1、GCD（Grand Central Dispatch）"></a>1、GCD（Grand Central Dispatch）</h1><blockquote>
+<p>⚠️：不要在主线程中执行同步Swiftync操作，回产生死锁</p>
+</blockquote>
+<h2 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h2><ol>
+<li>易用：比thread更简单</li>
+<li>效率：轻量，比消耗资源的线程更实用快捷</li>
+<li>性能：根据系统负载自动增减线程数量，减少了上下文切换</li>
+<li>安全：无须加锁和其他同步机制</li>
+</ol>
+<h2 id="同步和异步："><a href="#同步和异步：" class="headerlink" title="同步和异步："></a>同步和异步：</h2><ul>
+<li>同步<code>sync</code>：只能在当前线程中执行任务，不能开启新的线程</li>
+<li>异步<code>async</code>：可以在新的线程中执行任务，可以开启新的线程</li>
+</ul>
+<h2 id="异步回主线程："><a href="#异步回主线程：" class="headerlink" title="异步回主线程："></a>异步回主线程：</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.global().async &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"异步做某事：\(Thread.current)"</span>)</span><br><span class="line">  <span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"回到住线程：\(Thread.current)"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2、DispatchQueue"><a href="#2、DispatchQueue" class="headerlink" title="2、DispatchQueue"></a>2、DispatchQueue</h1><blockquote>
+<p>FIFO队列，背后是一个由系统管理的线程池</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> queue = <span class="type">DispatchQueue</span>(</span><br><span class="line">  label: <span class="string">"labelname"</span>, <span class="comment">//队列的标识符</span></span><br><span class="line">	qos: .<span class="keyword">default</span>, 	<span class="comment">//quality of service，优先级</span></span><br><span class="line">	attributes: .concurrent, 	<span class="comment">//属性</span></span><br><span class="line">	autoreleaseFrequency: .inherit	<span class="comment">//自动释放频率</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="串行和并行"><a href="#串行和并行" class="headerlink" title="串行和并行"></a>串行和并行</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  默认：列队是串行的</span></span><br><span class="line"><span class="comment">  .concurrent：列队是并发的</span></span><br><span class="line"><span class="comment">  .initiallyInactive：列队不会自动执行，需要开发中手动触发</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 串行队列 </span></span><br><span class="line"><span class="keyword">let</span> serialQueue = <span class="type">DispatchQueue</span>(label: <span class="string">"serialQueue"</span>)</span><br><span class="line"><span class="comment">// 并行队列</span></span><br><span class="line"><span class="keyword">let</span> concurrentQueue = <span class="type">DispatchQueue</span>(label: <span class="string">"concurrentQueue"</span>,attributes:.concurrent)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读数据</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">readDataTask</span><span class="params">(label: String)</span></span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) Start sync task\(label)"</span>)</span><br><span class="line">    sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) End sync task\(label)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="串行"><a href="#串行" class="headerlink" title="串行"></a>串行</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">serial</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> serialQueue = <span class="type">DispatchQueue</span>(label: <span class="string">"serialQueue"</span>)</span><br><span class="line">    serialQueue.async &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"1"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    serialQueue.async &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"2"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b84043d0&gt;&#123;number = 2, name = (null)&#125; Start sync task1</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b84043d0&gt;&#123;number = 2, name = (null)&#125; End sync task1</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b84043d0&gt;&#123;number = 2, name = (null)&#125; Start sync task2</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b84043d0&gt;&#123;number = 2, name = (null)&#125; End sync task2</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">concurrent</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//并行</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"concurrentQueue："</span>)</span><br><span class="line">    <span class="keyword">let</span> concurrentQueue = <span class="type">DispatchQueue</span>(label: <span class="string">"concurrent"</span>, attributes: .concurrent)</span><br><span class="line">    concurrentQueue.async &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"3"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    concurrentQueue.async &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"4"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b84043d0&gt;&#123;number = 2, name = (null)&#125; Start sync task3</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b8204b10&gt;&#123;number = 4, name = (null)&#125; Start sync task4</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b84043d0&gt;&#123;number = 2, name = (null)&#125; End sync task3</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fa4b8204b10&gt;&#123;number = 4, name = (null)&#125; End sync task4</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="异步与同步"><a href="#异步与同步" class="headerlink" title="异步与同步"></a>异步与同步</h2><h3 id="同步-sync"><a href="#同步-sync" class="headerlink" title="同步 (sync)"></a>同步 (sync)</h3><p>提交一段任务到队列，并且阻塞当前线程，任务结束后当前线程继续执行</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sync</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"sync："</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) Main queue Start"</span>)</span><br><span class="line">    <span class="keyword">let</span> concurrentQueue = <span class="type">DispatchQueue</span>(label: <span class="string">"concurrent"</span>, attributes: .concurrent)</span><br><span class="line">    concurrentQueue.sync &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"1"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    concurrentQueue.sync &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"2"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) Main queue End"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fba4b40e7e0&gt;&#123;number = 1, name = main&#125; Main queue Start</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fba4b40e7e0&gt;&#123;number = 1, name = main&#125; Start sync task1</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fba4b40e7e0&gt;&#123;number = 1, name = main&#125; End sync task1</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fba4b40e7e0&gt;&#123;number = 1, name = main&#125; Start sync task2</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fba4b40e7e0&gt;&#123;number = 1, name = main&#125; End sync task2</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fba4b40e7e0&gt;&#123;number = 1, name = main&#125; Main queue End</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="异步（async）"><a href="#异步（async）" class="headerlink" title="异步（async）"></a>异步（async）</h3><p>提交一段任务到队列，并且立刻返回</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">async</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) Main queue Start"</span>)</span><br><span class="line">    <span class="keyword">let</span> concurrentQueue = <span class="type">DispatchQueue</span>(label: <span class="string">"concurrent"</span>, attributes: .concurrent)</span><br><span class="line">    concurrentQueue.async &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"3"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    concurrentQueue.async &#123;</span><br><span class="line">        readDataTask(label: <span class="string">"4"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) Main queue End"</span>)</span><br><span class="line">&#125;</span><br><span class="line">async()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fc2c7a045e0&gt;&#123;number = 1, name = main&#125; Main queue Start</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fc2c7c10d70&gt;&#123;number = 2, name = (null)&#125; Start sync task3</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fc2c6709010&gt;&#123;number = 3, name = (null)&#125; Start sync task4</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fc2c7a045e0&gt;&#123;number = 1, name = main&#125; Main queue End</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fc2c6709010&gt;&#123;number = 3, name = (null)&#125; End sync task4</span></span><br><span class="line"><span class="comment"> &lt;NSThread: 0x7fc2c7c10d70&gt;&#123;number = 2, name = (null)&#125; End sync task3</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="asyncAfter-延迟执行"><a href="#asyncAfter-延迟执行" class="headerlink" title="asyncAfter 延迟执行"></a>asyncAfter 延迟执行</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">queue.async(group: group, qos: .<span class="keyword">default</span>, flags: []) &#123;</span><br><span class="line">  <span class="type">DispatchQueue</span>.main.asyncAfter(deadline: .now(), execute: &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务一"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DispatchQoS-quality-of-service-服务质量"><a href="#DispatchQoS-quality-of-service-服务质量" class="headerlink" title="DispatchQoS (quality of service) 服务质量"></a>DispatchQoS (quality of service) 服务质量</h2><blockquote>
+<p>任务的服务质量或执行优先级</p>
+</blockquote>
+<ul>
+<li><code>background</code>：最低优先级，等同于 <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code>. 用户不可见，比如：在后台存储大量数据</li>
+<li><code>utility</code>：优先级等同于 <code>DISPATCH_QUEUE_PRIORITY_LOW</code>，可以执行很长时间，再通知用户结果。比如：下载一个大文件，网络，计算</li>
+<li><code>default</code>：默认优先级,优先级等同于 <code>DISPATCH_QUEUE_PRIORITY_DEFAULT</code>，建议大多数情况下使用默认优先级</li>
+<li><code>userInitiated</code>：优先级等同于 <code>DISPATCH_QUEUE_PRIORITY_HIGH</code>,需要立刻的结果</li>
+<li><code>userInteractive</code>：用户交互相关，为了好的用户体验，任务需要立马执行。使用该优先级用于 UI 更新，事件处理和小工作量任务，在主线程执行</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.global().async(qos: .background) &#123;</span><br><span class="line">  <span class="comment">// code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="DispatchWorkItem"><a href="#DispatchWorkItem" class="headerlink" title="DispatchWorkItem"></a>DispatchWorkItem</h2><blockquote>
+<p>把任务封装为一个对象</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> item = <span class="type">DispatchWorkItem</span> &#123;</span><br><span class="line">  <span class="comment">// 任务</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">DispatchQueue</span>.global().async(execute: item)</span><br></pre></td></tr></table></figure>
+
+<p>也可指定更多参数：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchWorkItem</span>(qos: .userInitiated, flags: [.assignCurrentContext,.barrier]) &#123;</span><br><span class="line">  <span class="comment">// 任务</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DispatchWorkItemFlags"><a href="#DispatchWorkItemFlags" class="headerlink" title="DispatchWorkItemFlags"></a>DispatchWorkItemFlags</h3><blockquote>
+<p>指定任务的额外信息</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> barrier: </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> detached: </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> assignCurrentContext: </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> noQoS: <span class="comment">//没有QoS</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> inheritQoS: <span class="comment">//继承Queue的QoS</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> enforceQoS: <span class="comment">//自己的QoS覆盖Queue的QoS</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Barrier-屏障"><a href="#Barrier-屏障" class="headerlink" title="Barrier 屏障"></a>Barrier 屏障</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">barrier</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> queue = <span class="type">DispatchQueue</span>(label: <span class="string">"barrier"</span>, attributes: .concurrent)</span><br><span class="line">    queue.async &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"任务A"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这里 barrier，必须等任务B完成后，才走后面任务C</span></span><br><span class="line">    queue.async(flags: .barrier) &#123;</span><br><span class="line">        sleep(<span class="number">2</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"任务B"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    queue.async &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"任务C"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保证写入时，不能读数据</span></span><br><span class="line"><span class="keyword">let</span> item = <span class="type">DispatchWorkItem</span>(qos: .<span class="keyword">default</span>, flags: .barrier) &#123;</span><br><span class="line">    <span class="comment">// write data</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">DispatchQueue</span>().async(execute: item)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DispatchGroup"><a href="#DispatchGroup" class="headerlink" title="DispatchGroup"></a>DispatchGroup</h2><blockquote>
+<p>管理一组任务的执行，然后监听任务的完成，进而执行后续操作</p>
+</blockquote>
+<h3 id="notify"><a href="#notify" class="headerlink" title="notify"></a>notify</h3><blockquote>
+<p>等group中的任务完成后，执行后续任务</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">groupNotify</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> queue = <span class="type">DispatchQueue</span>.global()</span><br><span class="line">    <span class="keyword">let</span> group = <span class="type">DispatchGroup</span>()</span><br><span class="line">    queue.async(group: group, qos: .<span class="keyword">default</span>, flags: [], execute: &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务一"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    queue.async(group: group, qos: .<span class="keyword">default</span>, flags: [], execute: &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务二"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 执行完上面的两个耗时操作, 回到 queue 队列中执行下一步的任务</span></span><br><span class="line">    group.notify(queue: queue) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(Thread.current) 回到该队列中执行"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h3><blockquote>
+<p>等一段时间之后，不管任务有没有完成，都继续执行后续任务</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">groupWait</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> queue = <span class="type">DispatchQueue</span>.global()</span><br><span class="line">    <span class="keyword">let</span> group = <span class="type">DispatchGroup</span>()</span><br><span class="line">    queue.async(group: group, qos: .<span class="keyword">default</span>, flags: [], execute: &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务一"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    queue.async(group: group, qos: .<span class="keyword">default</span>, flags: [], execute: &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务二"</span>)</span><br><span class="line">            sleep(<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 等待上面任务执行，会阻塞当前线程，超时就执行下面的，上面的继续执行。可以无限等待 .distantFuture</span></span><br><span class="line">    <span class="keyword">let</span> result = group.wait(timeout: .now()+<span class="number">10</span>)</span><br><span class="line">    <span class="keyword">switch</span> result &#123;</span><br><span class="line">    <span class="keyword">case</span> .success:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(Thread.current) 不超时, 上面的两个任务都执行完"</span>)</span><br><span class="line">    <span class="keyword">case</span> .timedOut:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(Thread.current) 超时了, 上面的任务还没执行完执行这了"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(Thread.current) 完成..."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="enter-和-leave"><a href="#enter-和-leave" class="headerlink" title="enter 和 leave"></a>enter 和 leave</h3><blockquote>
+<p><code>group.enter()</code>表示一个任务被加入到group中，此时group中任务的引用计数会加1</p>
+<p><code>group.leave()</code>表示group中的一个任务完成，引用计数减1</p>
+<p>当引用计数为0时，回通知<code>notify</code>函数</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">enterLeaveGroup</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> group = <span class="type">DispatchGroup</span>()</span><br><span class="line">    <span class="keyword">let</span> queue = <span class="type">DispatchQueue</span>.global()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 把该任务添加到组队列中执行</span></span><br><span class="line">    group.enter()</span><br><span class="line">    queue.async(group: group, qos: .<span class="keyword">default</span>, flags: []) &#123;</span><br><span class="line">        <span class="comment">// 增加耗时</span></span><br><span class="line">        <span class="type">DispatchQueue</span>.main.asyncAfter(deadline: .now(), execute: &#123;</span><br><span class="line">            <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务一"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 执行完之后从组队列中移除</span></span><br><span class="line">            group.leave()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 把该任务添加到组队列中执行</span></span><br><span class="line">    group.enter()</span><br><span class="line">    queue.async(group: group, qos: .<span class="keyword">default</span>, flags: []) &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">4</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"\(Thread.current) 耗时任务二"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 执行完之后从组队列中移除</span></span><br><span class="line">        group.leave()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 当上面所有的任务执行完之后通知</span></span><br><span class="line">    group.notify(queue: queue) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(Thread.current) 所有的任务执行完了"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3、DispatchSemaphore-信号量"><a href="#3、DispatchSemaphore-信号量" class="headerlink" title="3、DispatchSemaphore 信号量"></a>3、DispatchSemaphore 信号量</h1><blockquote>
+<p>当信号计数大于0时，每条进来的线程使计数减1，直到变为0，变为0后其他的线程将进不来，处于等待状态；</p>
+<p>执行完任务的线程释放信号，使计数加1</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">semaphore</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 创建信号量，参数：信号量的初值，如果小于0则会返回 NULL, value 表示最多几个资源可访问</span></span><br><span class="line">    <span class="keyword">let</span> semaphore = <span class="type">DispatchSemaphore</span>(value: <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">let</span> queue = <span class="type">DispatchQueue</span>.global()</span><br><span class="line">    <span class="comment">// 任务1</span></span><br><span class="line">    queue.async &#123;</span><br><span class="line">        <span class="comment">// 等待降低信号量</span></span><br><span class="line">        semaphore.wait()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"运行任务1"</span>)</span><br><span class="line">        sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"结果任务1"</span>)</span><br><span class="line">        <span class="comment">// 提高信号量</span></span><br><span class="line">        semaphore.signal()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 任务2</span></span><br><span class="line">    queue.async &#123;</span><br><span class="line">        <span class="comment">// 等待降低信号量</span></span><br><span class="line">        semaphore.wait()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"运行任务2"</span>)</span><br><span class="line">        sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"结果任务2"</span>)</span><br><span class="line">        <span class="comment">// 提高信号量</span></span><br><span class="line">        semaphore.signal()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Suspend-和-Resume"><a href="#Suspend-和-Resume" class="headerlink" title="Suspend 和 Resume"></a>Suspend 和 Resume</h1><ul>
+<li><code>Suspend</code> 可以挂起一个线程，即暂停线程，但是仍然暂用资源，只是不执行</li>
+<li><code>Resume</code> 回复线程，即继续执行挂起的线程。</li>
+</ul>
+<h1 id="循环执行任务-concurrentPerform"><a href="#循环执行任务-concurrentPerform" class="headerlink" title="循环执行任务 concurrentPerform"></a>循环执行任务 concurrentPerform</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 并发执行5次</span></span><br><span class="line"><span class="type">DispatchQueue</span>.concurrentPerform(iterations: <span class="number">5</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\($0)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="DispatchSource"><a href="#DispatchSource" class="headerlink" title="DispatchSource"></a>DispatchSource</h1><p>处理特定的系统底层事件，当一些特定的系统底层事件发生时，调度源会捕捉到这些事件，然后可以做相应的逻辑处理。</p>
+<ul>
+<li>Timer Dispatch Source：定时调度源。</li>
+<li>Signal Dispatch Source：监听UNIX信号调度源，比如监听代表挂起指令的SIGSTOP信号。</li>
+<li>Descriptor Dispatch Source：监听文件相关操作和Socket相关操作的调度源。</li>
+<li>Process Dispatch Source：监听进程相关状态的调度源。</li>
+<li>Mach port Dispatch Source：监听Mach相关事件的调度源。</li>
+<li>Custom Dispatch Source：监听自定义事件的调度源。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/iOS-%E6%9C%AC%E5%9C%B0%E5%8C%96UserDefaults.html" rel="next" title="iOS本地化 UserDefaults">
+                <i class="fa fa-chevron-left"></i> iOS本地化 UserDefaults
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/iOS-%E8%A7%A3%E6%9E%90Json.html" rel="prev" title="Swift解析Json">
+                Swift解析Json <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、GCD（Grand-Central-Dispatch）"><span class="nav-text">1、GCD（Grand Central Dispatch）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点："><span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步和异步："><span class="nav-text">同步和异步：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步回主线程："><span class="nav-text">异步回主线程：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、DispatchQueue"><span class="nav-text">2、DispatchQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#串行和并行"><span class="nav-text">串行和并行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串行"><span class="nav-text">串行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行"><span class="nav-text">并行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步与同步"><span class="nav-text">异步与同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步-sync"><span class="nav-text">同步 (sync)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步（async）"><span class="nav-text">异步（async）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#asyncAfter-延迟执行"><span class="nav-text">asyncAfter 延迟执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DispatchQoS-quality-of-service-服务质量"><span class="nav-text">DispatchQoS (quality of service) 服务质量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DispatchWorkItem"><span class="nav-text">DispatchWorkItem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DispatchWorkItemFlags"><span class="nav-text">DispatchWorkItemFlags</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Barrier-屏障"><span class="nav-text">Barrier 屏障</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DispatchGroup"><span class="nav-text">DispatchGroup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notify"><span class="nav-text">notify</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait"><span class="nav-text">wait</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enter-和-leave"><span class="nav-text">enter 和 leave</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、DispatchSemaphore-信号量"><span class="nav-text">3、DispatchSemaphore 信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Suspend-和-Resume"><span class="nav-text">Suspend 和 Resume</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环执行任务-concurrentPerform"><span class="nav-text">循环执行任务 concurrentPerform</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DispatchSource"><span class="nav-text">DispatchSource</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,Swift,iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="《The Swift Programming Language》笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《The Swift Programming Language》in Chinese">
+<meta property="og:url" content="https://mrconfused.github.io/Swift-%E3%80%8AThe%20Swift%20Programming%20Language%E3%80%8Bin%20Chinese.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="《The Swift Programming Language》笔记">
+<meta property="article:published_time" content="2020-08-05T07:27:28.000Z">
+<meta property="article:modified_time" content="2020-08-05T07:27:28.000Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>《The Swift Programming Language》in Chinese | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/Swift-%E3%80%8AThe%20Swift%20Programming%20Language%E3%80%8Bin%20Chinese.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《The Swift Programming Language》in Chinese</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-05T15:27:28+08:00">
+                2020-08-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  《The Swift Programming Language》笔记
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://swiftgg.gitbook.io/swift/swift-jiao-cheng" target="_blank" rel="noopener">Swift教程</a></p>
+</blockquote>
+<h1 id="1、基本运算符"><a href="#1、基本运算符" class="headerlink" title="1、基本运算符"></a>1、基本运算符</h1><ul>
+<li>赋值运算符无返回值</li>
+<li>%运算符为求余，注意负数的运算</li>
+<li>元组的元素和长度相同时可以进行笔记（swift标准库只能实现七个元素以内的元组的比较）</li>
+<li>？？：空合运算符，为可选类型提供默认值</li>
+<li>!a：a为可选类型，对其进行解封，访问其值</li>
+<li><code>a...b</code>a到b内的所有值，包括a和b</li>
+<li><code>a..&lt;b</code> 不包括b</li>
+<li><code>a...</code> a 到结尾，一般用于访问下标</li>
+<li><code>...b</code> 开头到b</li>
+<li>逻辑运算（&amp;&amp; 和 ||）是左结合</li>
+</ul>
+<h1 id="2、字符串String和字符Character"><a href="#2、字符串String和字符Character" class="headerlink" title="2、字符串String和字符Character"></a>2、字符串String和字符Character</h1><ul>
+<li>String支持“ + ”连接</li>
+<li>“”“  ”“” 多行字符串字面量<ul>
+<li>在每一行的结尾加上 \ 标识续行符，此处不换行</li>
+<li>开头处或结尾处手动换行，标识在开头或结尾有个换行符</li>
+</ul>
+</li>
+<li>用<code>\</code>转义其他字符</li>
+<li>扩展字符串分隔符：<code>#   #</code><ul>
+<li>其中的特殊字符不需要转义</li>
+</ul>
+</li>
+<li>空字符串的<code>isempty</code>返回true</li>
+<li>将字符串常量赋值给var变量，则该变量可进行更改</li>
+<li>字符串是值类型，在对其进行赋值时，会创建副本进行值拷贝</li>
+<li><code>+</code>和<code>+=</code>和<code>append()</code>均可连接字符串<ul>
+<li>连接时，多行字符串的结尾没有换行</li>
+</ul>
+</li>
+<li><code>&quot;\(variable)&quot;</code>：字符串插值<ul>
+<li>会在字符串中插入variable变量</li>
+</ul>
+</li>
+<li>String和character完全兼容Unicode标准</li>
+<li><code>count</code>可以获取String的字符数<ul>
+<li>必须遍历全部的 Unicode 标量，才能确定字符串的字符数量。</li>
+</ul>
+</li>
+<li>字符串索引<ul>
+<li>不同的字符会占用不同的空间，因此索引不能用整数</li>
+<li><code>startIndex</code>是String的第一个字符的索引</li>
+<li><code>endIndex</code>是String最后一个字符的下一个位置的索引，不是String的有效下标</li>
+<li>空字符串的<code>startIndex</code>和<code>endIndex</code>是相等的</li>
+<li><code>index(before:)</code>获取前一个索引</li>
+<li><code>index(after:)</code>获取后一个索引</li>
+<li><code>index(_:offsetBy:)</code>获取一定偏移量的索引</li>
+<li><code>indices</code>属性：获取String的全部索引的range</li>
+</ul>
+</li>
+<li><code>insert(_:at:)</code>插入字符</li>
+<li><code>remove(at:)</code>删除字符</li>
+<li><code>removeSubrange(_:)</code>删除子串</li>
+<li><code>Substring</code>实例：从String中截取的用于短时处理的子串，<ul>
+<li>Substring和原String共用一段内存空间</li>
+<li>Substring和String都遵循<code>StringProtocol</code></li>
+</ul>
+</li>
+<li>字符串比较<ul>
+<li>== 和 !=    只要两个字符串的可扩展字型群集相等，他们就像等，即使字符标量不同</li>
+<li><code>hasPrefix(_:)</code>和<code>hasSuffix(_:)</code>是否拥有指定的前缀或后缀</li>
+</ul>
+</li>
+<li>字符串的Unicode表现形式<ul>
+<li><code>utf8</code>属性：访问一个String的UTF-8表示，是UInt8的值的集合</li>
+<li><code>utf16</code>属性：</li>
+<li><code>unicodeScalars</code>属性：每个unicodeScalar有一个value属性，可以返回21位的数值，用UInt32表示</li>
+</ul>
+</li>
+</ul>
+<h1 id="3、集合类型"><a href="#3、集合类型" class="headerlink" title="3、集合类型"></a>3、集合类型</h1><h2 id="3-1-集合类型"><a href="#3-1-集合类型" class="headerlink" title="3.1 集合类型"></a>3.1 集合类型</h2><ul>
+<li><p>数组Array：有序</p>
+</li>
+<li><p>集合Set：无序无重复</p>
+</li>
+<li><p>字典Dictionary：无序键值对</p>
+</li>
+<li><p>必须明确其类型</p>
+</li>
+<li><p>var声明的集合是可变的</p>
+</li>
+<li><p>let声明的集合不可变</p>
+</li>
+</ul>
+<h2 id="3-2-数组（Array）"><a href="#3-2-数组（Array）" class="headerlink" title="3.2 数组（Array）"></a>3.2 数组（Array）</h2><h3 id="1）构建方法"><a href="#1）构建方法" class="headerlink" title="1）构建方法"></a>1）构建方法</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">Int</span>]()	<span class="comment">//空数组</span></span><br><span class="line"><span class="type">Array</span>(repeating: <span class="number">0.0</span>, <span class="built_in">count</span>: <span class="number">3</span>)	<span class="comment">//有默认值的数组</span></span><br><span class="line">array1 + array2	<span class="comment">//两个数组相加</span></span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]	<span class="comment">//用数组字面量构建数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2）访问和修改"><a href="#2）访问和修改" class="headerlink" title="2）访问和修改"></a>2）访问和修改</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 属性</span></span><br><span class="line"><span class="built_in">count</span>	<span class="comment">//可用来判断索引是否有效</span></span><br><span class="line">isEmpty</span><br><span class="line"><span class="comment">// 方法</span></span><br><span class="line">append(<span class="number">_</span>:)</span><br><span class="line">arr1 += arr2	<span class="comment">//添加另一个数组的数据</span></span><br><span class="line">arr1[<span class="number">3</span>]	<span class="comment">//下标必须有效</span></span><br><span class="line">arr[<span class="number">4</span>...<span class="number">6</span>] = [<span class="string">"a"</span>, <span class="string">"b"</span>]	<span class="comment">//将arr的第4、5、6个元素换为“a”和“b”，少一个元素</span></span><br><span class="line">insert(<span class="number">_</span>:at:)	<span class="comment">//在指定索引之前添加数据</span></span><br><span class="line">remove(at:)	<span class="comment">//会返回被删除的数据</span></span><br><span class="line">removeLast()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3）数组遍历"><a href="#3）数组遍历" class="headerlink" title="3）数组遍历"></a>3）数组遍历</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> arr1</span><br><span class="line"><span class="keyword">for</span> (index, value) <span class="keyword">in</span> arr1.enumerated()	<span class="comment">//获取索引值及数据</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-集合（Sets）"><a href="#3-3-集合（Sets）" class="headerlink" title="3.3 集合（Sets）"></a>3.3 集合（Sets）</h2><h3 id="1）集合类型的哈希值"><a href="#1）集合类型的哈希值" class="headerlink" title="1）集合类型的哈希值"></a>1）集合类型的哈希值</h3><p>集合中的类型必须是可哈希化的（哈希值是Int类型，相等的对象哈希值一定相同）</p>
+<p>所有基本类型（String、Int、Double、Bool）都是可哈希化的</p>
+<p>没有关联值的枚举成员值是可哈希化的</p>
+<p>自定义的类型要想作为集合和字典的类型，要遵循<code>Hashable</code>协议，提供一个类型为<code>Int</code>的可读属性<code>hashValue</code>，和<code>==</code>的实现（满足自反性、对称性、传递性）</p>
+<h3 id="2）创建集合"><a href="#2）创建集合" class="headerlink" title="2）创建集合"></a>2）创建集合</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Set</span>&lt;<span class="type">Int</span>&gt;()	<span class="comment">//空集合</span></span><br><span class="line"><span class="keyword">var</span> set1: <span class="type">Set</span>&lt;<span class="type">Int</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]	<span class="comment">//Set类型无法被推断，必须显示声明，&lt;Int&gt;可省略</span></span><br><span class="line"><span class="keyword">var</span> set1: <span class="type">Set</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]	<span class="comment">//&lt;Int&gt;可省略</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3）访问和修改"><a href="#3）访问和修改" class="headerlink" title="3）访问和修改"></a>3）访问和修改</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 属性</span></span><br><span class="line"><span class="built_in">count</span></span><br><span class="line">isEmpty</span><br><span class="line"><span class="comment">// 方法</span></span><br><span class="line">insert(<span class="number">_</span>:)</span><br><span class="line">remove(<span class="number">_</span>:)</span><br><span class="line"><span class="built_in">contains</span>(<span class="number">_</span>:)	<span class="comment">//是否包含某值</span></span><br><span class="line">sorted()	<span class="comment">//返回有序数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4）集合遍历"><a href="#4）集合遍历" class="headerlink" title="4）集合遍历"></a>4）集合遍历</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> set1</span><br></pre></td></tr></table></figure>
+
+<h3 id="5）集合操作"><a href="#5）集合操作" class="headerlink" title="5）集合操作"></a>5）集合操作</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">intersection(<span class="number">_</span>:)	<span class="comment">//返回交集</span></span><br><span class="line">symmetricDifference(<span class="number">_</span>:)	<span class="comment">//返回不相交的集合</span></span><br><span class="line">union(<span class="number">_</span>:)	<span class="comment">//返回全集</span></span><br><span class="line">subtracting(<span class="number">_</span>:)	<span class="comment">//返回减去另一个集合的值的集合</span></span><br><span class="line"></span><br><span class="line">==	<span class="comment">//是否相等</span></span><br><span class="line">isSubset(of:)	<span class="comment">//是否是指定集合的子集</span></span><br><span class="line">isStrictSubset(of:)	<span class="comment">//是否是指定集合的严格子集(不想相等)</span></span><br><span class="line">isSuperset(of:)	<span class="comment">//是否是指定集合超集</span></span><br><span class="line">isStrictSuperset(of:)	<span class="comment">//是否是指定集合的严格超集(不想相等)</span></span><br><span class="line">isDisjoint(with:)	<span class="comment">//是否没有交集</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-字典（Dictionary）"><a href="#3-4-字典（Dictionary）" class="headerlink" title="3.4 字典（Dictionary）"></a>3.4 字典（Dictionary）</h2><p>Key必须遵循<code>Hashable</code>协议</p>
+<h3 id="1）创建字典"><a href="#1）创建字典" class="headerlink" title="1）创建字典"></a>1）创建字典</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">Int</span>: <span class="type">String</span>]()	<span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> airports: [<span class="type">String</span>: <span class="type">String</span>] = [<span class="string">"a"</span>: <span class="string">"aa"</span>, <span class="string">"c"</span>: <span class="string">"cc"</span>]	<span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> airports = [<span class="string">"a"</span>: <span class="string">"aa"</span>, <span class="string">"c"</span>: <span class="string">"cc"</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）访问和修改-1"><a href="#2）访问和修改-1" class="headerlink" title="2）访问和修改"></a>2）访问和修改</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">count</span></span><br><span class="line">isEmpty</span><br><span class="line">dic[key] = newValue	<span class="comment">//可添加新值，可修改旧值</span></span><br><span class="line">updateValue(<span class="number">_</span>:forKey:)	<span class="comment">//可添加新值，可修改旧值；返回旧值的可选类型，不存在则返回nil</span></span><br><span class="line">dic[key] = <span class="literal">nil</span>	<span class="comment">//删除key对应的键值对</span></span><br><span class="line">removeValue(forKey:)	<span class="comment">//若存在则移除，若没有则返回nil</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//也可用下标检索，判断key对应的值是否存在</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> value = dic[key] &#123; &#125;	<span class="comment">//存在</span></span><br><span class="line"><span class="keyword">else</span> &#123; &#125;	<span class="comment">//不存在</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3）字典遍历"><a href="#3）字典遍历" class="headerlink" title="3）字典遍历"></a>3）字典遍历</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> dic	<span class="comment">//遍历每对键值对</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic.keys	<span class="comment">//遍历所有的键，dic无序，但是可对dic.keys排序来顺序遍历dic</span></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> dic.values	<span class="comment">//遍历所有的值</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="4、控制流"><a href="#4、控制流" class="headerlink" title="4、控制流"></a>4、控制流</h1><h2 id="4-1-for-in"><a href="#4-1-for-in" class="headerlink" title="4.1 for-in"></a>4.1 for-in</h2><p>可遍历集合、range中的元素</p>
+<p>若不需要每个元素值，可用<code>_</code>写在for后面，使得遍历时不访问值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stride</span>（from:to:by:)	<span class="comment">//提供 [from, to) 区间中每隔by的数字组成的range</span></span><br><span class="line"><span class="built_in">stride</span>(from: <span class="number">0</span>, to: <span class="number">60</span>, by: <span class="number">5</span>)	<span class="comment">//（0, 5, 10, 15 ... 45, 50, 55）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">stride</span>(from:through:by)	<span class="comment">//提供 [from, through] 区间中每隔by的数字组成的range</span></span><br><span class="line"><span class="built_in">stride</span>(from: <span class="number">3</span>, through: <span class="number">12</span>, by: <span class="number">3</span>)	<span class="comment">//（3, 6, 9, 12）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-while"><a href="#4-2-while" class="headerlink" title="4.2 while"></a>4.2 while</h2><p><code>while</code>：可以和<code>let</code>一起用，来判断某个可选值是否为nil</p>
+<p><code>repeat { } while</code></p>
+<h2 id="4-3-条件语句"><a href="#4-3-条件语句" class="headerlink" title="4.3 条件语句"></a>4.3 条件语句</h2><h3 id="1）if"><a href="#1）if" class="headerlink" title="1）if"></a>1）if</h3><p>可以和<code>let</code>一起用，来判断某个可选值是否为nil</p>
+<h3 id="2）switch"><a href="#2）switch" class="headerlink" title="2）switch"></a>2）switch</h3><p>不用对每个case手动添加break，若想显式贯穿case分支，可用<code>fallthrough</code>,但他不会检查下一条匹配条件</p>
+<p>每个分支不能为空，可用<code>break</code>来忽略该分支</p>
+<p>case可匹配区间，判断值是否落入区间</p>
+<p>可匹配元组</p>
+<p>值绑定：case分支可以将匹配的值赋值给临时变量或常量</p>
+<p>while：<code>case let (x, y) while x==y</code></p>
+<p>复合型cases：匹配多个可能的值，用逗号隔开</p>
+<p>复合匹配的值绑定：必须赋值给相同的变量，且绑定值的类型要相同</p>
+<h2 id="4-4-控制转移"><a href="#4-4-控制转移" class="headerlink" title="4.4 控制转移"></a>4.4 控制转移</h2><ul>
+<li>conginue</li>
+<li>break<ul>
+<li>可用来忽略case分支，或者终止循环</li>
+</ul>
+</li>
+<li>fallthrough<ul>
+<li>不会检查下一个匹配条件，简单地使代码继续连接到下一个 case 中的代码</li>
+</ul>
+</li>
+<li>return</li>
+<li>throw</li>
+</ul>
+<h3 id="1）带标签的语句"><a href="#1）带标签的语句" class="headerlink" title="1）带标签的语句"></a>1）带标签的语句</h3><p>可以给循环体添加标签，然后用<code>break</code>或者<code>continue</code>来结束或者继续被标记的语句</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label name: <span class="keyword">while</span> condition &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）guard"><a href="#2）guard" class="headerlink" title="2）guard"></a>2）guard</h3><p>guard和if的功能一样，不同的是guard后面一定要有else，且else中要有控制转移语句。</p>
+<p>将可选值的绑定作为guard的条件，可以保护guard后面的代码。</p>
+<p>可以在紧邻条件判断的地方处理违规的情况。</p>
+<h2 id="4-5-检测API可用性（-available）"><a href="#4-5-检测API可用性（-available）" class="headerlink" title="4.5 检测API可用性（#available）"></a>4.5 检测API可用性（#available）</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可用在if或者guard语句中。*一定要有，指定在更高版本也适用</span></span><br><span class="line"><span class="keyword">if</span> #available(iOS <span class="number">10</span>, macOS <span class="number">10.12</span>, *) &#123;</span><br><span class="line">    <span class="comment">// 在 iOS 使用 iOS 10 的 API, 在 macOS 使用 macOS 10.12 的 API</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 使用先前版本的 iOS 和 macOS 的 API</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="5、函数"><a href="#5、函数" class="headerlink" title="5、函数"></a>5、函数</h1><h2 id="5-1-可变参数（…）"><a href="#5-1-可变参数（…）" class="headerlink" title="5.1 可变参数（…）"></a>5.1 可变参数（…）</h2><blockquote>
+<p>参数的数量不确定</p>
+</blockquote>
+<p>在参数的类型后面加上<code>...</code></p>
+<p>例如：<code>numbers: Double...</code>在函数中会变为数组<code>[Double]</code></p>
+<p>一个函数最多允许有一个可变参数</p>
+<h2 id="5-2-输入输出参数（inout）"><a href="#5-2-输入输出参数（inout）" class="headerlink" title="5.2 输入输出参数（inout）"></a>5.2 输入输出参数（inout）</h2><blockquote>
+<p>在函数中可被更改，且函数返回后仍然存在</p>
+</blockquote>
+<p>在参数类型前加<code>inout</code>,调用时要在变量前面加上<code>&amp;</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testInout</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int)</span></span>&#123; a += <span class="number">1</span> &#125;	<span class="comment">// 函数定义</span></span><br><span class="line"><span class="keyword">var</span> num: <span class="type">Int</span> = <span class="number">3</span></span><br><span class="line">testInout(&amp;num)	<span class="comment">// 函数调用</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-函数类型"><a href="#5-3-函数类型" class="headerlink" title="5.3 函数类型"></a>5.3 函数类型</h2><p>函数类型可像基本类型一样使用</p>
+<h3 id="1）作为参数类型"><a href="#1）作为参数类型" class="headerlink" title="1）作为参数类型"></a>1）作为参数类型</h3><p>可以将函数的部分实现留给调用者实现</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fucn printMathResult(<span class="number">_</span> addTwoInt: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span>, <span class="number">_</span> a: <span class="type">Int</span>, <span class="number">_</span> b: <span class="type">Int</span>)&#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"\(addTwoInt(a, b))"</span>)</span><br><span class="line">&#125;</span><br><span class="line">printMathResult(myFunc, <span class="number">1</span>, <span class="number">2</span>)	<span class="comment">// 自己实现加法函数，并将其传给printMathResult</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2）作为返回值类型"><a href="#2）作为返回值类型" class="headerlink" title="2）作为返回值类型"></a>2）作为返回值类型</h3><h2 id="5-4-嵌套函数"><a href="#5-4-嵌套函数" class="headerlink" title="5.4 嵌套函数"></a>5.4 嵌套函数</h2><h1 id="6、闭包"><a href="#6、闭包" class="headerlink" title="6、闭包"></a>6、闭包</h1><blockquote>
+<p>函数代码块，类似于C++的Lambda和OC的Block</p>
+<p>可以捕获和存储上下文的变量的引用</p>
+</blockquote>
+<p>闭包有三种形式：</p>
+<ol>
+<li>全局函数：有名字，但不会捕获任何值</li>
+<li>嵌套函数：有名字，可以捕获所在函数内的值</li>
+<li>闭包表达式：匿名，可以捕获上下文的变量，不能设定默认值</li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; (parameters) -&gt; returnType <span class="keyword">in</span></span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-1-优化"><a href="#6-1-优化" class="headerlink" title="6.1 优化"></a>6.1 优化</h2><p><code>names.sorted(by: { (s1: String, s2: String) -&gt; Bool in  return s1&gt;s2 })</code>优化：</p>
+<ol>
+<li><p>利用上下文推断参数和返回类型（可省略参数和返回类型）</p>
+<p><code>names.sorted(by: { s1, s2 in return s1&gt;s2 })</code></p>
+</li>
+<li><p>隐式返回单表达式（单表达式可省略 return）</p>
+<p><code>names.sorted(by: { s1, s2 in s1&gt;s2 })</code></p>
+</li>
+<li><p>参数名称缩写（可使用$0, $1）</p>
+<p><code>names.sorted(by: { $0&gt;$1 })</code></p>
+<p><code>names.sorted(by: { &gt; })</code>    String的<code>&gt;</code>方法是个接收两个String并返回Bool的函数</p>
+</li>
+<li><p>尾随闭包语法</p>
+<p>是个写在函数的<code>()</code>之后的闭包表达式，函数可将其作为最后一个参数调用，且不用写出他的参数标签：</p>
+<p><code>names.sorted() { $0 &gt; $1 }</code></p>
+<p>若只有该闭包一个参数，可省掉<code>()</code>：</p>
+<p><code>names.sorted { $0 &gt; $1 }</code></p>
+</li>
+</ol>
+<h2 id="6-2-值捕获"><a href="#6-2-值捕获" class="headerlink" title="6.2 值捕获"></a>6.2 值捕获</h2><p>闭包捕获的是值的引用</p>
+<p>若某值不会被闭包改变，swift会为捕获的值创建一份值拷贝</p>
+<p>若一个类实例的属性是闭包，且该闭包通过访问该实例而捕获了该实例，会导致循环引用。可用<a href="https://swiftgg.gitbook.io/swift/swift-jiao-cheng/24_automatic_reference_counting#strong-reference-cycles-for-closures" target="_blank" rel="noopener">捕获列表</a>解决。</p>
+<h2 id="6-3-闭包是引用类型"><a href="#6-3-闭包是引用类型" class="headerlink" title="6.3 闭包是引用类型"></a>6.3 闭包是引用类型</h2><p>将函数或闭包赋值给一个常量，实际是将该常量的值设置为函数或闭包的引用，常量的值不能改变，但是函数或闭包可以改变</p>
+<h2 id="6-4-逃逸闭包（-escaping）"><a href="#6-4-逃逸闭包（-escaping）" class="headerlink" title="6.4 逃逸闭包（@escaping）"></a>6.4 逃逸闭包（@escaping）</h2><blockquote>
+<p>当一个闭包作为参数传入一个函数中，但是这个闭包在函数返回之后才被执行，则该闭包是逃逸闭包</p>
+</blockquote>
+<p>使闭包逃逸：将闭包保存在一个函数外部定义的变量中。</p>
+<p>在定义函数时，可在接收闭包的参数前加上<code>@escaping</code>，指明这个闭包允许逃逸。</p>
+<p>将闭包标记为<code>@escaping</code>那么在闭包中必须显式引用<code>self</code></p>
+<p>举个例子，很多启动异步操作的函数接受一个闭包参数作为 completion handler。这类函数会在异步操作开始之后立刻返回，但是闭包直到异步操作结束后才会被调用。</p>
+<h2 id="6-5-自动闭包（autoclosure）"><a href="#6-5-自动闭包（autoclosure）" class="headerlink" title="6.5 自动闭包（autoclosure）"></a>6.5 自动闭包（autoclosure）</h2><blockquote>
+<p>自动创建的闭包，用于包装传递给函数作为参数的表达式</p>
+</blockquote>
+<p>在定义函数时，可在接收闭包的参数前加上<code>autoclosure</code>，指明该参数会自动包装为闭包。</p>
+<p>可以省略花括号，但是导致代码难以理解。</p>
+<h1 id="7、枚举"><a href="#7、枚举" class="headerlink" title="7、枚举"></a>7、枚举</h1><h2 id="7-1-语法"><a href="#7-1-语法" class="headerlink" title="7.1 语法"></a>7.1 语法</h2><blockquote>
+<p>枚举类型首字母大写</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">EnumName</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> a</span><br><span class="line">  <span class="keyword">case</span> b, <span class="built_in">c</span>, d</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若一个enum变量的类型已知，对该变量再次赋值时可以省略enum类型，直接用<code>.a</code>对其赋值</p>
+<h2 id="7-2-用Switch语句匹配枚举值"><a href="#7-2-用Switch语句匹配枚举值" class="headerlink" title="7.2 用Switch语句匹配枚举值"></a>7.2 用Switch语句匹配枚举值</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">EnumName</span> enum1 = <span class="type">EnumName</span>.a</span><br><span class="line"><span class="keyword">switch</span> enum1 &#123;</span><br><span class="line">	<span class="keyword">case</span> .a:</span><br><span class="line">  	..........</span><br><span class="line">  <span class="keyword">case</span> .b:</span><br><span class="line">  	..........</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">  	..........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-3-enum成员的遍历（-allClass）"><a href="#7-3-enum成员的遍历（-allClass）" class="headerlink" title="7.3 enum成员的遍历（.allClass）"></a>7.3 enum成员的遍历（.allClass）</h2><p>令该enum遵循<code>CaseIterable</code>协议，则可用<code>unum1.allClass</code>得到所有成员，每个成员都是enum1类型的实例。</p>
+<h2 id="7-4-关联值"><a href="#7-4-关联值" class="headerlink" title="7.4 关联值"></a>7.4 关联值</h2><p>在7.1节中的a、b、c、d称为成员值，此外还可把成员值和其他类型的值（关联值）一起存储。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">BarCode</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> upc(<span class="type">Int</span>, <span class="type">Int</span>, <span class="type">Int</span>, <span class="type">Int</span>)	<span class="comment">//成员值为upc，关联值类型为(Int, Int, Int, Int)</span></span><br><span class="line">  <span class="keyword">case</span> qrCode(<span class="type">String</span>)	<span class="comment">//成员值为qrCode，关联值类型为String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> productCode = <span class="type">BarCode</span>.upc(<span class="number">8</span>, <span class="number">85909</span>, <span class="number">51226</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在switch语句中也可把每个关联值提取出来</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> productCode &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> .udp(numberSystem, manufacturer, product, check):</span><br><span class="line">  	...........</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> .qrCode(prodectQrCode)</span><br><span class="line">  	...........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-5-原始值-默认值（rawValue）"><a href="#7-5-原始值-默认值（rawValue）" class="headerlink" title="7.5 原始值/默认值（rawValue）"></a>7.5 原始值/默认值（rawValue）</h2><p>可为每个成员值声明一个默认值（不可改变）</p>
+<p>要在声明的enum名字后面加上<code>: &lt;rawType&gt;</code>来声明原始值的类型</p>
+<p>使用成员的<code>rawValue</code>属性可访问该成员的原始值</p>
+<h3 id="1）原始值的隐式赋值"><a href="#1）原始值的隐式赋值" class="headerlink" title="1）原始值的隐式赋值"></a>1）原始值的隐式赋值</h3><p>原始值为整型或者String类型时，swift会自动赋值</p>
+<p>整数时：第一个成员默认为0或者显式设置，之后每个原始值递增1</p>
+<p>String时：默认为成员的名字</p>
+<h3 id="2）使用原始值初始化枚举实例"><a href="#2）使用原始值初始化枚举实例" class="headerlink" title="2）使用原始值初始化枚举实例"></a>2）使用原始值初始化枚举实例</h3><p>若在定义enum类型的时候使用了原始值，则会自动获得一个接受<code>rawValue</code>参数的初始化方法返回枚举类型或者nil。</p>
+<p>若没有对应的原始值则返回nil</p>
+<h2 id="7-6-递归枚举（indirect）"><a href="#7-6-递归枚举（indirect）" class="headerlink" title="7.6 递归枚举（indirect）"></a>7.6 递归枚举（indirect）</h2><p>是一种枚举类型，存在成员使用该枚举类型作为关联值。</p>
+<p>可在成员前加上<code>indirect</code>表示该成员可递归，或者在枚举类型开头加上<code>indirect</code>表示所有成员均可递归。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">ArithmeticExpression</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> num(<span class="type">Int</span>)</span><br><span class="line">  	<span class="keyword">case</span> add(<span class="type">ArithmeticExpression</span>, <span class="type">ArithmeticExpression</span>)</span><br><span class="line">  	<span class="keyword">case</span> multip(<span class="type">ArithmeticExpression</span>, <span class="type">ArithmeticExpression</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> two = <span class="type">ArithmeticExpression</span>.num(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">var</span> four = <span class="type">ArithmeticExpression</span>.num(<span class="number">4</span>)</span><br><span class="line"><span class="keyword">var</span> five = <span class="type">ArithmeticExpression</span>.num(<span class="number">5</span>)</span><br><span class="line"><span class="keyword">var</span> sum = <span class="type">ArithmeticExpression</span>.add(four, five)</span><br><span class="line"><span class="keyword">var</span> result = <span class="type">ArithmeticExpression</span>.multip(sum, two)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calculate</span><span class="params">(<span class="number">_</span> exp: ArithmeticExpression)</span></span> -&gt; <span class="type">Int</span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> exp &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> .num(val):</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> .add(a, b):</span><br><span class="line">        <span class="keyword">return</span> calculate(a) + calculate(b)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> .multip(a, b):</span><br><span class="line">        <span class="keyword">return</span> calculate(a) * calculate(b)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="8、类和结构体"><a href="#8、类和结构体" class="headerlink" title="8、类和结构体"></a>8、类和结构体</h1><ul>
+<li>Swift不用把类和结构体的定义与实现分开写</li>
+<li>使用首字母大写的驼峰命名法（UpperCamelCase）命名类和结构体</li>
+<li>使用lowerCamelCase命名属性和方法</li>
+</ul>
+<h2 id="8-1-类和结构体的对比"><a href="#8-1-类和结构体的对比" class="headerlink" title="8.1 类和结构体的对比"></a>8.1 类和结构体的对比</h2><h3 id="1）共同点"><a href="#1）共同点" class="headerlink" title="1）共同点"></a>1）共同点</h3><ul>
+<li>属性</li>
+<li>方法</li>
+<li>下标操作</li>
+<li>构造器</li>
+<li>可以扩展</li>
+<li>遵循协议</li>
+</ul>
+<h3 id="2）类的特点"><a href="#2）类的特点" class="headerlink" title="2）类的特点"></a>2）类的特点</h3><ul>
+<li>继承：允许一个类继承另一个类的特性</li>
+<li>类型转换：允许在运行时检查和解释一个实例的类型</li>
+<li>析构器：允许一个实例可以释放其拥有的资源</li>
+<li>引用计数：允许对一个类多次饮用</li>
+</ul>
+<h3 id="3）类的缺点"><a href="#3）类的缺点" class="headerlink" title="3）类的缺点"></a>3）类的缺点</h3><p>类的上述附加功能，增加了其复杂性</p>
+<h3 id="4）结构体的逐一构造器"><a href="#4）结构体的逐一构造器" class="headerlink" title="4）结构体的逐一构造器"></a>4）结构体的逐一构造器</h3><p>结构体有个自动生成的成员逐一构造器</p>
+<p>类没有</p>
+<h3 id="5）总结"><a href="#5）总结" class="headerlink" title="5）总结"></a>5）总结</h3><p><a href="https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes" target="_blank" rel="noopener">优先使用<strong>结构体</strong>，必要时（使用了OC的API、需要Control Identity）才用类。</a></p>
+<h2 id="8-2-结构体和枚举是值类型"><a href="#8-2-结构体和枚举是值类型" class="headerlink" title="8.2 结构体和枚举是值类型"></a>8.2 结构体和枚举是<strong>值类型</strong></h2><blockquote>
+<p>值类型：被赋值或传递给函数时会被拷贝</p>
+</blockquote>
+<h2 id="8-3-类是引用类型"><a href="#8-3-类是引用类型" class="headerlink" title="8.3 类是引用类型"></a>8.3 类是<strong>引用类型</strong></h2><blockquote>
+<p>赋值时不会拷贝</p>
+</blockquote>
+<h3 id="1）恒等运算符-和"><a href="#1）恒等运算符-和" class="headerlink" title="1）恒等运算符===和!=="></a>1）恒等运算符<code>===</code>和<code>!==</code></h3><p>用来判断两个变量是否引用同一个类实例</p>
+<h3 id="2-指针"><a href="#2-指针" class="headerlink" title="2) 指针"></a>2) <a href="https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management" target="_blank" rel="noopener">指针</a></h3><h1 id="9、属性"><a href="#9、属性" class="headerlink" title="9、属性"></a>9、属性</h1><p>存储属性会将变量存储为实例的一部分，可用于类和结构体</p>
+<p>计算属性只是计算值，可用于类、结构体和枚举</p>
+<p>属性观察器可用来检测属性值的变化，来触发自定义操作</p>
+<p>属性包装器可用来复用多个属性的getter和setter中的代码</p>
+<h2 id="9-1-存储属性"><a href="#9-1-存储属性" class="headerlink" title="9.1 存储属性"></a>9.1 存储属性</h2><h3 id="1）常量结构体实例的存储属性"><a href="#1）常量结构体实例的存储属性" class="headerlink" title="1）常量结构体实例的存储属性"></a>1）常量<strong>结构体</strong>实例的存储属性</h3><p>若一个结构体实例被声明为常量后，因为它是值类型，所以他的属性无论是不是可变属性，都不能改变。</p>
+<h3 id="2）延时加载存储属性（lazy）"><a href="#2）延时加载存储属性（lazy）" class="headerlink" title="2）延时加载存储属性（lazy）"></a>2）延时加载存储属性（lazy）</h3><p>在属性声明前用<code>lazy</code>标识，且必须时<code>var</code>变量。</p>
+<p>第一次被调用时才会计算其初始值。</p>
+<p>可以避免类中不必要的初始化工作。</p>
+<p>适用于：a）属性的值依赖于外部因素，且这些外部因素在构造结束之后才会知道的时候。b）属性的值需要大量的计算，因此要在需要的时候再计算。</p>
+<p>若<code>lazy</code>属性在没有初始化时被多个线程访问，则无法保证该属性只会被初始化一次。</p>
+<h2 id="9-2-计算属性（getter-setter）"><a href="#9-2-计算属性（getter-setter）" class="headerlink" title="9.2 计算属性（getter/setter）"></a>9.2 计算属性（getter/setter）</h2><p>提供一个getter和可选的setter，来间接获取或设置<strong>其他属性</strong>的值</p>
+<h3 id="1）简化Setter声明"><a href="#1）简化Setter声明" class="headerlink" title="1）简化Setter声明"></a>1）简化Setter声明</h3><p>若没有定义新值的参数名，可使用默认名称<code>newValue</code></p>
+<h3 id="2）简化Getter声明"><a href="#2）简化Getter声明" class="headerlink" title="2）简化Getter声明"></a>2）简化Getter声明</h3><p>若整个getter表达式是单一表达式，则可省略return</p>
+<h3 id="3）只读计算属性"><a href="#3）只读计算属性" class="headerlink" title="3）只读计算属性"></a>3）只读计算属性</h3><p>只有getter没有setter，可以去掉<code>get</code>关键字和花括号</p>
+<p>该属性必须使用var定义</p>
+<h2 id="9-3-属性观察器（willset-didset）"><a href="#9-3-属性观察器（willset-didset）" class="headerlink" title="9.3 属性观察器（willset/didset）"></a>9.3 属性观察器（willset/didset）</h2><p>可为<em>自定义的存储属性</em>以及<em>继承的存储属性和计算属性</em>添加属性观察器。</p>
+<p>对于继承的属性，通过重写属性来添加属性观察器</p>
+<p>对于自定义的属性，通过setter来添加属性观察器</p>
+<p><code>willset</code>新值设置前调用，会将新值作为参数传入，默认名称为<code>newValue</code></p>
+<p><code>didset</code>新值设置后调用，会将旧值作为参数传入，默认名称为<code>oldValue</code></p>
+<p>父类初始化完成之后，在子类中给父类属性赋值，会调用父类属性的<code>willset</code>和<code>didset</code></p>
+<p>父类初始化之前，给子类属性赋值，不会调用子类属性的观察器</p>
+<p>带有观察器的属性，通过in-out方式传入参数，也会调用观察器</p>
+<h2 id="9-4-属性包装器（-propertyWrapper）"><a href="#9-4-属性包装器（-propertyWrapper）" class="headerlink" title="9.4 属性包装器（@propertyWrapper）"></a>9.4 属性包装器（@propertyWrapper）</h2><blockquote>
+<p>使得所有使用同一个属性包装器的属性，均满足同一个规则</p>
+<p>被包装值对外展示的变量名一定是<code>wrappedValue</code></p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义属性包装器，使属性值小于等于12</span></span><br><span class="line"><span class="meta">@propertyWrapper</span>	<span class="comment">// 一定要有</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TwelveOrLess</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> number: <span class="type">Int</span>	<span class="comment">// 既是被包装属性的值</span></span><br><span class="line">    <span class="keyword">init</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span>.number = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;	<span class="comment">// 变量名一定是wrappedValue</span></span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> number &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; <span class="keyword">self</span>.number = <span class="built_in">min</span>(newValue, <span class="number">12</span>) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用属性包装器</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallRectangle</span> </span>&#123;</span><br><span class="line">    @<span class="type">TwelveOrLess</span> <span class="keyword">var</span> height: <span class="type">Int</span>	<span class="comment">// 一定要有属性包装器名字</span></span><br><span class="line">    @<span class="type">TwelveOrLess</span> <span class="keyword">var</span> width: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> rect1 = <span class="type">SmallRectangle</span>()</span><br><span class="line">rect1.height = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(rect1.height)	<span class="comment">// 3</span></span><br><span class="line">rect1.height = <span class="number">30</span></span><br><span class="line"><span class="built_in">print</span>(rect1.height)	<span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1）设置被包装属性的初始值"><a href="#1）设置被包装属性的初始值" class="headerlink" title="1）设置被包装属性的初始值"></a>1）设置被包装属性的初始值</h3><blockquote>
+<p>通过将实参传递给包装器，可设置被包装属性的初始化状态，并为其提供所需的其他参数，且能传到构造器中。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@propertyWrapper</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallNumber</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> maximum: <span class="type">Int</span>	<span class="comment">// 接收传入的实参，可控制被包装属性的最大值</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> number: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span>&#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> number &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; number = <span class="built_in">min</span>(newValue, maximum) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>() &#123;</span><br><span class="line">        maximum = <span class="number">12</span></span><br><span class="line">        number = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">init</span>(wrappedValue: <span class="type">Int</span>) &#123;	<span class="comment">//参数名一定要是wrappedValue</span></span><br><span class="line">        maximum = <span class="number">12</span></span><br><span class="line">        <span class="keyword">self</span>.number = wrappedValue</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">init</span>(maximum: <span class="type">Int</span>, wrappedValue: <span class="type">Int</span>) &#123;	<span class="comment">//参数名一定要是wrappedValue</span></span><br><span class="line">        <span class="keyword">self</span>.maximum = maximum</span><br><span class="line">        <span class="keyword">self</span>.number = wrappedValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 init()</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallRectangle2</span> </span>&#123;</span><br><span class="line">    @<span class="type">SmallNumber</span> <span class="keyword">var</span> height: <span class="type">Int</span>	</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 init(wrappedValue: Int)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallRectangle3</span> </span>&#123;</span><br><span class="line">    @<span class="type">SmallNumber</span> <span class="keyword">var</span> height: <span class="type">Int</span> = <span class="number">5</span>	</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 init(maximum: Int, wrappedValue: Int)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallRectangle4</span> </span>&#123;</span><br><span class="line">    @<span class="type">SmallNumber</span>(maximum: <span class="number">50</span>, wrappedValue: <span class="number">30</span>) <span class="keyword">var</span> height: <span class="type">Int</span>	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）从属性包装器中呈现一个值"><a href="#2）从属性包装器中呈现一个值" class="headerlink" title="2）从属性包装器中呈现一个值"></a>2）从属性包装器中呈现一个值</h3><blockquote>
+<p>被呈现值的参数名一定是<code>projectedValue</code></p>
+<p>在调用包装器的结构体中，使用被呈现值时可省略<code>self.</code></p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@propertyWrapper</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallVale</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> number: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> projectedValue: <span class="type">Bool</span>    <span class="comment">// 被呈现值，可用来标识被包装值是否被调整，可通过"$+实例名"来访问</span></span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> number &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> newValue &gt; <span class="number">12</span> &#123;</span><br><span class="line">                number = <span class="number">12</span></span><br><span class="line">                projectedValue = <span class="literal">true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                number = newValue</span><br><span class="line">                projectedValue = <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">init</span>() &#123;</span><br><span class="line">        number = <span class="number">0</span></span><br><span class="line">        projectedValue = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SmallRectangle5</span> </span>&#123;</span><br><span class="line">    @<span class="type">SmallVale</span> <span class="keyword">var</span> height: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> rect5 = <span class="type">SmallRectangle5</span>()</span><br><span class="line">rect5.height = <span class="number">20</span></span><br><span class="line"><span class="built_in">print</span>(rect5.$height)	<span class="comment">//rect5.$height即是projectedValue的值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-5-全局变量和局部变量"><a href="#9-5-全局变量和局部变量" class="headerlink" title="9.5 全局变量和局部变量"></a>9.5 全局变量和局部变量</h2><p>也可对全局变量和局部变量定义<strong>计算属性</strong>以及<strong>观察属性</strong>。</p>
+<p>全局变量都是延迟计算，局部变量从不延迟计算。</p>
+<h2 id="9-6-类型属性（static）"><a href="#9-6-类型属性（static）" class="headerlink" title="9.6 类型属性（static）"></a>9.6 类型属性（static）</h2><p>上述的属性是<strong>实例属性</strong>，每个实例的属性之间是独立的。</p>
+<p><strong>类型属性</strong>是指，每个实例的类型属性之间是共享的。用于定义所有实例共享的数据，类似于静态变量。</p>
+<p>存储型类型属性可以是常量或者变量，必须指定默认值，且是延迟初始化的。</p>
+<p>计算型类型属性只能是变量。</p>
+<h3 id="1）类型属性语法"><a href="#1）类型属性语法" class="headerlink" title="1）类型属性语法"></a>1）类型属性语法</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在`var`前加上`static`表示该变量是类型属性</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span>/<span class="title">enum</span>/<span class="title">class</span> <span class="title">Name</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> storedTypeProperty = <span class="string">"abc"</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> computedTypeProperty: <span class="type">Int</span> &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在`var`前加上`calss`表示该变量是允许子类重写的 计算类型属性</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">var</span> <span class="title">overrideableComputedTypeProperty</span>: <span class="title">Int</span> </span>&#123; <span class="keyword">return</span> <span class="number">1</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）获取和设置类型属性的值"><a href="#2）获取和设置类型属性的值" class="headerlink" title="2）获取和设置类型属性的值"></a>2）获取和设置类型属性的值</h3><p>通过类名来获取的</p>
+<h1 id="10、方法"><a href="#10、方法" class="headerlink" title="10、方法"></a>10、方法</h1><p>类、结构体、枚举都能定义方法</p>
+<h2 id="10-1-实例方法（Instance-Methods）"><a href="#10-1-实例方法（Instance-Methods）" class="headerlink" title="10.1 实例方法（Instance Methods）"></a>10.1 实例方法（Instance Methods）</h2><p>实例方法可以访问该类型的方法和属性。</p>
+<p>实例方法只能被一个具体的实例调用。</p>
+<h3 id="1）self-属性"><a href="#1）self-属性" class="headerlink" title="1）self 属性"></a>1）self 属性</h3><p>self完全等同于该实例本身。</p>
+<p>在方法的参数名与某个属性名相同时，参数名享有优先权，可用self来标识属性名。</p>
+<h3 id="2）在实例方法中修改值类型"><a href="#2）在实例方法中修改值类型" class="headerlink" title="2）在实例方法中修改值类型"></a>2）在实例方法中修改值类型</h3><p>结构体和枚举是值类型，其属性不能在方法中被修改。</p>
+<p>若在方法定义的<code>func</code>前附加<code>mutating</code>，表面该方法是可变方法，则该方法可以修改属性。</p>
+<p>但是常量结构体实例则不能调用可变方法。</p>
+<p>在可变方法中也可以给<code>self</code> 赋值。</p>
+<h2 id="10-2-类型方法（static）"><a href="#10-2-类型方法（static）" class="headerlink" title="10.2 类型方法（static）"></a>10.2 类型方法（static）</h2><p>在<code>func</code>前加上<code>static</code>，表明该方法是类型方法。</p>
+<p>和类型属于一样，也可用<code>class</code>表示该方法可被子类重写。</p>
+<p>类型方法中的<code>self</code>指的是类型本身，而不是某实例。</p>
+<p>在类型方法中，可以直接通过其他<strong>类型方法名</strong>来调用，而不需要附加<strong>类型名</strong>。</p>
+<h1 id="11、下标（subscript）"><a href="#11、下标（subscript）" class="headerlink" title="11、下标（subscript）"></a>11、下标（subscript）</h1><p>使用下标的索引代替存取方法来设置和获取值。</p>
+<h2 id="11-1-下标语法"><a href="#11-1-下标语法" class="headerlink" title="11.1 下标语法"></a>11.1 下标语法</h2><p>可以设为<strong>可读可写</strong>，或者<strong>只读</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">get</span> &#123; &#125;</span><br><span class="line">  <span class="keyword">set</span> &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-2-类型下标"><a href="#11-2-类型下标" class="headerlink" title="11.2 类型下标"></a>11.2 类型下标</h2><p>类似于类型属性和类型方法，可用<code>static</code>和<code>calss</code></p>
+<h1 id="12、继承"><a href="#12、继承" class="headerlink" title="12、继承"></a>12、继承</h1><p>只有类可以继承。</p>
+<p>子类可以调用、访问、重写父类的方法、属性、下标。</p>
+<p>为子类中继承而来的属性添加观察器可以得到他被修改的通知。</p>
+<h2 id="12-1-基类"><a href="#12-1-基类" class="headerlink" title="12.1 基类"></a>12.1 基类</h2><p>只要一个类不继承其他的类，那他就是基类。</p>
+<h2 id="12-2-重写"><a href="#12-2-重写" class="headerlink" title="12.2 重写"></a>12.2 重写</h2><p>在重写的方法、属性、下标前要加上<code>override</code>关键字</p>
+<h3 id="1）访问超类的方法，属性及下标"><a href="#1）访问超类的方法，属性及下标" class="headerlink" title="1）访问超类的方法，属性及下标"></a>1）访问超类的方法，属性及下标</h3><p>在子类重写的方法、属性的setter/getter、下标中，使用<code>super</code>调用对应的方法即可访问父类的方法。</p>
+<h3 id="2）重写属性的setter和getter"><a href="#2）重写属性的setter和getter" class="headerlink" title="2）重写属性的setter和getter"></a>2）重写属性的setter和getter</h3><p>不管父类是存储属性还是计算属性，子类都可定制setter和getter</p>
+<p>可以将继承来的只读属性重写为读写属性，但不能将继承来的读写属性重写为只读属性。</p>
+<p>若在重写的属性中提供了setter，那么一定也要提供getter。</p>
+<h3 id="3）重写属性观察器"><a href="#3）重写属性观察器" class="headerlink" title="3）重写属性观察器"></a>3）重写属性观察器</h3><p>不能为继承来的常量存储属性或只读计算属性添加观察器。</p>
+<p>不能同时为属性提供重写的setter和观察器。</p>
+<h2 id="12-4-final防止重写或继承"><a href="#12-4-final防止重写或继承" class="headerlink" title="12.4 final防止重写或继承"></a>12.4 final防止重写或继承</h2><p>在定义前附加<code>final</code>可以防止方法、属性、下标被重写，或者防止类被继承</p>
+<p>编译器会自动对final标识的类、方法、属性、下标进行优化。</p>
+<h1 id="13、构造过程"><a href="#13、构造过程" class="headerlink" title="13、构造过程"></a>13、构造过程</h1><h2 id="13-1-存储属性的初始赋值"><a href="#13-1-存储属性的初始赋值" class="headerlink" title="13.1 存储属性的初始赋值"></a>13.1 存储属性的初始赋值</h2><p>若一个属性总是有相同的初始值，最好在定义时为其设置一个默认值，而不是在构造器中赋值</p>
+<h2 id="13-2-自定义构造过程"><a href="#13-2-自定义构造过程" class="headerlink" title="13.2 自定义构造过程"></a>13.2 自定义构造过程</h2><p>形参名字及类型，实参标签</p>
+<p>构造过程中，常量属性可在任何时间初始化，单初始化之后不可更改</p>
+<h2 id="13-3-默认构造器"><a href="#13-3-默认构造器" class="headerlink" title="13.3 默认构造器"></a>13.3 默认构造器</h2><p>若所有属性都有默认值，且没有自定义构造器，swift会自动为其提供一个默认构造器</p>
+<p>若在<strong>结构体</strong>中没有自定义构造器，swift会自动生成一个<strong>逐一成员构造器</strong>，不管属性有没有默认值。</p>
+<h2 id="13-4-值类型的构造器代理"><a href="#13-4-值类型的构造器代理" class="headerlink" title="13.4 值类型的构造器代理"></a>13.4 值类型的构造器代理</h2><p>构造器代理：在构造器中调用其他构造器完成部分功能</p>
+<p>值类型的构造器内部，可用<code>self.init</code>调用<strong>该类型中的</strong>其他构造器</p>
+<p>若为值类型定义了自定义构造器，那么swift就不会为其生成默认构造器。若想同时使用自定义构造器和默认构造器，可将自定义构造器写在<a href="https://swiftgg.gitbook.io/swift/swift-jiao-cheng/20_extensions" target="_blank" rel="noopener"><code>extension</code></a>中</p>
+<h2 id="13-5-类的继承和构造过程"><a href="#13-5-类的继承和构造过程" class="headerlink" title="13.5 类的继承和构造过程"></a>13.5 类的继承和构造过程</h2><p>类中所有继承自父类的存储属性都要在构造过程中设置初始值</p>
+<h3 id="1）指定构造器（init）"><a href="#1）指定构造器（init）" class="headerlink" title="1）指定构造器（init）"></a>1）指定构造器（init）</h3><p>指定构造器初始化类中的所有属性，并调用父类的构造一直向上进行。</p>
+<p>一个类必须有至少一个指定构造器。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(parameters)&#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）便利构造器（convenience-init）"><a href="#2）便利构造器（convenience-init）" class="headerlink" title="2）便利构造器（convenience init）"></a>2）便利构造器（convenience init）</h3><p>在需要时才为一个类提供便利构造器。</p>
+<p>用来调用同一个类中的指定构造器，并为部分形参提供默认值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">convenience</span> <span class="keyword">init</span>(parameters)&#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3）构造器代理"><a href="#3）构造器代理" class="headerlink" title="3）构造器代理"></a>3）构造器代理</h3><p>构造器之间的代理调用应遵循以下规则：</p>
+<ol>
+<li>指定构造器必须调用父类的指定构造器</li>
+<li>便利构造器必须调用同类中的其他构造器</li>
+<li>便利构造器最后必须调用指定构造器</li>
+</ol>
+<p>即：</p>
+<ul>
+<li>指定构造器必须总是向上代理</li>
+<li>便利构造器必须总是横向代理</li>
+</ul>
+<h3 id="4）两段式构造过程"><a href="#4）两段式构造过程" class="headerlink" title="4）两段式构造过程"></a>4）两段式构造过程</h3><p>两段式构造过程：</p>
+<ol>
+<li>阶段一：向上（初始化构造器所在类的存储属性）<ul>
+<li>调用某个指定构造器或者便利构造器</li>
+<li>完成新实例的内存分配</li>
+<li>完成当前构造器所在类的所有存储属性的初始化</li>
+<li>切换到父类的构造器，对其完成所有存储属性的初始化</li>
+<li>向上一直传递到最顶部，在完成最顶部的所有存储属性的初始化后，认为该实例内存完全初始化</li>
+</ul>
+</li>
+<li>阶段二：向下（对构造器所在类的父类的属性重新赋值）<ul>
+<li>从继承链顶部向下，每个类的指定构造器都可进行进一步自定义实例（访问self、修改属性、调用实例方法）</li>
+<li>最终，继承链中的任意便利构造器都可进一步自定义实例</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>在调用父类构造器<code>super.init</code>之前，要初始化本类的存储属性（一阶段）</p>
+<p>在调用父类构造器<code>super.init</code>之后，可以修改任何存储属性值（二阶段）</p>
+</blockquote>
+<p>优点：</p>
+<ul>
+<li>可以防止属性值在初始化之前被访问</li>
+<li>可以防止属性被另一个构造器意外地赋予不同的值</li>
+</ul>
+<p>为保证两段式构造正确完成，编译器会执行四种<strong>安全检查</strong>：</p>
+<ol>
+<li>指定构造器必须保证它所在类的所有属性初始化完成之后，才将其他构造任务向上代理给父类</li>
+<li>指定构造器必须在为继承的属性设置新值之前，向上代理调用父类构造器</li>
+<li>便利构造器必须在为任意属性赋新值之前，代理调用其他构造器</li>
+<li>构造器在第一阶段完成之前，不能调用任何方法、属性，不能引用``self`作为一个值</li>
+</ol>
+<h3 id="5）构造器的继承和重写"><a href="#5）构造器的继承和重写" class="headerlink" title="5）构造器的继承和重写"></a>5）构造器的继承和重写</h3><ul>
+<li><p>swift中子类默认不继承父类的构造器</p>
+</li>
+<li><p>子类重写父类的指定构造器，要加上<code>override</code>。‘重写’便利构造器，不用加，因为无法访问父类的便利构造器，不算‘重写’</p>
+</li>
+<li><p>若在子类的二阶段没有自定义操作，且父类有无参构造函数<code>init()</code>，那么在子类中可省略<code>super.init()</code></p>
+</li>
+<li><p>子类在构造过程中，可以修改继承过来的变量属性，不能修改常量属性。</p>
+</li>
+</ul>
+<h3 id="6）构造器的自动继承"><a href="#6）构造器的自动继承" class="headerlink" title="6）构造器的自动继承"></a>6）构造器的自动继承</h3><ul>
+<li>若子类没有定义任何指定构造器，他会自动继承父类所有的指定构造器。</li>
+<li>若子类中提供了所有父类的指定构造器（包括上条规则获得的指定构造器），他会自动继承父类所有的<strong>便利构造器</strong>。</li>
+</ul>
+<h3 id="7）指定构造器和便利构造器实践"><a href="#7）指定构造器和便利构造器实践" class="headerlink" title="7）指定构造器和便利构造器实践"></a>7）指定构造器和便利构造器实践</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;    <span class="comment">//指定构造器</span></span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>() &#123;    <span class="comment">//便利构造器</span></span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: <span class="string">"[Unnamed]"</span>)    <span class="comment">//横向代理init(name: String)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>提供了父类的所有指定构造器，因此会自动继承父类的便利构造器init()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecipeIngredient</span>: <span class="title">Food</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>   <span class="comment">//引入新属性</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, quantity: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.quantity = quantity    <span class="comment">//先初始化本类的存储属性</span></span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)  <span class="comment">//再向上代理父类构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(name: <span class="type">String</span>)&#123;    <span class="comment">//重写父类的指定构造器</span></span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, quantity: <span class="number">1</span>)  <span class="comment">//横向代理init(name: String, quantity: Int)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//由于提供了父类的所有指定构造器，因此此处会自动继承父类的便利构造器init()</span></span><br><span class="line">    <span class="comment">//所以该类有三个构造器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>没有提供任何指定构造器，因此会自动继承RecipeIngredient的三个构造器</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingListItem</span>: <span class="title">RecipeIngredient</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> purchased = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> output = <span class="string">"\(quantity) * \(name)"</span></span><br><span class="line">        output += purchased ? <span class="string">" ✔"</span> : <span class="string">" ✘"</span></span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//由于该类没有提供任何指定构造器，因此此处会自动继承RecipeIngredient的三个构造器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="13-6-可失败构造器（init-）"><a href="#13-6-可失败构造器（init-）" class="headerlink" title="13.6 可失败构造器（init?）"></a>13.6 可失败构造器（init?）</h2><p>可失败构造器不能和非可失败构造器有相同的参数名和参数类型</p>
+<p>只要<code>return nil</code>来表面创建失败即可，不需要用return表明成功</p>
+<h3 id="1）枚举类型的可失败构造器"><a href="#1）枚举类型的可失败构造器" class="headerlink" title="1）枚举类型的可失败构造器"></a>1）枚举类型的可失败构造器</h3><p>可根据传入的参数，判断获取哪个枚举成员，匹配不到则返回nil</p>
+<h3 id="2）带原始值的枚举类型的可失败构造器"><a href="#2）带原始值的枚举类型的可失败构造器" class="headerlink" title="2）带原始值的枚举类型的可失败构造器"></a>2）带原始值的枚举类型的可失败构造器</h3><p>自带<code>init?(rawValue:)</code>构造器</p>
+<h3 id="3）构造失败的传递"><a href="#3）构造失败的传递" class="headerlink" title="3）构造失败的传递"></a>3）构造失败的传递</h3><ul>
+<li><p>可失败构造器，可横向代理或向上代理其他可失败构造器。</p>
+</li>
+<li><p>可失败构造器可以被代理到非可失败构造器中。</p>
+</li>
+<li><p>若在代理过程中构造失败，构造过程会立即终止。</p>
+</li>
+</ul>
+<h3 id="4）重写一个可失败构造器"><a href="#4）重写一个可失败构造器" class="headerlink" title="4）重写一个可失败构造器"></a>4）重写一个可失败构造器</h3><ul>
+<li><p>子类的非可失败构造器或者可失败构造器都可以重写父类的可失败构造器。</p>
+</li>
+<li><p>可失败构造器不能重写非可失败构造器。</p>
+</li>
+<li><p>子类的不可失败构造器可用<code>!</code>强制解包来调用父类的可失败构造器。</p>
+</li>
+</ul>
+<h3 id="5）init-可失败构造器（尽量不用）"><a href="#5）init-可失败构造器（尽量不用）" class="headerlink" title="5）init! 可失败构造器（尽量不用）"></a>5）init! 可失败构造器（尽量不用）</h3><p>可以得到一个隐式解包的可选类型对象，一旦<code>init!</code>构造失败，会触发断言</p>
+<p><code>init?</code>和<code>init!</code>可相互代理</p>
+<h2 id="13-7-必要构造器（required）"><a href="#13-7-必要构造器（required）" class="headerlink" title="13.7 必要构造器（required）"></a>13.7 必要构造器（required）</h2><p>在类的构造器前加上<code>required</code>表明所有的子类都要实现该构造器，且子类前也要加上<code>required</code>，不用加<code>override</code></p>
+<h2 id="13-8-通过闭包或函数设置属性的默认值"><a href="#13-8-通过闭包或函数设置属性的默认值" class="headerlink" title="13.8 通过闭包或函数设置属性的默认值"></a>13.8 通过闭包或函数设置属性的默认值</h2><p>通过闭包或者全局函数，可以为某个属性提供定制的默认值。</p>
+<p>但是闭包在执行时，实例的其他部分还未完成初始化，闭包无法访问实例的其他部分。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> someProperty: <span class="type">SomeType</span> = &#123;</span><br><span class="line">        <span class="keyword">var</span> returnValue: <span class="type">SomeType</span></span><br><span class="line">        <span class="comment">//值的处理</span></span><br><span class="line">        <span class="keyword">return</span> returnValue</span><br><span class="line">    &#125;()	<span class="comment">//此处的括号，表示闭包立即执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="14、析构过程（deinit）"><a href="#14、析构过程（deinit）" class="headerlink" title="14、析构过程（deinit）"></a>14、析构过程（deinit）</h1><blockquote>
+<p>析构器只能用于类，用<code>deinit</code>来标识，不带任何参数和括号</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">deinit</span> &#123;</span><br><span class="line">		<span class="comment">//清理资源</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用来清理自己定义的资源</p>
+<p>析构器可以访问实例的所有属性，并对其进行修改</p>
+<h1 id="15、可选链"><a href="#15、可选链" class="headerlink" title="15、可选链"></a>15、可选链</h1><blockquote>
+<p>是一种可以在可选值上调用方法、属性、下标的方法</p>
+<p>多个调用可以连接在一起形成调用链，链中一个节点为nil，就会返回nil</p>
+</blockquote>
+<h2 id="15-1-使用可选链式调用代替强制展开"><a href="#15-1-使用可选链式调用代替强制展开" class="headerlink" title="15.1 使用可选链式调用代替强制展开"></a>15.1 使用可选链式调用代替强制展开</h2><p>在可选值后加上<code>?</code>可以定义一个可选链。</p>
+<p>可用来代替<code>!</code>的强制展开</p>
+<h2 id="15-2-通过可选链式调用来调用方法、属性、下标"><a href="#15-2-通过可选链式调用来调用方法、属性、下标" class="headerlink" title="15.2 通过可选链式调用来调用方法、属性、下标"></a>15.2 通过可选链式调用来调用方法、属性、下标</h2><p>通过可选链调用方法时，返回的是个可选值，void方法会返回void？，通过判断方法返回是否时nil即可判断方法是否被调用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> john.residence?.printNumberOfRooms() != <span class="literal">nil</span> &#123;&#125; <span class="keyword">else</span> &#123;&#125;	<span class="comment">//调用方法</span></span><br><span class="line"><span class="keyword">if</span> (john.residence?.address = someAddress) != <span class="literal">nil</span> &#123;&#125; <span class="keyword">else</span> &#123;&#125;	<span class="comment">//调用属性</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> firstRoomName = john.residence?[<span class="number">0</span>].name &#123;&#125; <span class="keyword">else</span> &#123;&#125;	<span class="comment">//调用下标,要将？放在方括号的前面</span></span><br><span class="line">dic[<span class="string">"Dave"</span>]?[<span class="number">0</span>] = <span class="number">91</span>	<span class="comment">//访问可选类型的下标，注意？的位置</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> beginsWithThe = address?.buildingIdentifier()?.hasPrefix(<span class="string">"The"</span>) &#123;&#125;	<span class="comment">//在方法的可选返回值上进行可选链式调用</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="16、错误处理"><a href="#16、错误处理" class="headerlink" title="16、错误处理"></a>16、错误处理</h1><p><a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift" target="_blank" rel="noopener">用 Swift 解决 Cocoa 错误</a></p>
+<h2 id="16-1-表示与抛出错误（Error和throw）"><a href="#16-1-表示与抛出错误（Error和throw）" class="headerlink" title="16.1 表示与抛出错误（Error和throw）"></a>16.1 表示与抛出错误（Error和throw）</h2><ul>
+<li><p>错误要遵循<code>Error</code>协议</p>
+</li>
+<li><p><strong>枚举类型</strong>尤其适合构建一组相关的错误状态，关联值还能提供额外的信息。</p>
+</li>
+<li><p>用<code>throw</code>抛出一个错误。</p>
+</li>
+</ul>
+<h2 id="16-2-处理错误"><a href="#16-2-处理错误" class="headerlink" title="16.2 处理错误"></a>16.2 处理错误</h2><h3 id="1）用-throwing-函数传递错误"><a href="#1）用-throwing-函数传递错误" class="headerlink" title="1）用 throwing 函数传递错误"></a>1）用 throwing 函数传递错误</h3><ul>
+<li>在函数的括号后面加上<code>throws</code>表示该函数可以抛出错误，该函数被称为throwing函数</li>
+<li>throwing函数可以传递错误，非throwing函数只能在函数内部处理错误，不能传递</li>
+<li>调用throwing函数的方法，要么使用<code>do-catch、try?、try!</code>来处理错误，要么将错误继续传递下去</li>
+</ul>
+<h3 id="2）用-Do-Catch-处理错误"><a href="#2）用-Do-Catch-处理错误" class="headerlink" title="2）用 Do-Catch 处理错误"></a>2）用 Do-Catch 处理错误</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> expression</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">catch</span> pattern <span class="number">1</span> &#123;	<span class="comment">//若匹配成功，则将错误绑定到常量error上</span></span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">catch</span> pattern <span class="number">2</span> <span class="keyword">where</span> condition &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;	<span class="comment">//可以匹配任何错误</span></span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3）将错误转换成可选值（try？）"><a href="#3）将错误转换成可选值（try？）" class="headerlink" title="3）将错误转换成可选值（try？）"></a>3）将错误转换成可选值（try？）</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">try</span>? someThrowingFunction()	<span class="comment">//若someThrowingFunction()抛出错误，则x为nil</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4）禁用错误传递（try-）"><a href="#4）禁用错误传递（try-）" class="headerlink" title="4）禁用错误传递（try!）"></a>4）禁用错误传递（try!）</h3><p>若出现错误，会得到运行时错误</p>
+<h2 id="16-3-指定清理操作（defer）"><a href="#16-3-指定清理操作（defer）" class="headerlink" title="16.3 指定清理操作（defer）"></a>16.3 指定清理操作（defer）</h2><ul>
+<li><p><code>defer</code>语句能保证语句中到代码在当前代码块的最后执行，不管是抛出错误、return、break</p>
+</li>
+<li><p>语句中不能有任何控制转移语句</p>
+</li>
+<li><p>语句中的执行顺序是从后往前</p>
+</li>
+</ul>
+<h1 id="17、类型转换（is和as）"><a href="#17、类型转换（is和as）" class="headerlink" title="17、类型转换（is和as）"></a>17、类型转换（is和as）</h1><h2 id="17-1-检查类型-is"><a href="#17-1-检查类型-is" class="headerlink" title="17.1 检查类型(is)"></a>17.1 检查类型(is)</h2><p>用<code>is</code>来检查一个实例是否是某个特定的子类型：<code>if item is Movie {}</code></p>
+<h2 id="17-2-向下转型-as-和as"><a href="#17-2-向下转型-as-和as" class="headerlink" title="17.2 向下转型(as?和as!)"></a>17.2 向下转型(as?和as!)</h2><p><code>if let movie = item as? Movie {}</code></p>
+<p>转换并没有改变实例，只是把它当成被转换成的类型来使用</p>
+<h2 id="17-3-不确定类型-Any和AnyObject"><a href="#17-3-不确定类型-Any和AnyObject" class="headerlink" title="17.3 不确定类型(Any和AnyObject)"></a>17.3 不确定类型(Any和AnyObject)</h2><p><code>Any</code>表示任何类型</p>
+<p><code>AnyObject</code>表示任何实例</p>
+<h1 id="18、嵌套类型"><a href="#18、嵌套类型" class="headerlink" title="18、嵌套类型"></a>18、嵌套类型</h1><p>枚举、类、结构体均可嵌套</p>
+<h1 id="19、扩展-extension"><a href="#19、扩展-extension" class="headerlink" title="19、扩展(extension)"></a>19、扩展(extension)</h1><p>给现有的类、结构体、枚举、协议添加新功能，但是不能重写已经存在的功能。</p>
+<p>扩展的功能：</p>
+<ul>
+<li>添加计算型的实例属性和类属性</li>
+<li>添加实例方法和类方法</li>
+<li>添加新的构造器</li>
+<li>添加新的下标</li>
+<li>添加新的嵌套类型</li>
+<li>使已经存在的类型遵循一个协议</li>
+</ul>
+<h2 id="19-1-扩展的语法"><a href="#19-1-扩展的语法" class="headerlink" title="19.1 扩展的语法"></a>19.1 扩展的语法</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">SomeType</span> </span>&#123;&#125;	<span class="comment">//给SomeType添加新功能</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">SomeType</span>: <span class="title">SomeProtocol</span>, <span class="title">AnotherProtocol</span> </span>&#123;&#125;	<span class="comment">//给someType添加协议</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="19-2-计算型属性"><a href="#19-2-计算型属性" class="headerlink" title="19.2 计算型属性"></a>19.2 计算型属性</h2><p>只能添加计算属性，不能添加存储属性和观察器</p>
+<h2 id="19-3-构造器"><a href="#19-3-构造器" class="headerlink" title="19.3 构造器"></a>19.3 构造器</h2><ul>
+<li>可以给类添加便利构造器，不能添加指定构造器和析构器。</li>
+<li>若一个值类型的所有存储属性都有默认值，且没有自定义构造器，那么在扩展中可以使用默认构造器和成员添加新的构造器。</li>
+<li>若值类型已经有了自定义的构造器，则无法为其添加新的构造器。</li>
+<li>若在扩展中给另一个模块中定义的结构体添加构造器，那么在调用那个结构体的构造器之前不能访问self。</li>
+</ul>
+<h2 id="19-4-方法"><a href="#19-4-方法" class="headerlink" title="19.4 方法"></a>19.4 方法</h2><p>通过扩展添加的方法也可以改变实例本身，若是结构体和枚举类型，要在方法前加上<code>mutating</code></p>
+<h1 id="20、协议-protocol"><a href="#20、协议-protocol" class="headerlink" title="20、协议(protocol)"></a>20、协议(protocol)</h1><h2 id="20-1-协议语法"><a href="#20-1-协议语法" class="headerlink" title="20.1 协议语法"></a>20.1 协议语法</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SomeProtocol</span> </span>&#123;	<span class="comment">//定义协议</span></span><br><span class="line">  <span class="comment">//属性要求：不能指定是存储属性还是计算属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="type">SomeProperty</span>: <span class="type">SomeType</span>	<span class="comment">//实例属性</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">SomeProoerty</span>: <span class="type">SomeType</span>	<span class="comment">//类型属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="type">SomeProperty</span>: <span class="type">SomeType</span> &#123; <span class="keyword">get</span> &#125;	<span class="comment">//可读的，也可以实现成可读可写的</span></span><br><span class="line">  <span class="keyword">var</span> <span class="type">SomeProperty</span>: <span class="type">SomeType</span> &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;	<span class="comment">//可读可写，不能是常量或只读的计算属性</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//方法要求：没有大括号、方法体、默认参数</span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span>	<span class="comment">//实例方法</span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span> -&gt; <span class="type">SomeType</span>	<span class="comment">//带返回类型的方法</span></span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span>	<span class="comment">//类型方法</span></span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span>	<span class="comment">//异变方法，会改变所属实例的属性（类类型不用写，结构体和实例一定要写）</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 构造器</span></span><br><span class="line">  <span class="keyword">required</span> <span class="keyword">init</span>(parameter: <span class="type">SomeType</span>)	<span class="comment">//required一定要有，标识子类也一定要实现该构造器，但是final类不需要</span></span><br><span class="line">  <span class="keyword">required</span> <span class="keyword">init</span>?(parameter: <span class="type">SomeType</span>)	<span class="comment">//可失败构造器</span></span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>: <span class="title">SuperClass</span>, <span class="title">FirstProtocol</span> </span>&#123;&#125;	<span class="comment">//遵循协议，协议明要放在父类名后面</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="20-2-协议作为类型"><a href="#20-2-协议作为类型" class="headerlink" title="20.2 协议作为类型"></a>20.2 协议作为类型</h2><p>协议可以作为类型使用，若某变量被声明为某个协议，则该变量可接收任何遵循该协议的类型。</p>
+<ul>
+<li>作为参数类型、返回类型</li>
+<li>作为常量、变量、属性的类型</li>
+<li>作为容器中的元素类型（表示该容器的元素可以时遵循该协议的任何类型）</li>
+</ul>
+<h2 id="20-3-委托"><a href="#20-3-委托" class="headerlink" title="20.3 委托"></a>20.3 委托</h2><blockquote>
+<p> 是一种设计模式，将一些需要自己负责的功能委托给其他类型的实例</p>
+</blockquote>
+<p>实现：将要被委托的功能定义为协议。</p>
+<h2 id="20-4-协议应用于类型的扩展中"><a href="#20-4-协议应用于类型的扩展中" class="headerlink" title="20.4 协议应用于类型的扩展中"></a>20.4 协议应用于类型的扩展中</h2><h3 id="1）让一个已存在类型遵循某协议"><a href="#1）让一个已存在类型遵循某协议" class="headerlink" title="1）让一个已存在类型遵循某协议"></a>1）让一个已存在类型遵循某协议</h3><p>若一个类已经满足了某协议的要求，但是并没有遵循该协议，可以通过增加一个<strong>空的扩展</strong>，让该类遵循该协议。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">TextRExpresentable</span> </span>&#123;...&#125;	<span class="comment">//定义新的协议</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Hamster</span> </span>&#123;...&#125;	<span class="comment">//该结构器已满足TextRExpresentable协议</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Hamster</span>: <span class="title">TextRExpresentable</span> </span>&#123;&#125;	<span class="comment">//令Hamster遵循TextRExpresentable协议</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2）为一个已存在类型添加新的协议"><a href="#2）为一个已存在类型添加新的协议" class="headerlink" title="2）为一个已存在类型添加新的协议"></a>2）为一个已存在类型添加新的协议</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Dice</span>: <span class="title">TextRExpresentable</span> </span>&#123;...&#125;	<span class="comment">//为Dice增加TextRExpresentable</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="20-5-协议的继承"><a href="#20-5-协议的继承" class="headerlink" title="20.5 协议的继承"></a>20.5 协议的继承</h2><blockquote>
+<p>通过协议的继承，可以增加新的功能</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">PrettyTextRepresentable</span>: <span class="title">TextRepresentable</span> </span>&#123;...&#125;	<span class="comment">//定义新的协议</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Dice</span>: <span class="title">PrettyTextRepresentable</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="20-6-有条件地遵循协议-where"><a href="#20-6-有条件地遵循协议-where" class="headerlink" title="20.6 有条件地遵循协议(where)"></a>20.6 有条件地遵循协议(where)</h2><blockquote>
+<p>泛型协议可能在某些类型的参数下才遵循一个协议。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在array的元素遵循SomeProtocol时，Array才遵循SomeProtocol协议</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Array</span>: <span class="title">SomeProtocol</span> <span class="title">where</span> <span class="title">Element</span>: <span class="title">SomeProtocol</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="20-7-类专属的协议-AnyObject"><a href="#20-7-类专属的协议-AnyObject" class="headerlink" title="20.7 类专属的协议(:AnyObject)"></a>20.7 类专属的协议(:AnyObject)</h2><p>当某协议要求遵循他的类型必须时引用类型时，可以添加<code>AnyObject</code>到它的继承列表，即可限制该协议只能被类类型遵循.</p>
+<p>在某协议继承<code>AnyObject</code>之后，即可用遵循他的类型来定义一个弱引用，以此解决<strong>循环引用</strong>问题。</p>
+<h2 id="20-8-协议合成-amp"><a href="#20-8-协议合成-amp" class="headerlink" title="20.8 协议合成(&amp;)"></a>20.8 协议合成(&amp;)</h2><p>将多个协议组合到一个要求中。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//任何遵循来Named和Aged协议的类型都可作为参数传入wishHappyBirthday函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wishHappyBirthday</span><span class="params">(to celebrator: Named &amp; Aged)</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="20-9-检查协议一致性-is、as"><a href="#20-9-检查协议一致性-is、as" class="headerlink" title="20.9 检查协议一致性(is、as)"></a>20.9 检查协议一致性(is、as)</h2><p><code>is</code>：检查某个实例是否遵循某协议</p>
+<p><code>as?</code>：将一个实例转为某协议类型</p>
+<h2 id="20-10-协议的可选方法和可选属性-optional"><a href="#20-10-协议的可选方法和可选属性-optional" class="headerlink" title="20.10 协议的可选方法和可选属性(optional)"></a>20.10 协议的可选方法和可选属性(optional)</h2><p><code>optional</code>标识的要求可以不被实现</p>
+<p>用于和OC打交道的代码，协议和要求都要加上<code>@objc</code></p>
+<p><code>@objc</code>的协议只能被其他的<code>@objc</code>协议或者继承自OC类的类遵循</p>
+<p>可选要求的类型会自动变为可选的（整个函数类型是可选的，标识该函数可能不被实现）。</p>
+<h2 id="20-11-协议扩展"><a href="#20-11-协议扩展" class="headerlink" title="20.11 协议扩展"></a>20.11 协议扩展</h2><blockquote>
+<p>通过扩展协议，来为遵循协议的类型提供新功能，无需在每个遵循该协议的类型中都实现该功能。</p>
+<p>但是不能声明该协议继承另一个协议。</p>
+</blockquote>
+<h3 id="1）提供默认实现"><a href="#1）提供默认实现" class="headerlink" title="1）提供默认实现"></a>1）提供默认实现</h3><p>通过协议扩展可为一个协议提供默认实现。</p>
+<p>若遵循该协议的类型定义了自己的实现，那么将会覆盖默认实现。</p>
+<h3 id="2）为协议扩展添加限制条件"><a href="#2）为协议扩展添加限制条件" class="headerlink" title="2）为协议扩展添加限制条件"></a>2）为协议扩展添加限制条件</h3><p>扩展协议时可以增加限制，使得满足限制条件的类型才能使用默认实现</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只要集合中的元素遵循Equatable协议，集合才能使用此扩展</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Collection</span> <span class="title">where</span> <span class="title">Element</span>: <span class="title">Equatable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="21、泛型"><a href="#21、泛型" class="headerlink" title="21、泛型"></a>21、泛型</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoValues</span>&lt;T&gt;<span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> T, <span class="number">_</span> b: <span class="keyword">inout</span> T)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>T是<strong>类型参数</strong>，类型参数的命名也是首字母大写的驼峰命名法。</p>
+<h2 id="21-1-泛型扩展"><a href="#21-1-泛型扩展" class="headerlink" title="21.1 泛型扩展"></a>21.1 泛型扩展</h2><p>对泛型进行扩展时，不需要再次提供类型参数，可直接使用原始类型的类型参数</p>
+<h2 id="21-2-类型约束"><a href="#21-2-类型约束" class="headerlink" title="21.2 类型约束"></a>21.2 类型约束</h2><blockquote>
+<p>限制指定的类型必须要继承某些类，或者遵循某些协议。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// T要是SomeClass的子类，U要是遵循SomeProtocol的类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span>&lt;T: SomeClass, U: SomeProtocol&gt;<span class="params">(someT: T, someU: U)</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如：<code>Dictionary</code>的key必须是遵循<code>Hashable</code>协议的</p>
+<h2 id="21-3-关联类型（associatedtype）–只有协议有关联类型"><a href="#21-3-关联类型（associatedtype）–只有协议有关联类型" class="headerlink" title="21.3 关联类型（associatedtype）–只有协议有关联类型"></a>21.3 关联类型（associatedtype）–只有协议有关联类型</h2><h3 id="1）关联类型实践"><a href="#1）关联类型实践" class="headerlink" title="1）关联类型实践"></a>1）关联类型实践</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Container</span> </span>&#123;</span><br><span class="line">  	<span class="comment">//关联类型为Item</span></span><br><span class="line">  	<span class="comment">//在使用的时候不需要指定其类型，swift可以根据append的参数和下标的返回值类型来推断Item的具体类型</span></span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">Item</span>	</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">append</span><span class="params">(<span class="number">_</span> item: Item)</span></span></span><br><span class="line">    <span class="keyword">subscript</span>(i: <span class="type">Int</span>) -&gt; <span class="type">Item</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）给关联类型添加约束"><a href="#2）给关联类型添加约束" class="headerlink" title="2）给关联类型添加约束"></a>2）给关联类型添加约束</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Container</span> </span>&#123;</span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">Item</span>: <span class="type">Equatable</span>	<span class="comment">//要遵循Container协议，Item类型要遵循Equatable协议</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3）在关联类型约束里使用协议"><a href="#3）在关联类型约束里使用协议" class="headerlink" title="3）在关联类型约束里使用协议"></a>3）在关联类型约束里使用协议</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SuffixableContainer</span>: <span class="title">Container</span> </span>&#123;</span><br><span class="line">  <span class="comment">//关联类型Suffix必须遵循SuffixableContainer协议</span></span><br><span class="line">  <span class="comment">//且Suffix中的元素类型也要和SuffixableContainer中的元素类型相同</span></span><br><span class="line">  <span class="keyword">associatedtype</span> <span class="type">Suffix</span>: <span class="type">SuffixableContainer</span> <span class="keyword">where</span> <span class="type">Suffix</span>.<span class="type">Item</span> = <span class="type">Item</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="21-4-泛型-Where-语句"><a href="#21-4-泛型-Where-语句" class="headerlink" title="21.4 泛型 Where 语句"></a>21.4 泛型 Where 语句</h2><p>可以约束多个类型参数之间的关系。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">allItemsMatch</span>&lt;C1: Container, C2: Container&gt;</span></span><br><span class="line"><span class="function">    <span class="params">(<span class="number">_</span> someContainer: C1, <span class="number">_</span> anotherContainer: C2)</span></span> -&gt; <span class="type">Bool</span></span><br><span class="line">    <span class="keyword">where</span> <span class="type">C1</span>.<span class="type">Item</span> == <span class="type">C2</span>.<span class="type">Item</span>, <span class="type">C1</span>.<span class="type">Item</span>: <span class="type">Equatable</span> &#123;&#125;	<span class="comment">//在函数体或者类型的大括号前添加where</span></span><br></pre></td></tr></table></figure>
+
+<p>泛型where语句可加在：</p>
+<ul>
+<li><strong>泛型函数</strong>的大括号前</li>
+<li><strong>扩展</strong>的大括号前</li>
+<li><strong>关联类型</strong>之后</li>
+<li><strong>继承的协议名</strong>之后</li>
+</ul>
+<h2 id="21-5-泛型下标"><a href="#21-5-泛型下标" class="headerlink" title="21.5 泛型下标"></a>21.5 泛型下标</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Container</span> </span>&#123;</span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">Item</span></span><br><span class="line">    <span class="keyword">subscript</span>(i: <span class="type">Int</span>) -&gt; <span class="type">Item</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Container</span> </span>&#123;</span><br><span class="line">    <span class="keyword">subscript</span>&lt;<span class="type">Indices</span>: <span class="type">Sequence</span>&gt;(<span class="built_in">indices</span>: <span class="type">Indices</span>) -&gt; [<span class="type">Item</span>]</span><br><span class="line">    	<span class="keyword">where</span> <span class="type">Indices</span>.<span class="type">Iterator</span>.<span class="type">Element</span> == <span class="type">Int</span>&#123;	<span class="comment">//泛型下标要和原始Container中的下标类型相同</span></span><br><span class="line">      	...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="22、不透明类型（some）"><a href="#22、不透明类型（some）" class="headerlink" title="22、不透明类型（some）"></a>22、不透明类型（some）</h1><p>泛型函数允许<strong>调用方</strong>在调用泛型方法时，为形参和返回值指定一个<strong>与实现无关</strong>的类型。</p>
+<p>返回不透明类型的函数允许函数在<strong>实现</strong>时，选择<strong>与调用方无关</strong>的类型。</p>
+<h2 id="22-1-不透明类型解决的问题"><a href="#22-1-不透明类型解决的问题" class="headerlink" title="22.1 不透明类型解决的问题"></a>22.1 不透明类型解决的问题</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">draw</span><span class="params">()</span></span> -&gt; <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Triangle</span>: <span class="title">Shape</span> </span>&#123;    <span class="comment">//三角形</span></span><br><span class="line">    <span class="keyword">var</span> size: <span class="type">Int</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">draw</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> result = [<span class="type">String</span>]()</span><br><span class="line">        <span class="keyword">for</span> length <span class="keyword">in</span> <span class="number">1</span>...size &#123;</span><br><span class="line">            result.append(<span class="type">String</span>(repeating: <span class="string">"*"</span>, <span class="built_in">count</span>: length))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result.joined(separator: <span class="string">"\n"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FlippedShape</span>&lt;<span class="title">T</span>: <span class="title">Shape</span>&gt;: <span class="title">Shape</span> </span>&#123;  <span class="comment">//镜像处理</span></span><br><span class="line">    <span class="keyword">var</span> shape: <span class="type">T</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">draw</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> lines = shape.draw().<span class="built_in">split</span>(separator: <span class="string">"\n"</span>)</span><br><span class="line">        <span class="keyword">return</span> lines.reversed().joined(separator: <span class="string">"\n"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">JoinedShape</span>&lt;<span class="title">T</span>: <span class="title">Shape</span>, <span class="title">U</span>: <span class="title">Shape</span>&gt;: <span class="title">Shape</span> </span>&#123; <span class="comment">//连接处理</span></span><br><span class="line">    <span class="keyword">var</span> top: <span class="type">T</span></span><br><span class="line">    <span class="keyword">var</span> bottom: <span class="type">U</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">draw</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> top.draw() + <span class="string">"\n"</span> + bottom.draw()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> smallTriangle = <span class="type">Triangle</span>(size: <span class="number">3</span>)</span><br><span class="line"><span class="keyword">let</span> flippedTriangle = <span class="type">FlippedShape</span>(shape: smallTriangle)</span><br><span class="line"><span class="keyword">let</span> joinedTriangles = <span class="type">JoinedShape</span>(top: smallTriangle, bottom: flippedTriangle)</span><br></pre></td></tr></table></figure>
+
+<p>暴露出了返回的具体类型是<code>JoinedShape&lt;Triangle, FlippedShape&lt;Triangle&gt;&gt;</code>，调用方就要声明一个同样完整的类型来接收</p>
+<p>使用不透明类型就可以隐藏函数返回的具体类型，只要返回<code>shape</code>即可</p>
+<h2 id="22-2-返回不透明类型"><a href="#22-2-返回不透明类型" class="headerlink" title="22.2 返回不透明类型"></a>22.2 返回不透明类型</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Square</span>: <span class="title">Shape</span> </span>&#123;	<span class="comment">//矩形</span></span><br><span class="line">    <span class="keyword">var</span> size: <span class="type">Int</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">draw</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> line = <span class="type">String</span>(repeating: <span class="string">"*"</span>, <span class="built_in">count</span>: size)</span><br><span class="line">        <span class="keyword">let</span> result = <span class="type">Array</span>&lt;<span class="type">String</span>&gt;(repeating: line, <span class="built_in">count</span>: size)</span><br><span class="line">        <span class="keyword">return</span> result.joined(separator: <span class="string">"\n"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//声明该函数返回的类型遵循Shape协议</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeTrapezoid</span><span class="params">()</span></span> -&gt; some <span class="type">Shape</span> &#123;	<span class="comment">//生成梯形</span></span><br><span class="line">    <span class="keyword">let</span> top = <span class="type">Triangle</span>(size: <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">let</span> middle = <span class="type">Square</span>(size: <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">let</span> bottom = <span class="type">FlippedShape</span>(shape: top)</span><br><span class="line">    <span class="keyword">let</span> trapezoid = <span class="type">JoinedShape</span>(</span><br><span class="line">        top: top,</span><br><span class="line">        bottom: <span class="type">JoinedShape</span>(top: middle, bottom: bottom)</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> trapezoid</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不透明类型与泛型的结合</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">flip</span>&lt;T: Shape&gt;<span class="params">(<span class="number">_</span> shape: T)</span></span> -&gt; some <span class="type">Shape</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">FlippedShape</span>(shape: shape)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">join</span>&lt;T: Shape, U: Shape&gt;<span class="params">(<span class="number">_</span> top: T, <span class="number">_</span> bottom: U)</span></span> -&gt; some <span class="type">Shape</span> &#123;</span><br><span class="line">    <span class="type">JoinedShape</span>(top: top, bottom: bottom)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若函数中多个地方都返回不透明类型，要保证所有的返回值都是同一类型。</p>
+<p>在返回的不透明类型中使用泛型是可以的。</p>
+<h2 id="22-3-不透明类型和协议类型的区别"><a href="#22-3-不透明类型和协议类型的区别" class="headerlink" title="22.3 不透明类型和协议类型的区别"></a>22.3 不透明类型和协议类型的区别</h2><p>区别在于是否保证类型一致性：</p>
+<p>一个不透明类型只能对应一个类型，而协议可以对应多个类型。</p>
+<p>协议更灵活，底层可以存储更多样的值。但是返回类型的不确定性，也意味着很多依赖返回类型信息的操作也无法执行。比如下述函数的返回值无法用==来比较，因为==依赖于具体的类型信息，协议类型无法提供。（使用关联类型的协议不能作为返回类型）</p>
+<p>不透明类型则保留了底层类型的唯一性。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只要是遵循Shape协议的类型都可以作为返回类型</span></span><br><span class="line"><span class="comment">//而上文的flip返回的始终是唯一类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">protoFlip</span>&lt;T: Shape&gt;<span class="params">(<span class="number">_</span> shape: T)</span></span> -&gt; <span class="type">Shape</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">FlippedShape</span>(shape: shape)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeOpaqueContainer</span>&lt;T, C: Container&gt;<span class="params">(item: T)</span></span> -&gt; <span class="type">C</span> &#123;	<span class="comment">//错误，无法推断C的类型</span></span><br><span class="line">  <span class="keyword">return</span> [item]</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeOpaqueContainer</span>&lt;T&gt;<span class="params">(item: T)</span></span> -&gt; some <span class="type">Container</span> &#123;	<span class="comment">//正确</span></span><br><span class="line">  <span class="keyword">return</span> [item]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="23、自动引用计数"><a href="#23、自动引用计数" class="headerlink" title="23、自动引用计数"></a>23、自动引用计数</h1><blockquote>
+<p>仅适用于类的实例</p>
+</blockquote>
+<h2 id="23-1-自动引用计数的工作机制"><a href="#23-1-自动引用计数的工作机制" class="headerlink" title="23.1 自动引用计数的工作机制"></a>23.1 自动引用计数的工作机制</h2><p>当创建一个实例时，ARC会为其分配一块内存，存储他的类型信息、存储属性的值。</p>
+<p>当把它赋值给其他变量时，会创建它的强引用。当将该变量赋值nil时，会断开强引用。</p>
+<p>若一个实例，没有强引用指向它，他就会立即被销毁。</p>
+<h2 id="23-2-类实例之间的循环强引用"><a href="#23-2-类实例之间的循环强引用" class="headerlink" title="23.2 类实例之间的循环强引用"></a>23.2 类实例之间的循环强引用</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name = name &#125;</span><br><span class="line">    <span class="keyword">var</span> apartment: <span class="type">Apartment?</span></span><br><span class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"\(name) is being deinitialized"</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apartment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> unit: <span class="type">String</span></span><br><span class="line">    <span class="keyword">init</span>(unit: <span class="type">String</span>) &#123; <span class="keyword">self</span>.unit = unit &#125;</span><br><span class="line">    <span class="keyword">var</span> tenant: <span class="type">Person?</span></span><br><span class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"Apartment \(unit) is being deinitialized"</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john: <span class="type">Person?</span></span><br><span class="line"><span class="keyword">var</span> unit4A: <span class="type">Apartment?</span></span><br><span class="line">john = <span class="type">Person</span>(name: <span class="string">"John ddd"</span>)</span><br><span class="line">unit4A = <span class="type">Apartment</span>(unit: <span class="string">"4A"</span>)</span><br><span class="line">john!.apartment = unit4A	<span class="comment">//产生循环引用</span></span><br><span class="line">unit4A!.tenant = john</span><br><span class="line">john = <span class="literal">nil</span></span><br><span class="line">unit4A = <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="23-3-解决实例之间的循环强引用"><a href="#23-3-解决实例之间的循环强引用" class="headerlink" title="23.3 解决实例之间的循环强引用"></a>23.3 解决实例之间的循环强引用</h2><h3 id="【-】项目中尽量使用weak而不是unowned"><a href="#【-】项目中尽量使用weak而不是unowned" class="headerlink" title="【*】项目中尽量使用weak而不是unowned"></a>【*】项目中尽量使用weak而不是unowned</h3><p>当其他的实例有更短的生命周期时，使用弱引用。当其他实例有相同的或者更长生命周期时，使用无主引用。</p>
+<h3 id="1）弱引用（weak）"><a href="#1）弱引用（weak）" class="headerlink" title="1）弱引用（weak）"></a>1）弱引用（weak）</h3><blockquote>
+<p>适用于两个属性都允许为nil</p>
+</blockquote>
+<p>如：“人-公寓”，够可以为nil，人存在的周期更短，所以设置指向人的属性使用weak。</p>
+<p>弱引用变量要声明为可选类型。</p>
+<h3 id="2）无主引用（unowned）"><a href="#2）无主引用（unowned）" class="headerlink" title="2）无主引用（unowned）"></a>2）无主引用（unowned）</h3><blockquote>
+<p>适用于有一个属性不允许为nil</p>
+<p>要确保无主引用始终指向一个未销毁的实例</p>
+</blockquote>
+<p>如：“人-银行卡”，银行卡对应的人不能为nil，人存在的周期更长，所以指向人的属性使用unowned</p>
+<p>无主引用通常都希望拥有值，因此不会将其设为可选类型。</p>
+<h3 id="3）无主引用和隐式解包可选值属性"><a href="#3）无主引用和隐式解包可选值属性" class="headerlink" title="3）无主引用和隐式解包可选值属性"></a>3）无主引用和隐式解包可选值属性</h3><blockquote>
+<p>适用于两个属性都必须有值，这时要一个类使用无主属性，而另外一个类使用<a href="https://swiftgg.gitbook.io/swift/swift-jiao-cheng/01_the_basics#implicityly-unwrapped-optionals" target="_blank" rel="noopener">隐式解包可选值属性</a></p>
+</blockquote>
+<p>如：“首都-国家”，</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Country</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> capitalCity: <span class="type">City!</span>  <span class="comment">//隐式解包可选值属性，默认值为nil，但是不需要展开就能访问</span></span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, capitalName: <span class="type">String</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="comment">//name赋值完成之后，capitalCity默认为nil，第一阶段构造完成</span></span><br><span class="line">        <span class="comment">//第二阶段对capitalCity重新赋值，此时可使用self</span></span><br><span class="line">        <span class="keyword">self</span>.capitalCity = <span class="type">City</span>(name: capitalName,country: <span class="keyword">self</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">City</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">unowned</span> <span class="keyword">let</span> country: <span class="type">Country</span>    <span class="comment">//无主属性</span></span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, country: <span class="type">Country</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.country = country</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="23-4-闭包的循环强引用"><a href="#23-4-闭包的循环强引用" class="headerlink" title="23.4 闭包的循环强引用"></a>23.4 闭包的循环强引用</h2><p>将闭包赋值给某个类实例的属性时，若闭包中使用了该类实例的属性或方法，也会发生循环引用。</p>
+<h3 id="1）解决闭包的循环强引用（定义捕获列表）"><a href="#1）解决闭包的循环强引用（定义捕获列表）" class="headerlink" title="1）解决闭包的循环强引用（定义捕获列表）"></a>1）解决闭包的循环强引用（定义捕获列表）</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> someClosure = &#123;</span><br><span class="line">    [<span class="keyword">unowned</span> <span class="keyword">self</span>, <span class="keyword">weak</span> delegate = <span class="keyword">self</span>.delegate]   <span class="comment">//捕获列表</span></span><br><span class="line">    (index: <span class="type">Int</span>, stringToProcess: <span class="type">String</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span>  <span class="comment">//参数列表及返回类型</span></span><br><span class="line">    <span class="comment">// 这里是闭包的函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）弱引用和无主引用"><a href="#2）弱引用和无主引用" class="headerlink" title="2）弱引用和无主引用"></a>2）弱引用和无主引用</h3><p>当闭包和捕获的实例互相引用且同时销毁时，将捕获定义为无主引用。</p>
+<p>被捕获的引用可能是nil时，将捕获定义为弱引用。</p>
+<h1 id="24、内存安全"><a href="#24、内存安全" class="headerlink" title="24、内存安全"></a>24、内存安全</h1><h2 id="24-1-理解内存访问冲突"><a href="#24-1-理解内存访问冲突" class="headerlink" title="24.1 理解内存访问冲突"></a>24.1 理解内存访问冲突</h2><p>内存冲突主要出现在使用in-out参数的函数或者结构体的mutating方法中。</p>
+<h2 id="24-2-In-Out-参数的访问冲突"><a href="#24-2-In-Out-参数的访问冲突" class="headerlink" title="24.2 In-Out 参数的访问冲突"></a>24.2 In-Out 参数的访问冲突</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//情况1.函数中访问的全局变量作为参数传入函数</span></span><br><span class="line"><span class="keyword">var</span> stepSize = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">(<span class="number">_</span> number: <span class="keyword">inout</span> Int)</span></span> &#123;</span><br><span class="line">    number += stepSize	<span class="comment">//读stepSize</span></span><br><span class="line">&#125;</span><br><span class="line">increment(&amp;stepSize)	<span class="comment">//写stepSize，产生冲突</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//情况2.传递同一个变量给多个in-out参数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">balance</span><span class="params">(<span class="number">_</span> x: <span class="keyword">inout</span> Int, <span class="number">_</span> y: <span class="keyword">inout</span> Int)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> sum = x + y</span><br><span class="line">    x = sum / <span class="number">2</span></span><br><span class="line">    y = sum - x</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> playerOneScore = <span class="number">42</span></span><br><span class="line">balance(&amp;playerOneScore, &amp;playerOneScore)	<span class="comment">//错误，会对playerOneScore发起两个写访问</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//情况3.操作符两侧是同一个变量</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="24-3-方法里-self-的访问冲突"><a href="#24-3-方法里-self-的访问冲突" class="headerlink" title="24.3 方法里 self 的访问冲突"></a>24.3 方法里 self 的访问冲突</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mutating方法会对self进行写访问</span></span><br><span class="line"><span class="comment">//此时若一个实例调用该方法，并且以自身作为参数，就会产生冲突</span></span><br><span class="line">oscar.shareHealth(with: &amp;oscar)</span><br></pre></td></tr></table></figure>
+
+<h2 id="24-4-属性的访问冲突"><a href="#24-4-属性的访问冲突" class="headerlink" title="24.4 属性的访问冲突"></a>24.4 属性的访问冲突</h2><p>结构体、元组、枚举等值类型，若同时访问其中对多个属性，就会产生冲突。</p>
+<p>因此访问一个属性就相当于访问整个实例。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> playerInformation = (health: <span class="number">10</span>, energy: <span class="number">20</span>)	<span class="comment">//元组</span></span><br><span class="line">balance(&amp;playerInformation.health, &amp;playerInformation.energy)	<span class="comment">//两个参数都是写访问playerInformation元组</span></span><br><span class="line"><span class="keyword">var</span> holly = <span class="type">Player</span>(name: <span class="string">"Holly"</span>, health: <span class="number">10</span>, energy: <span class="number">10</span>)	<span class="comment">//全局变量</span></span><br><span class="line">balance(&amp;holly.health, &amp;holly.energy)  <span class="comment">//错误，两个参数都是访问holly实例</span></span><br><span class="line"><span class="comment">//若holly是局部变量，则不会产生错误</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>遵循以下原则时即可保证对结构体属性的重叠访问是安全的：</p>
+<ol>
+<li>访问的实例的存储属性，而不是计算属性或者类属性</li>
+<li>访问的局部变量，而不是全局变量</li>
+<li>结构体要么没被闭包捕获，要么被非逃逸闭包捕获</li>
+</ol>
+</blockquote>
+<h1 id="25、访问控制"><a href="#25、访问控制" class="headerlink" title="25、访问控制"></a>25、访问控制</h1><h2 id="25-1-模块和源文件"><a href="#25-1-模块和源文件" class="headerlink" title="25.1 模块和源文件"></a>25.1 模块和源文件</h2><p>swift中的访问控制是基于模块和源文件的。</p>
+<p>模块：用来构建和发布的独立代码单元、框架、应用程序。（模块之间可以使用<code>import</code>导入）</p>
+<p>源文件：一个源代码文件</p>
+<h2 id="25-2-访问级别"><a href="#25-2-访问级别" class="headerlink" title="25.2 访问级别"></a>25.2 访问级别</h2><ul>
+<li><code>open、public</code>：可以被同一模块中的所有实体访问，模块外也可以通过import访问，用来指定框架的外部接口。区别在于open只能作用于类和类成员，且限定的类和类成员在模块外能被继承和重写。</li>
+<li><code>internal</code>：可以被同一模块中的所有实体访问，模块外不能访问。</li>
+<li><code>fileprivate</code>：只能在其定义的文件内访问。</li>
+<li><code>private</code>：只能在其定义的作用域内访问。</li>
+</ul>
+<ol>
+<li><p><strong>访问级别基本原则</strong>：</p>
+<p>实体不能定义在更低访问级别的实体中。</p>
+</li>
+<li><p><strong>默认访问级别</strong>：</p>
+<p>internal。</p>
+</li>
+<li><p><strong>单 target 应用程序的访问级别</strong>：</p>
+<p>使用默认的internal即可，也可使用更严格的。</p>
+</li>
+<li><p><strong>框架的访问级别</strong>：</p>
+<p>对外接口使用public或者open，内部可使用internal及更严格的权限。</p>
+</li>
+<li><p><strong>单元测试 target 的访问级别</strong>：</p>
+<p>在单测目标中导入应用程序的语句前加上<code>@testable</code>，可以使得该单测目标访问应用程序中的所有级别的实体。</p>
+</li>
+</ol>
+<h2 id="25-4-自定义类型"><a href="#25-4-自定义类型" class="headerlink" title="25.4 自定义类型"></a>25.4 自定义类型</h2><p>若将一个类型的访问级别指定为public，他的所有属性会默认为internal，而不是public。</p>
+<ol>
+<li><p><strong>元组类型</strong></p>
+<p>元组的访问类型由元组中<strong>级别最严格的元素</strong>来决定，而不是显式指定。</p>
+</li>
+<li><p><strong>函数类型</strong></p>
+<p>函数的访问级别由<strong>最严格的参数</strong>或者<strong>返回类型的级别</strong>来决定。</p>
+<p>若这种级别不符合函数所处环境的默认级别，就需要<strong>显式指定</strong>。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数返回的是private，但是默认的是internal，此时需要手动为其指定private级别</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunc</span><span class="params">()</span></span> -&gt; (<span class="type">SomeInternalClass</span>, <span class="type">SomePrivateClass</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>枚举类型</strong></p>
+<p>枚举成员的访问级别和枚举类型相同，不能对枚举成员单独指定。</p>
+<p>原始值和关联值的级别不能低于枚举类型的级别。</p>
+</li>
+<li><p><strong>嵌套类型</strong></p>
+<p>嵌套类型的级别和包含他的级别相同，public除外。</p>
+</li>
+</ol>
+<h2 id="25-5-子类"><a href="#25-5-子类" class="headerlink" title="25.5 子类"></a>25.5 子类</h2><p>子类的访问级别不能高于父类</p>
+<p>可以通过重写给继承的类的成员提供更高的访问级别。</p>
+<p>子类成员可以访问父类中级别更低的成员。</p>
+<h2 id="25-6-常量、变量、属性、下标"><a href="#25-6-常量、变量、属性、下标" class="headerlink" title="25.6 常量、变量、属性、下标"></a>25.6 常量、变量、属性、下标</h2><ul>
+<li>不能拥有比他们的类型更高的访问级别。</li>
+<li>他们的setter和getter的级别和类型的级别相同，且setter的级别可以低于getter的级别。</li>
+<li>使用<code>fileprivate(set),private(set)</code>等可以改变<strong>存储属性</strong>的setter的访问级别。</li>
+<li><code>public private(set) var name = &quot;&quot;</code>：设定name的getter为public，setter为private</li>
+</ul>
+<h2 id="25-7-构造器"><a href="#25-7-构造器" class="headerlink" title="25.7 构造器"></a>25.7 构造器</h2><ul>
+<li>自定义构造器的访问级别可以<strong>低于或等于</strong>其所属类型的级别。</li>
+<li><strong>必要构造器</strong>的级别一定<strong>等于</strong>和其所属类型的访问级别。</li>
+<li><strong>默认构造器</strong>的访问级别<strong>等于</strong>其所属类型的访问级别，除非所属类型是<code>public</code>。</li>
+<li>若<strong>结构体</strong>存在<code>private</code>存储属性，则他默认的<strong>成员逐一构造器</strong>的访问级别就是<code>private</code>。</li>
+</ul>
+<h2 id="25-8-协议"><a href="#25-8-协议" class="headerlink" title="25.8 协议"></a>25.8 协议</h2><ul>
+<li>在定义协议时为其指定访问级别，将限制该协议只能<strong>在该访问级别范围内被遵循</strong>，且协议中的方法和属性的访问级别和该级别相等，<strong>不能指定</strong>其他级别。</li>
+<li><code>public</code>协议的方法和属性的级别也是<code>public</code>。</li>
+<li>若一个协议<strong>继承</strong>了其他协议，则该协议的访问级别<strong>不能比它继承的协议的访问级别要高</strong>。</li>
+<li>一个类可以<strong>遵循</strong>比它级别低的协议，遵循协议时的上下文级别是类型和协议中<strong>最小</strong>的那个。</li>
+</ul>
+<h2 id="25-9-Extension"><a href="#25-9-Extension" class="headerlink" title="25.9 Extension"></a>25.9 Extension</h2><ul>
+<li>用扩展<strong>增加新成员时</strong>，新成员的访问级别和原始类型一致。</li>
+<li><strong>给extension指定访问级别</strong>，则扩展中的所有成员都是指定的级别。</li>
+<li>使用扩展来<strong>遵循协议</strong>时，不能给扩展指定访问级别。</li>
+</ul>
+<h2 id="25-10-泛型"><a href="#25-10-泛型" class="headerlink" title="25.10 泛型"></a>25.10 泛型</h2><p>泛型类型、函数的访问级别取决于函数本身的级别、类型参数的类型的级别的最低级别</p>
+<h2 id="25-11-类型别名"><a href="#25-11-类型别名" class="headerlink" title="25.11 类型别名"></a>25.11 类型别名</h2><p>类型别名会被当作不同的类型，访问级别不能高于其表示的类型的访问级别。</p>
+<p>但是public级别的类型别名只能作为public类型的别名。</p>
+<h1 id="26、高级运算符"><a href="#26、高级运算符" class="headerlink" title="26、高级运算符"></a>26、高级运算符</h1><h2 id="26-1-位运算符"><a href="#26-1-位运算符" class="headerlink" title="26.1 位运算符"></a>26.1 位运算符</h2><ul>
+<li><p>按位取反运算符<code>~</code></p>
+</li>
+<li><p>按位与运算符<code>&amp;</code></p>
+</li>
+<li><p>按位或运算符<code>/</code></p>
+</li>
+<li><p>按位异或运算符<code>^</code></p>
+</li>
+<li><p>按位左移<code>&lt;&lt;</code>、右移运算符<code>&gt;&gt;</code></p>
+<p>无符号数填充0，有符号数填充符号位</p>
+</li>
+</ul>
+<h2 id="26-2-溢出运算符"><a href="#26-2-溢出运算符" class="headerlink" title="26.2 溢出运算符"></a>26.2 溢出运算符</h2><p>允许溢出的运算符都是<code>&amp;</code>加上基本运算符<code>&amp;+ &amp;- &amp;*</code>。</p>
+<h2 id="26-3-运算符重载"><a href="#26-3-运算符重载" class="headerlink" title="26.3 运算符重载"></a>26.3 运算符重载</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">func</span> + <span class="params">(<span class="keyword">left</span>: Vector2D, <span class="keyword">right</span>: Vector2D)</span></span> -&gt; <span class="type">Vector2D</span> &#123;&#125;	<span class="comment">//中缀运算符</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">prefix</span> <span class="function"><span class="keyword">func</span> - <span class="params">(vector: Vector2D)</span></span> -&gt; <span class="type">Vector2D</span> &#123;&#125;	<span class="comment">//前缀运算符</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">postfix</span> <span class="function"><span class="keyword">func</span> ! <span class="params">(vector: Vector2D)</span></span> -&gt; <span class="type">Vector2D</span> &#123;&#125;	<span class="comment">//后缀运算符</span></span><br><span class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">func</span> += <span class="params">(<span class="keyword">left</span>: <span class="keyword">inout</span> Vector2D, <span class="keyword">right</span>: Vector2D)</span></span> &#123;&#125;	<span class="comment">//复合赋值运算符</span></span><br><span class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">func</span> == <span class="params">(<span class="keyword">left</span>: Vector2D, <span class="keyword">right</span>: Vector2D)</span></span> -&gt; <span class="type">Bool</span> &#123;&#125;	<span class="comment">//等价运算符</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="26-4-自定义运算符"><a href="#26-4-自定义运算符" class="headerlink" title="26.4 自定义运算符"></a>26.4 自定义运算符</h2><p>新运算符要用<code>operator</code>在全局定义，同时要指定<code>prefix</code>、<code>infix</code> 或者 <code>postfix</code> 修饰符</p>
+<h2 id="26-5-自定义中缀运算符的优先级"><a href="#26-5-自定义中缀运算符的优先级" class="headerlink" title="26.5 自定义中缀运算符的优先级"></a>26.5 自定义中缀运算符的优先级</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> +-: <span class="type">AdditionPrecedence</span>	<span class="comment">//声明+-运算符属于AdditionPrecedence优先级组</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Vector2D</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> +- <span class="params">(<span class="keyword">left</span>: Vector2D, <span class="keyword">right</span>: Vector2D)</span></span> -&gt; <span class="type">Vector2D</span> &#123;&#125;	<span class="comment">//+-的实现</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对同一个值同时使用前缀和后缀运算符，则后缀运算符会优先参与运算。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/Swift/" rel="tag"><i class="fa fa-tag"></i> Swift</a>
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Git%E7%AC%94%E8%AE%B0-%E5%BB%96%E9%9B%AA%E5%B3%B0%E7%9A%84Git%E6%95%99%E7%A8%8B.html" rel="next" title="Git笔记-廖雪峰的Git教程">
+                <i class="fa fa-chevron-left"></i> Git笔记-廖雪峰的Git教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Swift-%E3%80%8AThe%20Swift%20Programming%20Language%E3%80%8Bin%20Chinese--0.%E5%89%8D%E8%A8%80.html" rel="prev" title="《The Swift Programming Language》in Chinese--0.前言">
+                《The Swift Programming Language》in Chinese--0.前言 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、基本运算符"><span class="nav-text">1、基本运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、字符串String和字符Character"><span class="nav-text">2、字符串String和字符Character</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、集合类型"><span class="nav-text">3、集合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-集合类型"><span class="nav-text">3.1 集合类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-数组（Array）"><span class="nav-text">3.2 数组（Array）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）构建方法"><span class="nav-text">1）构建方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）访问和修改"><span class="nav-text">2）访问和修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）数组遍历"><span class="nav-text">3）数组遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-集合（Sets）"><span class="nav-text">3.3 集合（Sets）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）集合类型的哈希值"><span class="nav-text">1）集合类型的哈希值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）创建集合"><span class="nav-text">2）创建集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）访问和修改"><span class="nav-text">3）访问和修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）集合遍历"><span class="nav-text">4）集合遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）集合操作"><span class="nav-text">5）集合操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-字典（Dictionary）"><span class="nav-text">3.4 字典（Dictionary）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）创建字典"><span class="nav-text">1）创建字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）访问和修改-1"><span class="nav-text">2）访问和修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）字典遍历"><span class="nav-text">3）字典遍历</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、控制流"><span class="nav-text">4、控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-for-in"><span class="nav-text">4.1 for-in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-while"><span class="nav-text">4.2 while</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-条件语句"><span class="nav-text">4.3 条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）if"><span class="nav-text">1）if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）switch"><span class="nav-text">2）switch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-控制转移"><span class="nav-text">4.4 控制转移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）带标签的语句"><span class="nav-text">1）带标签的语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）guard"><span class="nav-text">2）guard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-检测API可用性（-available）"><span class="nav-text">4.5 检测API可用性（#available）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、函数"><span class="nav-text">5、函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-可变参数（…）"><span class="nav-text">5.1 可变参数（…）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-输入输出参数（inout）"><span class="nav-text">5.2 输入输出参数（inout）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-函数类型"><span class="nav-text">5.3 函数类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）作为参数类型"><span class="nav-text">1）作为参数类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）作为返回值类型"><span class="nav-text">2）作为返回值类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-嵌套函数"><span class="nav-text">5.4 嵌套函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、闭包"><span class="nav-text">6、闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-优化"><span class="nav-text">6.1 优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-值捕获"><span class="nav-text">6.2 值捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-闭包是引用类型"><span class="nav-text">6.3 闭包是引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-逃逸闭包（-escaping）"><span class="nav-text">6.4 逃逸闭包（@escaping）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-5-自动闭包（autoclosure）"><span class="nav-text">6.5 自动闭包（autoclosure）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7、枚举"><span class="nav-text">7、枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-语法"><span class="nav-text">7.1 语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-用Switch语句匹配枚举值"><span class="nav-text">7.2 用Switch语句匹配枚举值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-enum成员的遍历（-allClass）"><span class="nav-text">7.3 enum成员的遍历（.allClass）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-关联值"><span class="nav-text">7.4 关联值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-原始值-默认值（rawValue）"><span class="nav-text">7.5 原始值&#x2F;默认值（rawValue）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）原始值的隐式赋值"><span class="nav-text">1）原始值的隐式赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）使用原始值初始化枚举实例"><span class="nav-text">2）使用原始值初始化枚举实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-6-递归枚举（indirect）"><span class="nav-text">7.6 递归枚举（indirect）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8、类和结构体"><span class="nav-text">8、类和结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-类和结构体的对比"><span class="nav-text">8.1 类和结构体的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）共同点"><span class="nav-text">1）共同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）类的特点"><span class="nav-text">2）类的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）类的缺点"><span class="nav-text">3）类的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）结构体的逐一构造器"><span class="nav-text">4）结构体的逐一构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）总结"><span class="nav-text">5）总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-结构体和枚举是值类型"><span class="nav-text">8.2 结构体和枚举是值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-类是引用类型"><span class="nav-text">8.3 类是引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）恒等运算符-和"><span class="nav-text">1）恒等运算符&#x3D;&#x3D;&#x3D;和!&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-指针"><span class="nav-text">2) 指针</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9、属性"><span class="nav-text">9、属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-存储属性"><span class="nav-text">9.1 存储属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）常量结构体实例的存储属性"><span class="nav-text">1）常量结构体实例的存储属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）延时加载存储属性（lazy）"><span class="nav-text">2）延时加载存储属性（lazy）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-计算属性（getter-setter）"><span class="nav-text">9.2 计算属性（getter&#x2F;setter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）简化Setter声明"><span class="nav-text">1）简化Setter声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）简化Getter声明"><span class="nav-text">2）简化Getter声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）只读计算属性"><span class="nav-text">3）只读计算属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-属性观察器（willset-didset）"><span class="nav-text">9.3 属性观察器（willset&#x2F;didset）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-4-属性包装器（-propertyWrapper）"><span class="nav-text">9.4 属性包装器（@propertyWrapper）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）设置被包装属性的初始值"><span class="nav-text">1）设置被包装属性的初始值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）从属性包装器中呈现一个值"><span class="nav-text">2）从属性包装器中呈现一个值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-5-全局变量和局部变量"><span class="nav-text">9.5 全局变量和局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-6-类型属性（static）"><span class="nav-text">9.6 类型属性（static）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）类型属性语法"><span class="nav-text">1）类型属性语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）获取和设置类型属性的值"><span class="nav-text">2）获取和设置类型属性的值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10、方法"><span class="nav-text">10、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-实例方法（Instance-Methods）"><span class="nav-text">10.1 实例方法（Instance Methods）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）self-属性"><span class="nav-text">1）self 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）在实例方法中修改值类型"><span class="nav-text">2）在实例方法中修改值类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-类型方法（static）"><span class="nav-text">10.2 类型方法（static）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11、下标（subscript）"><span class="nav-text">11、下标（subscript）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-1-下标语法"><span class="nav-text">11.1 下标语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-2-类型下标"><span class="nav-text">11.2 类型下标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12、继承"><span class="nav-text">12、继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#12-1-基类"><span class="nav-text">12.1 基类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-2-重写"><span class="nav-text">12.2 重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）访问超类的方法，属性及下标"><span class="nav-text">1）访问超类的方法，属性及下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）重写属性的setter和getter"><span class="nav-text">2）重写属性的setter和getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）重写属性观察器"><span class="nav-text">3）重写属性观察器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-4-final防止重写或继承"><span class="nav-text">12.4 final防止重写或继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13、构造过程"><span class="nav-text">13、构造过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-1-存储属性的初始赋值"><span class="nav-text">13.1 存储属性的初始赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-2-自定义构造过程"><span class="nav-text">13.2 自定义构造过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-3-默认构造器"><span class="nav-text">13.3 默认构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-4-值类型的构造器代理"><span class="nav-text">13.4 值类型的构造器代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-5-类的继承和构造过程"><span class="nav-text">13.5 类的继承和构造过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）指定构造器（init）"><span class="nav-text">1）指定构造器（init）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）便利构造器（convenience-init）"><span class="nav-text">2）便利构造器（convenience init）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）构造器代理"><span class="nav-text">3）构造器代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）两段式构造过程"><span class="nav-text">4）两段式构造过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）构造器的继承和重写"><span class="nav-text">5）构造器的继承和重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6）构造器的自动继承"><span class="nav-text">6）构造器的自动继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7）指定构造器和便利构造器实践"><span class="nav-text">7）指定构造器和便利构造器实践</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-6-可失败构造器（init-）"><span class="nav-text">13.6 可失败构造器（init?）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）枚举类型的可失败构造器"><span class="nav-text">1）枚举类型的可失败构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）带原始值的枚举类型的可失败构造器"><span class="nav-text">2）带原始值的枚举类型的可失败构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）构造失败的传递"><span class="nav-text">3）构造失败的传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）重写一个可失败构造器"><span class="nav-text">4）重写一个可失败构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）init-可失败构造器（尽量不用）"><span class="nav-text">5）init! 可失败构造器（尽量不用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-7-必要构造器（required）"><span class="nav-text">13.7 必要构造器（required）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-8-通过闭包或函数设置属性的默认值"><span class="nav-text">13.8 通过闭包或函数设置属性的默认值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14、析构过程（deinit）"><span class="nav-text">14、析构过程（deinit）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15、可选链"><span class="nav-text">15、可选链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-1-使用可选链式调用代替强制展开"><span class="nav-text">15.1 使用可选链式调用代替强制展开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-2-通过可选链式调用来调用方法、属性、下标"><span class="nav-text">15.2 通过可选链式调用来调用方法、属性、下标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16、错误处理"><span class="nav-text">16、错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#16-1-表示与抛出错误（Error和throw）"><span class="nav-text">16.1 表示与抛出错误（Error和throw）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-2-处理错误"><span class="nav-text">16.2 处理错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）用-throwing-函数传递错误"><span class="nav-text">1）用 throwing 函数传递错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）用-Do-Catch-处理错误"><span class="nav-text">2）用 Do-Catch 处理错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）将错误转换成可选值（try？）"><span class="nav-text">3）将错误转换成可选值（try？）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）禁用错误传递（try-）"><span class="nav-text">4）禁用错误传递（try!）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-3-指定清理操作（defer）"><span class="nav-text">16.3 指定清理操作（defer）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17、类型转换（is和as）"><span class="nav-text">17、类型转换（is和as）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#17-1-检查类型-is"><span class="nav-text">17.1 检查类型(is)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-2-向下转型-as-和as"><span class="nav-text">17.2 向下转型(as?和as!)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-3-不确定类型-Any和AnyObject"><span class="nav-text">17.3 不确定类型(Any和AnyObject)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18、嵌套类型"><span class="nav-text">18、嵌套类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19、扩展-extension"><span class="nav-text">19、扩展(extension)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#19-1-扩展的语法"><span class="nav-text">19.1 扩展的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-2-计算型属性"><span class="nav-text">19.2 计算型属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-3-构造器"><span class="nav-text">19.3 构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-4-方法"><span class="nav-text">19.4 方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20、协议-protocol"><span class="nav-text">20、协议(protocol)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#20-1-协议语法"><span class="nav-text">20.1 协议语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-2-协议作为类型"><span class="nav-text">20.2 协议作为类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-3-委托"><span class="nav-text">20.3 委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-4-协议应用于类型的扩展中"><span class="nav-text">20.4 协议应用于类型的扩展中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）让一个已存在类型遵循某协议"><span class="nav-text">1）让一个已存在类型遵循某协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）为一个已存在类型添加新的协议"><span class="nav-text">2）为一个已存在类型添加新的协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-5-协议的继承"><span class="nav-text">20.5 协议的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-有条件地遵循协议-where"><span class="nav-text">20.6 有条件地遵循协议(where)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-7-类专属的协议-AnyObject"><span class="nav-text">20.7 类专属的协议(:AnyObject)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-8-协议合成-amp"><span class="nav-text">20.8 协议合成(&amp;)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-9-检查协议一致性-is、as"><span class="nav-text">20.9 检查协议一致性(is、as)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-10-协议的可选方法和可选属性-optional"><span class="nav-text">20.10 协议的可选方法和可选属性(optional)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-11-协议扩展"><span class="nav-text">20.11 协议扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）提供默认实现"><span class="nav-text">1）提供默认实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）为协议扩展添加限制条件"><span class="nav-text">2）为协议扩展添加限制条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21、泛型"><span class="nav-text">21、泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-1-泛型扩展"><span class="nav-text">21.1 泛型扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-2-类型约束"><span class="nav-text">21.2 类型约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-3-关联类型（associatedtype）–只有协议有关联类型"><span class="nav-text">21.3 关联类型（associatedtype）–只有协议有关联类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）关联类型实践"><span class="nav-text">1）关联类型实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）给关联类型添加约束"><span class="nav-text">2）给关联类型添加约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）在关联类型约束里使用协议"><span class="nav-text">3）在关联类型约束里使用协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-4-泛型-Where-语句"><span class="nav-text">21.4 泛型 Where 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-5-泛型下标"><span class="nav-text">21.5 泛型下标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22、不透明类型（some）"><span class="nav-text">22、不透明类型（some）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#22-1-不透明类型解决的问题"><span class="nav-text">22.1 不透明类型解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-2-返回不透明类型"><span class="nav-text">22.2 返回不透明类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-3-不透明类型和协议类型的区别"><span class="nav-text">22.3 不透明类型和协议类型的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#23、自动引用计数"><span class="nav-text">23、自动引用计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#23-1-自动引用计数的工作机制"><span class="nav-text">23.1 自动引用计数的工作机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-2-类实例之间的循环强引用"><span class="nav-text">23.2 类实例之间的循环强引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-3-解决实例之间的循环强引用"><span class="nav-text">23.3 解决实例之间的循环强引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#【-】项目中尽量使用weak而不是unowned"><span class="nav-text">【*】项目中尽量使用weak而不是unowned</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1）弱引用（weak）"><span class="nav-text">1）弱引用（weak）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）无主引用（unowned）"><span class="nav-text">2）无主引用（unowned）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）无主引用和隐式解包可选值属性"><span class="nav-text">3）无主引用和隐式解包可选值属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-4-闭包的循环强引用"><span class="nav-text">23.4 闭包的循环强引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）解决闭包的循环强引用（定义捕获列表）"><span class="nav-text">1）解决闭包的循环强引用（定义捕获列表）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）弱引用和无主引用"><span class="nav-text">2）弱引用和无主引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#24、内存安全"><span class="nav-text">24、内存安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#24-1-理解内存访问冲突"><span class="nav-text">24.1 理解内存访问冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-2-In-Out-参数的访问冲突"><span class="nav-text">24.2 In-Out 参数的访问冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-3-方法里-self-的访问冲突"><span class="nav-text">24.3 方法里 self 的访问冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-4-属性的访问冲突"><span class="nav-text">24.4 属性的访问冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#25、访问控制"><span class="nav-text">25、访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#25-1-模块和源文件"><span class="nav-text">25.1 模块和源文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-2-访问级别"><span class="nav-text">25.2 访问级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-4-自定义类型"><span class="nav-text">25.4 自定义类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-5-子类"><span class="nav-text">25.5 子类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-6-常量、变量、属性、下标"><span class="nav-text">25.6 常量、变量、属性、下标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-7-构造器"><span class="nav-text">25.7 构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-8-协议"><span class="nav-text">25.8 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-9-Extension"><span class="nav-text">25.9 Extension</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-10-泛型"><span class="nav-text">25.10 泛型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-11-类型别名"><span class="nav-text">25.11 类型别名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#26、高级运算符"><span class="nav-text">26、高级运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#26-1-位运算符"><span class="nav-text">26.1 位运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-2-溢出运算符"><span class="nav-text">26.2 溢出运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-3-运算符重载"><span class="nav-text">26.3 运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-4-自定义运算符"><span class="nav-text">26.4 自定义运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-5-自定义中缀运算符的优先级"><span class="nav-text">26.5 自定义中缀运算符的优先级</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

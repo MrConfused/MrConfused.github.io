@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Documentation,UIkit,iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="UIView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIView">
+<meta property="og:url" content="https://mrconfused.github.io/iOS-uikit-UIView.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="UIView">
+<meta property="og:image" content="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Art/uiview_convert_rotated.jpg">
+<meta property="article:published_time" content="2020-08-05T07:32:21.000Z">
+<meta property="article:modified_time" content="2020-08-05T07:32:21.000Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="Documentation">
+<meta property="article:tag" content="UIkit">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Art/uiview_convert_rotated.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>UIView | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/iOS-uikit-UIView.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">UIView</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-05T15:32:21+08:00">
+                2020-08-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/Documentation/" itemprop="url" rel="index">
+                    <span itemprop="name">Documentation</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/Documentation/UIKit/" itemprop="url" rel="index">
+                    <span itemprop="name">UIKit</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/Documentation/UIKit/UIView/" itemprop="url" rel="index">
+                    <span itemprop="name">UIView</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  UIView
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Views"><a href="#1-Views" class="headerlink" title="1.Views"></a>1.Views</h1><p>视图的功能：</p>
+<ul>
+<li>布局和子视图管理<ul>
+<li>根据父视图指定一个默认的自动调整行为</li>
+<li>管理子视图</li>
+<li>可以重写子视图的大小和位置</li>
+<li>可以将在自身坐标系中的points转为窗口中其他视图坐标系中的points</li>
+</ul>
+</li>
+<li>绘制和动画<ul>
+<li>在视图的矩形区域中绘制内容</li>
+<li>一些属性可以被赋新值</li>
+</ul>
+</li>
+<li>事件处理<ul>
+<li>可以接收触摸事件</li>
+<li>参与响应链</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-创建和配置视图对象"><a href="#1-2-创建和配置视图对象" class="headerlink" title="1.2 创建和配置视图对象"></a>1.2 创建和配置视图对象</h2><h3 id="a）用代码创建视图"><a href="#a）用代码创建视图" class="headerlink" title="a）用代码创建视图"></a>a）用代码创建视图</h3><p>默认的初始化方法是<a href="https://developer.apple.com/documentation/uikit/uiview/1622488-init" target="_blank" rel="noopener">initWithFrame:</a>，可以设置初始化的大小和位置。</p>
+<p>创建好视图之后，要把它添加到窗口或者另一个视图中才能显示。<a href="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingViews/CreatingViews.html#//apple_ref/doc/uid/TP40009503-CH5-SW11" target="_blank" rel="noopener">Adding and Removing Subviews</a></p>
+<h3 id="b）设置视图的属性"><a href="#b）设置视图的属性" class="headerlink" title="b）设置视图的属性"></a>b）设置视图的属性</h3><p><a href="https://developer.apple.com/documentation/uikit/uiview" target="_blank" rel="noopener">UIView</a>类有一些属性来控制视图的外观和行为。</p>
+<ul>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uiview/1622417-alpha" target="_blank" rel="noopener">alpha</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622585-hidden" target="_blank" rel="noopener">hidden</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622622-isopaque" target="_blank" rel="noopener">opaque</a></p>
+<p>控制视图的透明度。</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uiview/1622580-bounds" target="_blank" rel="noopener">bounds</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622621-frame" target="_blank" rel="noopener">frame</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622627-center" target="_blank" rel="noopener">center</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622459-transform" target="_blank" rel="noopener">transform</a></p>
+<p>控制视图的大小和位置。</p>
+<p>Center 和 frame控制视图相对于其父视图的位置；frame也可以设置大小；bounds定义自己视图坐标系上的可视区域；transform控制视图的移动和动画。<a href="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html#//apple_ref/doc/uid/TP40009503-CH2-SW6" target="_blank" rel="noopener">The Relationship of the Frame, Bounds, and Center Properties</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uiview/1622559-autoresizingmask" target="_blank" rel="noopener">autoresizingMask</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622425-autoresizessubviews" target="_blank" rel="noopener">autoresizesSubviews</a></p>
+<p>控制视图和子视图的自动调整大小。</p>
+<p>autoresizingMask控制视图响应父视图的bounds的改变；autoresizesSubviews控制当前视图的子视图是否可以resize</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uiview/1622619-contentmode" target="_blank" rel="noopener">contentMode</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622511-contentstretch" target="_blank" rel="noopener">contentStretch</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622657-contentscalefactor" target="_blank" rel="noopener">contentScaleFactor</a></p>
+<p>控制视图内容的渲染行为。</p>
+<p><a href="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html#//apple_ref/doc/uid/TP40009503-CH2-SW2" target="_blank" rel="noopener">Content Modes</a> 和 <a href="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html#//apple_ref/doc/uid/TP40009503-CH2-SW13" target="_blank" rel="noopener">Stretchable Views</a>确定当视图宽度或者高度改变的时候内容如何变化；contentScaleFactor用在你要自定义视图在高分辨率下的绘制行为，<a href="https://developer.apple.com/library/archive/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15" target="_blank" rel="noopener">Supporting High-Resolution Screens In Views</a>。</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uiview/1622542-gesturerecognizers" target="_blank" rel="noopener">gestureRecognizers</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622577-isuserinteractionenabled" target="_blank" rel="noopener">userInteractionEnabled</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622519-ismultipletouchenabled" target="_blank" rel="noopener">multipleTouchEnabled</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622453-isexclusivetouch" target="_blank" rel="noopener">exclusiveTouch</a></p>
+<p>处理触摸事件</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uiview/1622591-backgroundcolor" target="_blank" rel="noopener">backgroundColor</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622614-subviews" target="_blank" rel="noopener">subviews</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622529-draw" target="_blank" rel="noopener">drawRect:</a>方法，<a href="https://developer.apple.com/documentation/uikit/uiview/1622436-layer" target="_blank" rel="noopener">layer</a>，<a href="https://developer.apple.com/documentation/uikit/uiview/1622626-layerclass" target="_blank" rel="noopener">layerClass</a>方法</p>
+<p>管理视图中的具体内容</p>
+<p>要自定义绘制行为，需要重写drawRect方法；要设置更高级的内容，可以直接使用layer；要指定一个和layer完全不一样的类型，需要重写layerClass方法。</p>
+</li>
+</ul>
+<h3 id="c）标记视图以便于将来识别"><a href="#c）标记视图以便于将来识别" class="headerlink" title="c）标记视图以便于将来识别"></a>c）标记视图以便于将来识别</h3><p>用<a href="https://developer.apple.com/documentation/uikit/uiview/1622493-tag" target="_blank" rel="noopener">tag</a>属性对每个视图对象标记一个整数，可以优化运行时的视图搜索，默认的tag值是0.</p>
+<p>使用<a href="https://developer.apple.com/documentation/uikit/uiview/1622429-viewwithtag" target="_blank" rel="noopener">viewWithTag:</a>方法来搜索被标记的视图，但是只能搜索当前视图的子视图。</p>
+<h2 id="1-3-创建和管理视图结构层次"><a href="#1-3-创建和管理视图结构层次" class="headerlink" title="1.3 创建和管理视图结构层次"></a>1.3 创建和管理视图结构层次</h2><h3 id="a）添加、移除子视图"><a href="#a）添加、移除子视图" class="headerlink" title="a）添加、移除子视图"></a>a）添加、移除子视图</h3><ul>
+<li>调用<a href="https://developer.apple.com/documentation/uikit/uiview/1622616-addsubview" target="_blank" rel="noopener">addSubview:</a>方法将子视图添加到父视图的subviews列表的最后</li>
+<li>调用 <a href="https://developer.apple.com/documentation/uikit/uiview/1622570-insertsubview" target="_blank" rel="noopener"><code>insertSubview(_:aboveSubview:)</code></a>将子视图插入到subviews的中间</li>
+<li>重排subviews列表的顺序，使用<a href="https://developer.apple.com/documentation/uikit/uiview/1622541-bringsubviewtofront" target="_blank" rel="noopener">bringSubviewToFront:</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622618-sendsubviewtoback" target="_blank" rel="noopener">sendSubviewToBack:</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622448-exchangesubviewatindex" target="_blank" rel="noopener">exchangeSubviewAtIndex:withSubviewAtIndex:</a></li>
+<li>删除子视图，使用<a href="https://developer.apple.com/documentation/uikit/uiview/1622421-removefromsuperview" target="_blank" rel="noopener">removeFromSuperview</a></li>
+</ul>
+<p>添加子视图时，子视图的frame矩阵会确定子视图在父视图中的位置。子视图超过父视图的可视边界时不会被裁剪，要手动把父视图的<a href="https://developer.apple.com/documentation/uikit/uiview/1622415-clipstobounds" target="_blank" rel="noopener">clipsToBounds</a>属性设为True。</p>
+<p>可以在<a href="https://developer.apple.com/documentation/uikit/uiviewcontroller/1621454-loadview" target="_blank" rel="noopener">loadView</a>或者<a href="https://developer.apple.com/documentation/uikit/uiviewcontroller/1621495-viewdidload" target="_blank" rel="noopener">viewDidLoad</a>函数中把子视图添加到层次结构中，在loadView中添加子视图，在viewDidLoad中对子视图做额外的配置。</p>
+<p>在将子视图从父视图中移除后，若还想继续使用，需要重新持有它，否则会被释放。</p>
+<p>在把子视图添加到其他视图的时候，UIKit会通知父视图和所有子视图，对于自定义的视图，可以通过重写<a href="https://developer.apple.com/documentation/uikit/uiview/1622629-willmove" target="_blank" rel="noopener">willMoveToSuperview:</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622563-willmove" target="_blank" rel="noopener">willMoveToWindow:</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622647-willremovesubview" target="_blank" rel="noopener">willRemoveSubview:</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622433-didmovetosuperview" target="_blank" rel="noopener">didMoveToSuperview</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622527-didmovetowindow" target="_blank" rel="noopener">didMoveToWindow</a>、<a href="https://developer.apple.com/documentation/uikit/uiview/1622500-didaddsubview" target="_blank" rel="noopener">didAddSubview:</a>方法来打断通知过程。可以使用通知来更新自己的层次结构的状态信息，从而执行额外的任务。</p>
+<p>创建视图层次结构之后，可以使用<a href="https://developer.apple.com/documentation/uikit/uiview/1622474-superview" target="_blank" rel="noopener">superview</a>和<a href="https://developer.apple.com/documentation/uikit/uiview/1622614-subviews" target="_blank" rel="noopener">subviews</a>获取对应的视图，每个视图的<a href="https://developer.apple.com/documentation/uikit/uiview/1622456-window" target="_blank" rel="noopener">window</a>属性包含该视图当前显示的窗口。在当前屏幕上的所有视图中，窗口对象是他们的根视图。</p>
+<h3 id="b）隐藏视图"><a href="#b）隐藏视图" class="headerlink" title="b）隐藏视图"></a>b）隐藏视图</h3><p>把<a href="https://developer.apple.com/documentation/uikit/uiview/1622585-hidden" target="_blank" rel="noopener">hidden</a>属性设为True或者把<a href="https://developer.apple.com/documentation/uikit/uiview/1622417-alpha" target="_blank" rel="noopener">alpha</a>属性设为0.0都可以隐藏视图。被隐藏的视图不会接受触摸事件，但是它仍正常参与相关层次结构的autoresizing和布局操作。</p>
+<p>⚠️：若一个视图是first reSwiftwiftponder，在把它隐藏后并不会自动改变他的第一响应状态，事件仍然会发送消息给他，因此<strong>需要手动强制改变一个要被隐藏的视图的第一响应状态</strong>。</p>
+<p>要想使视图在隐藏和显示之间切换时有动画，需要使用alpha属性。</p>
+<h3 id="c）在视图层次结构中定位视图"><a href="#c）在视图层次结构中定位视图" class="headerlink" title="c）在视图层次结构中定位视图"></a>c）在视图层次结构中定位视图</h3><ul>
+<li>保存相关视图的引用</li>
+<li>给每个视图的tag属性赋值一个唯一的整数，然后使用viewWithTag:方法来获取</li>
+</ul>
+<p>存储相关视图的引用是最常用的方法，把引用保存在<strong>私有的成员变量</strong>中，使用的时候要持有它，之后需要释放。</p>
+<p>tags是一种减少hard-coded依赖、更加灵活、持久的方法。</p>
+<h3 id="d）视图的翻译、缩放、旋转"><a href="#d）视图的翻译、缩放、旋转" class="headerlink" title="d）视图的翻译、缩放、旋转"></a>d）视图的翻译、缩放、旋转</h3><p>视图的<a href="https://developer.apple.com/documentation/uikit/uiview/1622459-transform" target="_blank" rel="noopener">transform</a>会影响视图外观的最终渲染，常被用来实现滚动、动画、以及其他可视效果。</p>
+<p>transform属性包含一个可用于变换的<a href="https://developer.apple.com/documentation/coregraphics/cgaffinetransform" target="_blank" rel="noopener">CGAffineTransform</a>结构体，可用来变换视图。</p>
+<p>当使用多重变换的时候，把变换添加到CGAffineTransform结构体中的顺序是不一样的。每次操作都是相当于视图中心的。</p>
+<p>参考 <a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_affine/dq_affine.html#//apple_ref/doc/uid/TP30001066-CH204" target="_blank" rel="noopener">Transforms</a> in <em><a href="https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="noopener">Quartz 2D Programming Guide</a></em>.</p>
+<h3 id="e）改变视图层次结构中的坐标系"><a href="#e）改变视图层次结构中的坐标系" class="headerlink" title="e）改变视图层次结构中的坐标系"></a>e）改变视图层次结构中的坐标系</h3><p>大多数情况下尤其是处理事件时都需要转换坐标系。</p>
+<p>UIView提供下面几个转换函数，如果把函数中的view赋值为nil，那么就会从包含视图的窗口中转换。</p>
+<ul>
+<li><code>convertPoint:fromView:</code></li>
+<li><code>convertRect:fromView:</code></li>
+<li><code>convertPoint:toView:</code></li>
+<li><code>convertRect:toView:</code></li>
+</ul>
+<p>UIWindow也有下面几个转换函数：</p>
+<ul>
+<li><code>convertPoint:fromWindow:</code></li>
+<li><code>convertRect:fromWindow:</code></li>
+<li><code>convertPoint:toWindow:</code></li>
+<li><code>convertRect:toWindow:</code></li>
+</ul>
+<p>在转换旋转视图的坐标系的时候，转换后的矩形要大，因为转换后的矩形要覆盖转换前的矩形：</p>
+<p><img src="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Art/uiview_convert_rotated.jpg" alt="Converting values in a rotated view"></p>
+<h2 id="1-4-调整视图的大小和位置"><a href="#1-4-调整视图的大小和位置" class="headerlink" title="1.4 调整视图的大小和位置"></a>1.4 调整视图的大小和位置</h2><h2 id="1-5-修改视图"><a href="#1-5-修改视图" class="headerlink" title="1.5 修改视图"></a>1.5 修改视图</h2><h2 id="1-6-与核心动画层交互"><a href="#1-6-与核心动画层交互" class="headerlink" title="1.6 与核心动画层交互"></a>1.6 与核心动画层交互</h2><h2 id="1-7-自定义视图"><a href="#1-7-自定义视图" class="headerlink" title="1.7 自定义视图"></a>1.7 自定义视图</h2><h1 id="2-UITableView"><a href="#2-UITableView" class="headerlink" title="2.UITableView"></a>2.UITableView</h1><ul>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableview/1614852-rowheight" target="_blank" rel="noopener"><code>var rowHeight: CGFloat</code></a></p>
+<p>每个row的高度</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableview/1614863-sectionheaderheight" target="_blank" rel="noopener"><code>var sectionHeaderHeight: CGFloat</code></a></p>
+<p>每个section的头部的高度</p>
+</li>
+<li></li>
+</ul>
+<h3 id="2-1-UITableViewCell"><a href="#2-1-UITableViewCell" class="headerlink" title="2.1 UITableViewCell"></a>2.1 UITableViewCell</h3><h3 id="2-2-UITableViewDataSource"><a href="#2-2-UITableViewDataSource" class="headerlink" title="2.2 UITableViewDataSource"></a>2.2 UITableViewDataSource</h3><ul>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableviewdatasource/1614860-numberofsections" target="_blank" rel="noopener"><code>func numberOfSections(in: UITableView) -&gt; Int</code></a></p>
+<p>改变section的个数</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableviewdatasource/1614931-tableview" target="_blank" rel="noopener"><code>func tableView(UITableView, numberOfRowsInSection: Int) -&gt; Int</code></a></p>
+<p>改变每个section的row的个数</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableviewdatasource/1614861-tableview" target="_blank" rel="noopener"><code>func tableView(UITableView, cellForRowAt: IndexPath) -&gt; UITableViewCell</code></a></p>
+<p>创建一个要添加到tabview中的cell，并将其返回</p>
+</li>
+</ul>
+<h3 id="2-3-UITableViewDelegate"><a href="#2-3-UITableViewDelegate" class="headerlink" title="2.3 UITableViewDelegate"></a>2.3 UITableViewDelegate</h3><ul>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableviewdelegate/1614998-tableview" target="_blank" rel="noopener"><code>func tableView(UITableView, heightForRowAt: IndexPath) -&gt; CGFloat</code></a></p>
+<p>改变指定row的高</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableviewdelegate/1614855-tableview" target="_blank" rel="noopener"><code>func tableView(UITableView, heightForHeaderInSection: Int) -&gt; CGFloat</code></a></p>
+<p>改变指定section的头部的高</p>
+</li>
+<li><p><a href="https://developer.apple.com/documentation/uikit/uitableviewdelegate/1614901-tableview" target="_blank" rel="noopener"><code>func tableView(UITableView, viewForHeaderInSection: Int) -&gt; UIView?</code></a></p>
+<p>设置sanction header视图</p>
+</li>
+</ul>
+<h1 id="3-UICollectionView"><a href="#3-UICollectionView" class="headerlink" title="3.UICollectionView"></a>3.UICollectionView</h1><h3 id="3-1-UICollectionViewCell"><a href="#3-1-UICollectionViewCell" class="headerlink" title="3.1 UICollectionViewCell"></a>3.1 UICollectionViewCell</h3><h3 id="3-2-UICollectionViewListCell"><a href="#3-2-UICollectionViewListCell" class="headerlink" title="3.2 UICollectionViewListCell"></a>3.2 UICollectionViewListCell</h3><h3 id="3-3-UICollectionViewDataSource"><a href="#3-3-UICollectionViewDataSource" class="headerlink" title="3.3 UICollectionViewDataSource"></a>3.3 UICollectionViewDataSource</h3><h3 id="3-4-UICollectionViewDelegate"><a href="#3-4-UICollectionViewDelegate" class="headerlink" title="3.4 UICollectionViewDelegate"></a>3.4 UICollectionViewDelegate</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Documentation/" rel="tag"><i class="fa fa-tag"></i> Documentation</a>
+          
+            <a href="/tags/UIkit/" rel="tag"><i class="fa fa-tag"></i> UIkit</a>
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/iOS-uikit-viewController.html" rel="next" title="UIViewController">
+                <i class="fa fa-chevron-left"></i> UIViewController
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/iOS-uikit-UIScrollView.html" rel="prev" title="UIScrollView">
+                UIScrollView <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Views"><span class="nav-text">1.Views</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-创建和配置视图对象"><span class="nav-text">1.2 创建和配置视图对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a）用代码创建视图"><span class="nav-text">a）用代码创建视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b）设置视图的属性"><span class="nav-text">b）设置视图的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c）标记视图以便于将来识别"><span class="nav-text">c）标记视图以便于将来识别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-创建和管理视图结构层次"><span class="nav-text">1.3 创建和管理视图结构层次</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a）添加、移除子视图"><span class="nav-text">a）添加、移除子视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b）隐藏视图"><span class="nav-text">b）隐藏视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c）在视图层次结构中定位视图"><span class="nav-text">c）在视图层次结构中定位视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d）视图的翻译、缩放、旋转"><span class="nav-text">d）视图的翻译、缩放、旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e）改变视图层次结构中的坐标系"><span class="nav-text">e）改变视图层次结构中的坐标系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-调整视图的大小和位置"><span class="nav-text">1.4 调整视图的大小和位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-修改视图"><span class="nav-text">1.5 修改视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-与核心动画层交互"><span class="nav-text">1.6 与核心动画层交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-自定义视图"><span class="nav-text">1.7 自定义视图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-UITableView"><span class="nav-text">2.UITableView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-UITableViewCell"><span class="nav-text">2.1 UITableViewCell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-UITableViewDataSource"><span class="nav-text">2.2 UITableViewDataSource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-UITableViewDelegate"><span class="nav-text">2.3 UITableViewDelegate</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-UICollectionView"><span class="nav-text">3.UICollectionView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-UICollectionViewCell"><span class="nav-text">3.1 UICollectionViewCell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-UICollectionViewListCell"><span class="nav-text">3.2 UICollectionViewListCell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-UICollectionViewDataSource"><span class="nav-text">3.3 UICollectionViewDataSource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-UICollectionViewDelegate"><span class="nav-text">3.4 UICollectionViewDelegate</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
