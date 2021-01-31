@@ -101,8 +101,8 @@
 <meta property="og:url" content="https://mrconfused.github.io/iOS-%E5%B0%8F%E5%8A%9F%E8%83%BD.html">
 <meta property="og:site_name" content="出自幽谷，迁于乔木">
 <meta property="og:description" content="iOS小功能">
-<meta property="article:published_time" content="2021-01-08T10:28:32.000Z">
-<meta property="article:modified_time" content="2021-01-08T10:28:32.000Z">
+<meta property="article:published_time" content="2021-01-13T10:08:03.000Z">
+<meta property="article:modified_time" content="2021-01-18T13:17:24.287Z">
 <meta property="article:author" content="LTP">
 <meta property="article:tag" content="Swift">
 <meta property="article:tag" content="iOS">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-01-08T18:28:32+08:00">
-                2021-01-08
+              <time title="更新于" itemprop="dateModified" datetime="2021-01-18T21:17:24+08:00">
+                2021-01-18
               </time>
             
           </span>
@@ -449,7 +449,173 @@
       
 
       
-        <h1 id="UIScrollView"><a href="#UIScrollView" class="headerlink" title="UIScrollView"></a>UIScrollView</h1><h2 id="contentSize"><a href="#contentSize" class="headerlink" title="contentSize"></a>contentSize</h2><p>scrollView内容的大小</p>
+        <h1 id="UIStackView"><a href="#UIStackView" class="headerlink" title="UIStackView"></a>UIStackView</h1><h2 id="AutoLayout"><a href="#AutoLayout" class="headerlink" title="AutoLayout"></a>AutoLayout</h2><ul>
+<li>stackView会自动管理布局</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="Distribution：延轴方向分布"><a href="#Distribution：延轴方向分布" class="headerlink" title="Distribution：延轴方向分布"></a>Distribution：延轴方向分布</h3><ul>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/distribution/fill"><code>fill</code></a></p>
+<ul>
+<li>若stackView大小确定：子view会被拉伸或压缩来填充整个stackView</li>
+<li>若stackView大小不确定：需要每个子view大小确定，stackView会调整自身大小以适应子view</li>
+</ul>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/distribution/fillequally"><code>fillEqually</code></a></p>
+<ul>
+<li>所有子view一样大</li>
+</ul>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/distribution/fillproportionally"><code>fillProportionally</code></a></p>
+<ul>
+<li>根据子view的intrinsic content size的比例调整大小，以适应stackView</li>
+</ul>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/distribution/equalspacing"><code>equalSpacing</code></a></p>
+<ul>
+<li>每个子view的间距相等</li>
+<li>当子view会超出stackView时，会根据子view的 compression resistance priority优先级压缩</li>
+</ul>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/distribution/equalcentering"><code>equalCentering</code></a></p>
+<ul>
+<li>每个子view的中心距离相等</li>
+<li>当子view会超出stackView时，会根据子view的 compression resistance priority优先级压缩</li>
+</ul>
+</li>
+</ul>
+<h3 id="Alignment：垂直轴方向分布"><a href="#Alignment：垂直轴方向分布" class="headerlink" title="Alignment：垂直轴方向分布"></a>Alignment：垂直轴方向分布</h3><ul>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/fill"><code>fill</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/leading"><code>leading</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/1616238-top"><code>top</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/center"><code>center</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/trailing"><code>trailing</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/1616234-bottom"><code>bottom</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/lastbaseline"><code>lastBaseline</code></a></p>
+</li>
+<li><p><a href="doc://com.apple.documentation/documentation/uikit/uistackview/alignment/firstbaseline"><code>firstBaseline</code></a></p>
+</li>
+</ul>
+<h3 id="isLayoutMarginsRelativeArrangement"><a href="#isLayoutMarginsRelativeArrangement" class="headerlink" title="isLayoutMarginsRelativeArrangement"></a>isLayoutMarginsRelativeArrangement</h3><ul>
+<li><p>设置边距</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stackView.isLayoutMarginsRelativeArrangement = <span class="literal">true</span></span><br><span class="line">stackView.directionalLayoutMargins = <span class="type">NSDirectionalEdgeInsets</span>(top: <span class="number">20</span>, leading: <span class="number">20</span>, bottom: <span class="number">20</span>, trailing: <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优点：</p>
+<ul>
+<li><p>简单</p>
+</li>
+<li><p>可以设置动画</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stackView.directionalLayoutMargins.leading = <span class="number">0</span></span><br><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.3</span>) &#123;    </span><br><span class="line">    stackView.layoutIfNeeded()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="setCustomSpacing-after"><a href="#setCustomSpacing-after" class="headerlink" title="setCustomSpacing(_:after:)"></a>setCustomSpacing(_:after:)</h3><ul>
+<li><p>自定义间距</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vStackView.addArrangedSubview(movieLabel)</span><br><span class="line">vStackView.addArrangedSubview(quoteLabel)</span><br><span class="line">vStackView.setCustomSpacing(<span class="number">10</span>, after: quoteLabel) <span class="comment">// &lt;1&gt;</span></span><br><span class="line">vStackView.addArrangedSubview(authorLabel)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iOS11之后才能用，在11之前只能用嵌套stackView</p>
+</li>
+<li><p>只有在将quoteLabel加入stackView之后再设置间距才会生效</p>
+</li>
+<li><p>若将quoteLabel设为隐藏，它后面的间距也会隐藏</p>
+</li>
+</ul>
+<h3 id="设备及其在竖-横屏下的宽高是regular还是compact"><a href="#设备及其在竖-横屏下的宽高是regular还是compact" class="headerlink" title="设备及其在竖/横屏下的宽高是regular还是compact"></a>设备及其在竖/横屏下的宽高是regular还是compact</h3><table>
+<thead>
+<tr>
+<th align="left">Device</th>
+<th align="left">Portrait orientation</th>
+<th align="left">Landscape orientation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">12.9” iPad Pro</td>
+<td align="left">Regular width, regular height</td>
+<td align="left">Regular width, regular height</td>
+</tr>
+<tr>
+<td align="left">11” iPad Pro</td>
+<td align="left">Regular width, regular height</td>
+<td align="left">Regular width, regular height</td>
+</tr>
+<tr>
+<td align="left">10.5” iPad Pro</td>
+<td align="left">Regular width, regular height</td>
+<td align="left">Regular width, regular height</td>
+</tr>
+<tr>
+<td align="left">9.7” iPad</td>
+<td align="left">Regular width, regular height</td>
+<td align="left">Regular width, regular height</td>
+</tr>
+<tr>
+<td align="left">7.9” iPad mini 4</td>
+<td align="left">Regular width, regular height</td>
+<td align="left">Regular width, regular height</td>
+</tr>
+<tr>
+<td align="left">iPhone XS Max</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Regular width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone XS</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Compact width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone XR</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Regular width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone X</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Compact width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone 8 Plus</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Regular width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone 8</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Compact width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone 7 Plus</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Regular width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone 7</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Compact width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone 6s Plus</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Regular width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone 6s</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Compact width, compact height</td>
+</tr>
+<tr>
+<td align="left">iPhone SE</td>
+<td align="left">Compact width, regular height</td>
+<td align="left">Compact width, compact height</td>
+</tr>
+</tbody></table>
+<h1 id="UIScrollView"><a href="#UIScrollView" class="headerlink" title="UIScrollView"></a>UIScrollView</h1><h2 id="contentSize"><a href="#contentSize" class="headerlink" title="contentSize"></a>contentSize</h2><p>scrollView内容的大小</p>
 <h2 id="contentOffset"><a href="#contentOffset" class="headerlink" title="contentOffset"></a>contentOffset</h2><p>contentSize的origin 和 frame的origin的偏移</p>
 <p>当scrollview向下拉时，offsetY为负数；当上拉时，offsetY不断增大，当越过原点后会变成正数。</p>
 <h2 id="contentInset"><a href="#contentInset" class="headerlink" title="contentInset"></a>contentInset</h2><p>contentview相对于scrollview的边距</p>
@@ -761,6 +927,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/The%20Composable%20Architecture.html" rel="prev" title="The Composable Architecture">
+                The Composable Architecture <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -836,7 +1006,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -913,7 +1083,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIScrollView"><span class="nav-number">1.</span> <span class="nav-text">UIScrollView</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#contentSize"><span class="nav-number">1.1.</span> <span class="nav-text">contentSize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contentOffset"><span class="nav-number">1.2.</span> <span class="nav-text">contentOffset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contentInset"><span class="nav-number">1.3.</span> <span class="nav-text">contentInset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contentInset和adjustedContentInset"><span class="nav-number">1.4.</span> <span class="nav-text">contentInset和adjustedContentInset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentInsetAdjustmentBehavior"><span class="nav-number">1.5.</span> <span class="nav-text">ContentInsetAdjustmentBehavior</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#automaticallyAdjustsScrollIndicatorInsets"><span class="nav-number">1.6.</span> <span class="nav-text">automaticallyAdjustsScrollIndicatorInsets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#translatesAutoresizingMaskIntoConstraints"><span class="nav-number">2.</span> <span class="nav-text">translatesAutoresizingMaskIntoConstraints</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setContentCompressionResistancePriority-amp-setContentHuggingPriority"><span class="nav-number">3.</span> <span class="nav-text">setContentCompressionResistancePriority &amp;setContentHuggingPriority</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听键盘事件"><span class="nav-number">4.</span> <span class="nav-text">监听键盘事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取键盘信息"><span class="nav-number">4.1.</span> <span class="nav-text">获取键盘信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UIModalPresentationStyle和UIModalTransitionStyle"><span class="nav-number">5.</span> <span class="nav-text">UIModalPresentationStyle和UIModalTransitionStyle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用UIViewControllerTransitioningDelegate显示蒙层"><span class="nav-number">5.1.</span> <span class="nav-text">用UIViewControllerTransitioningDelegate显示蒙层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存泄漏"><span class="nav-number">6.</span> <span class="nav-text">内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自己监听自己"><span class="nav-number">6.1.</span> <span class="nav-text">自己监听自己</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewModel中的监听被view的bag管理而不是reuseBag"><span class="nav-number">6.2.</span> <span class="nav-text">viewModel中的监听被view的bag管理而不是reuseBag</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听View大小"><span class="nav-number">7.</span> <span class="nav-text">监听View大小</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bounds"><span class="nav-number">7.1.</span> <span class="nav-text">bounds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrolView的contentSize"><span class="nav-number">7.2.</span> <span class="nav-text">scrolView的contentSize</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音频"><span class="nav-number">8.</span> <span class="nav-text">音频</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AVQueuePlayer"><span class="nav-number">8.1.</span> <span class="nav-text">AVQueuePlayer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听加载状态"><span class="nav-number">8.1.1.</span> <span class="nav-text">监听加载状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听播放完成-播放完成，重新将进度设为第一帧"><span class="nav-number">8.1.2.</span> <span class="nav-text">监听播放完成(播放完成，重新将进度设为第一帧)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听播放失败"><span class="nav-number">8.1.3.</span> <span class="nav-text">监听播放失败</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在OC和swift中的Int64类型转换"><span class="nav-number">9.</span> <span class="nav-text">在OC和swift中的Int64类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码注意"><span class="nav-number">10.</span> <span class="nav-text">代码注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#会导致source-kit崩溃的原因"><span class="nav-number">11.</span> <span class="nav-text">会导致source kit崩溃的原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移除当前显示的controller"><span class="nav-number">12.</span> <span class="nav-text">移除当前显示的controller</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dismiss"><span class="nav-number">12.1.</span> <span class="nav-text">dismiss</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PresentedViewController-与-PresentingViewController"><span class="nav-number">13.</span> <span class="nav-text">PresentedViewController 与 PresentingViewController</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS权限查询"><span class="nav-number">14.</span> <span class="nav-text">iOS权限查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通知权限"><span class="nav-number">15.</span> <span class="nav-text">通知权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保证有相机权限"><span class="nav-number">16.</span> <span class="nav-text">保证有相机权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跳到设置界面"><span class="nav-number">17.</span> <span class="nav-text">跳到设置界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API获取的整数转为枚举"><span class="nav-number">18.</span> <span class="nav-text">API获取的整数转为枚举</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据不同的评级使用不同的图片"><span class="nav-number">19.</span> <span class="nav-text">根据不同的评级使用不同的图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片旋转"><span class="nav-number">20.</span> <span class="nav-text">图片旋转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据不同的情景使用不同的布局"><span class="nav-number">21.</span> <span class="nav-text">根据不同的情景使用不同的布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rx只监听一次"><span class="nav-number">22.</span> <span class="nav-text">rx只监听一次</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时器"><span class="nav-number">23.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从gerrit上download已经revert的提交"><span class="nav-number">24.</span> <span class="nav-text">从gerrit上download已经revert的提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词"><span class="nav-number">25.</span> <span class="nav-text">名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间"><span class="nav-number">26.</span> <span class="nav-text">时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把一个view包装为左侧有2pixl的新view"><span class="nav-number">27.</span> <span class="nav-text">把一个view包装为左侧有2pixl的新view</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取API错误返回的状态码"><span class="nav-number">28.</span> <span class="nav-text">获取API错误返回的状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frog"><span class="nav-number">29.</span> <span class="nav-text">frog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断是否是表情"><span class="nav-number">30.</span> <span class="nav-text">判断是否是表情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断字符是否是汉字"><span class="nav-number">31.</span> <span class="nav-text">判断字符是否是汉字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期扩展"><span class="nav-number">32.</span> <span class="nav-text">日期扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#富文本"><span class="nav-number">33.</span> <span class="nav-text">富文本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算文字高度"><span class="nav-number">34.</span> <span class="nav-text">计算文字高度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#boundingRect"><span class="nav-number">34.1.</span> <span class="nav-text">boundingRect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemLayoutSizeFitting"><span class="nav-number">34.2.</span> <span class="nav-text">systemLayoutSizeFitting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对齐设置"><span class="nav-number">35.</span> <span class="nav-text">对齐设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一：使用snp"><span class="nav-number">35.1.</span> <span class="nav-text">方法一：使用snp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二：直接设置"><span class="nav-number">35.2.</span> <span class="nav-text">方法二：直接设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置根视图"><span class="nav-number">36.</span> <span class="nav-text">设置根视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Podfile使用"><span class="nav-number">37.</span> <span class="nav-text">Podfile使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分割线"><span class="nav-number">38.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听某个存储属性"><span class="nav-number">39.</span> <span class="nav-text">监听某个存储属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#viewDidLoad的功能切分"><span class="nav-number">40.</span> <span class="nav-text">viewDidLoad的功能切分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#点击背景隐藏键盘"><span class="nav-number">41.</span> <span class="nav-text">点击背景隐藏键盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索框"><span class="nav-number">42.</span> <span class="nav-text">搜索框</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIStackView"><span class="nav-number">1.</span> <span class="nav-text">UIStackView</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AutoLayout"><span class="nav-number">1.1.</span> <span class="nav-text">AutoLayout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.2.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Distribution：延轴方向分布"><span class="nav-number">1.2.1.</span> <span class="nav-text">Distribution：延轴方向分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alignment：垂直轴方向分布"><span class="nav-number">1.2.2.</span> <span class="nav-text">Alignment：垂直轴方向分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isLayoutMarginsRelativeArrangement"><span class="nav-number">1.2.3.</span> <span class="nav-text">isLayoutMarginsRelativeArrangement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setCustomSpacing-after"><span class="nav-number">1.2.4.</span> <span class="nav-text">setCustomSpacing(_:after:)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备及其在竖-横屏下的宽高是regular还是compact"><span class="nav-number">1.2.5.</span> <span class="nav-text">设备及其在竖&#x2F;横屏下的宽高是regular还是compact</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UIScrollView"><span class="nav-number">2.</span> <span class="nav-text">UIScrollView</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#contentSize"><span class="nav-number">2.1.</span> <span class="nav-text">contentSize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contentOffset"><span class="nav-number">2.2.</span> <span class="nav-text">contentOffset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contentInset"><span class="nav-number">2.3.</span> <span class="nav-text">contentInset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contentInset和adjustedContentInset"><span class="nav-number">2.4.</span> <span class="nav-text">contentInset和adjustedContentInset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentInsetAdjustmentBehavior"><span class="nav-number">2.5.</span> <span class="nav-text">ContentInsetAdjustmentBehavior</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#automaticallyAdjustsScrollIndicatorInsets"><span class="nav-number">2.6.</span> <span class="nav-text">automaticallyAdjustsScrollIndicatorInsets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#translatesAutoresizingMaskIntoConstraints"><span class="nav-number">3.</span> <span class="nav-text">translatesAutoresizingMaskIntoConstraints</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setContentCompressionResistancePriority-amp-setContentHuggingPriority"><span class="nav-number">4.</span> <span class="nav-text">setContentCompressionResistancePriority &amp;setContentHuggingPriority</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听键盘事件"><span class="nav-number">5.</span> <span class="nav-text">监听键盘事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取键盘信息"><span class="nav-number">5.1.</span> <span class="nav-text">获取键盘信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">5.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UIModalPresentationStyle和UIModalTransitionStyle"><span class="nav-number">6.</span> <span class="nav-text">UIModalPresentationStyle和UIModalTransitionStyle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用UIViewControllerTransitioningDelegate显示蒙层"><span class="nav-number">6.1.</span> <span class="nav-text">用UIViewControllerTransitioningDelegate显示蒙层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存泄漏"><span class="nav-number">7.</span> <span class="nav-text">内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自己监听自己"><span class="nav-number">7.1.</span> <span class="nav-text">自己监听自己</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewModel中的监听被view的bag管理而不是reuseBag"><span class="nav-number">7.2.</span> <span class="nav-text">viewModel中的监听被view的bag管理而不是reuseBag</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听View大小"><span class="nav-number">8.</span> <span class="nav-text">监听View大小</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bounds"><span class="nav-number">8.1.</span> <span class="nav-text">bounds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrolView的contentSize"><span class="nav-number">8.2.</span> <span class="nav-text">scrolView的contentSize</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音频"><span class="nav-number">9.</span> <span class="nav-text">音频</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AVQueuePlayer"><span class="nav-number">9.1.</span> <span class="nav-text">AVQueuePlayer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听加载状态"><span class="nav-number">9.1.1.</span> <span class="nav-text">监听加载状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听播放完成-播放完成，重新将进度设为第一帧"><span class="nav-number">9.1.2.</span> <span class="nav-text">监听播放完成(播放完成，重新将进度设为第一帧)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听播放失败"><span class="nav-number">9.1.3.</span> <span class="nav-text">监听播放失败</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在OC和swift中的Int64类型转换"><span class="nav-number">10.</span> <span class="nav-text">在OC和swift中的Int64类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码注意"><span class="nav-number">11.</span> <span class="nav-text">代码注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#会导致source-kit崩溃的原因"><span class="nav-number">12.</span> <span class="nav-text">会导致source kit崩溃的原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移除当前显示的controller"><span class="nav-number">13.</span> <span class="nav-text">移除当前显示的controller</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dismiss"><span class="nav-number">13.1.</span> <span class="nav-text">dismiss</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PresentedViewController-与-PresentingViewController"><span class="nav-number">14.</span> <span class="nav-text">PresentedViewController 与 PresentingViewController</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS权限查询"><span class="nav-number">15.</span> <span class="nav-text">iOS权限查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通知权限"><span class="nav-number">16.</span> <span class="nav-text">通知权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保证有相机权限"><span class="nav-number">17.</span> <span class="nav-text">保证有相机权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跳到设置界面"><span class="nav-number">18.</span> <span class="nav-text">跳到设置界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API获取的整数转为枚举"><span class="nav-number">19.</span> <span class="nav-text">API获取的整数转为枚举</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据不同的评级使用不同的图片"><span class="nav-number">20.</span> <span class="nav-text">根据不同的评级使用不同的图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片旋转"><span class="nav-number">21.</span> <span class="nav-text">图片旋转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据不同的情景使用不同的布局"><span class="nav-number">22.</span> <span class="nav-text">根据不同的情景使用不同的布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rx只监听一次"><span class="nav-number">23.</span> <span class="nav-text">rx只监听一次</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时器"><span class="nav-number">24.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从gerrit上download已经revert的提交"><span class="nav-number">25.</span> <span class="nav-text">从gerrit上download已经revert的提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词"><span class="nav-number">26.</span> <span class="nav-text">名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间"><span class="nav-number">27.</span> <span class="nav-text">时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把一个view包装为左侧有2pixl的新view"><span class="nav-number">28.</span> <span class="nav-text">把一个view包装为左侧有2pixl的新view</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取API错误返回的状态码"><span class="nav-number">29.</span> <span class="nav-text">获取API错误返回的状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frog"><span class="nav-number">30.</span> <span class="nav-text">frog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断是否是表情"><span class="nav-number">31.</span> <span class="nav-text">判断是否是表情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断字符是否是汉字"><span class="nav-number">32.</span> <span class="nav-text">判断字符是否是汉字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期扩展"><span class="nav-number">33.</span> <span class="nav-text">日期扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#富文本"><span class="nav-number">34.</span> <span class="nav-text">富文本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算文字高度"><span class="nav-number">35.</span> <span class="nav-text">计算文字高度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#boundingRect"><span class="nav-number">35.1.</span> <span class="nav-text">boundingRect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemLayoutSizeFitting"><span class="nav-number">35.2.</span> <span class="nav-text">systemLayoutSizeFitting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对齐设置"><span class="nav-number">36.</span> <span class="nav-text">对齐设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一：使用snp"><span class="nav-number">36.1.</span> <span class="nav-text">方法一：使用snp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二：直接设置"><span class="nav-number">36.2.</span> <span class="nav-text">方法二：直接设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置根视图"><span class="nav-number">37.</span> <span class="nav-text">设置根视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Podfile使用"><span class="nav-number">38.</span> <span class="nav-text">Podfile使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分割线"><span class="nav-number">39.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听某个存储属性"><span class="nav-number">40.</span> <span class="nav-text">监听某个存储属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#viewDidLoad的功能切分"><span class="nav-number">41.</span> <span class="nav-text">viewDidLoad的功能切分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#点击背景隐藏键盘"><span class="nav-number">42.</span> <span class="nav-text">点击背景隐藏键盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索框"><span class="nav-number">43.</span> <span class="nav-text">搜索框</span></a></li></ol></div>
             
 
           </div>
