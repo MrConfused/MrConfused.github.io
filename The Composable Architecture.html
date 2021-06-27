@@ -101,8 +101,8 @@
 <meta property="og:url" content="https://mrconfused.github.io/The%20Composable%20Architecture.html">
 <meta property="og:site_name" content="出自幽谷，迁于乔木">
 <meta property="og:description" content="The Composable Architecture https:&#x2F;&#x2F;github.com&#x2F;pointfreeco&#x2F;swift-composable-architecture">
-<meta property="article:published_time" content="2021-01-18T13:16:47.979Z">
-<meta property="article:modified_time" content="2021-01-24T13:11:22.692Z">
+<meta property="article:published_time" content="2021-02-01T06:57:26.000Z">
+<meta property="article:modified_time" content="2021-02-01T06:57:26.000Z">
 <meta property="article:author" content="LTP">
 <meta property="article:tag" content="Swift">
 <meta property="article:tag" content="iOS">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-01-24T21:11:22+08:00">
-                2021-01-24
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-01T14:57:26+08:00">
+                2021-02-01
               </time>
             
           </span>
@@ -461,17 +461,17 @@
 
 
 
-<h1 id="四、Reducer-lt-State-Action-Environment-gt"><a href="#四、Reducer-lt-State-Action-Environment-gt" class="headerlink" title="四、Reducer&lt;State, Action, Environment&gt;"></a>四、Reducer&lt;State, Action, Environment&gt;</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="四、Reducer"><a href="#四、Reducer" class="headerlink" title="四、Reducer"></a>四、Reducer</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>处理事件以及状态的变化</li>
 <li>返回Effect</li>
 </ul>
-<h2 id="1-func-combine-reducers-Reducer…-gt-Reducer"><a href="#1-func-combine-reducers-Reducer…-gt-Reducer" class="headerlink" title="1. func combine(_ reducers: Reducer…) -&gt; Reducer"></a>1. <strong>func</strong> combine(<strong>_</strong> reducers: Reducer…) -&gt; Reducer</h2><p>把多个reducer组合成一个</p>
+<h2 id="1-combine"><a href="#1-combine" class="headerlink" title="1. combine"></a>1. combine</h2><p>把多个reducer组合成一个</p>
 <ul>
 <li>reducers的顺序会影响结果</li>
 </ul>
-<h2 id="2-func-pullback-lt-GlobalState-GlobalAction-GlobalEnvironment-gt"><a href="#2-func-pullback-lt-GlobalState-GlobalAction-GlobalEnvironment-gt" class="headerlink" title="2. func pullback&lt;GlobalState, GlobalAction, GlobalEnvironment&gt;"></a>2. <strong>func</strong> pullback&lt;GlobalState, GlobalAction, GlobalEnvironment&gt;</h2><p>利用<strong>local</strong> state, action and environment构造全局的reducer</p>
+<h2 id="2-pullback"><a href="#2-pullback" class="headerlink" title="2. pullback"></a>2. pullback</h2><p>利用<strong>local</strong> state, action and environment构造全局的reducer</p>
 <ul>
 <li><p>参数：</p>
 <ul>
@@ -501,31 +501,34 @@
     <span class="comment">/* other reducers */</span>
 )
 &lt;!--￼<span class="number">4</span>--&gt;
-
-
 </code></pre>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="五、Store-lt-State-Action-gt"><a href="#五、Store-lt-State-Action-gt" class="headerlink" title="五、Store&lt;State, Action&gt;"></a>五、Store&lt;State, Action&gt;</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Store</span>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3-optional"><a href="#3-optional" class="headerlink" title="3. optional"></a>3. optional</h2><p>将reducer中 <code>state</code>映射为<code>State?</code></p>
+<h1 id="五、Store"><a href="#五、Store" class="headerlink" title="五、Store"></a>五、Store</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Store</span>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>存储了state和action</li>
 </ul>
-<h2 id="1-WithViewStore-lt-State-Action-Content-gt"><a href="#1-WithViewStore-lt-State-Action-Content-gt" class="headerlink" title="1. WithViewStore&lt;State, Action, Content&gt;"></a>1. WithViewStore&lt;State, Action, Content&gt;</h2><p>可以接受Store，并将其转换为<code>@ObservedObject ViewStore&lt;State, Action&gt;</code></p>
+<h2 id="1-WithViewStore"><a href="#1-WithViewStore" class="headerlink" title="1. WithViewStore"></a>1. WithViewStore</h2><p>可以接受Store，并将其转换为<code>@ObservedObject ViewStore&lt;State, Action&gt;</code></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">    <span class="type">WithViewStore</span>(<span class="keyword">self</span>.store) &#123; viewStore <span class="keyword">in</span></span><br><span class="line">        <span class="type">HStack</span> &#123;</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"−"</span>) &#123; viewStore.send(.decrementButtonTapped) &#125;</span><br><span class="line">            <span class="type">Text</span>(<span class="string">"\(viewStore.count)"</span>)</span><br><span class="line">                .font(<span class="type">Font</span>.body.monospacedDigit())</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"+"</span>) &#123; viewStore.send(.incrementButtonTapped) &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="1-1-ViewStore-lt-State-Action-gt"><a href="#1-1-ViewStore-lt-State-Action-gt" class="headerlink" title="1.1 ViewStore&lt;State, Action&gt;"></a>1.1 ViewStore&lt;State, Action&gt;</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@dynamicMemberLookup</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewStore</span>&lt;<span class="title">State</span>, <span class="title">Action</span>&gt;: <span class="title">ObservableObject</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="1-1-ViewStore"><a href="#1-1-ViewStore" class="headerlink" title="1.1 ViewStore"></a>1.1 ViewStore</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@dynamicMemberLookup</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewStore</span>&lt;<span class="title">State</span>, <span class="title">Action</span>&gt;: <span class="title">ObservableObject</span></span></span><br></pre></td></tr></table></figure>
 
 <h4 id="viewStore可以访问到state的属性"><a href="#viewStore可以访问到state的属性" class="headerlink" title="viewStore可以访问到state的属性"></a>viewStore可以访问到state的属性</h4><blockquote>
 <p>原理：将ViewStore声明为dynamicMemberLookup，并实现他的<code>subscript&lt;LocalState&gt;(dynamicMember keyPath: KeyPath&lt;State, LocalState&gt;) -&gt; LocalState</code>方法，即可访问到ViewStore中未定义的成员（若访问到成员不存在，就会返回subscript方法的执行结果）</p>
 </blockquote>
-<h4 id="func-send-action-Action"><a href="#func-send-action-Action" class="headerlink" title="func send(_ action: Action)"></a><strong>func</strong> send(<strong>_</strong> action: Action)</h4><p>viewStore可以发送一个action到store，store中的reducer会接受并处理</p>
+<h4 id="send"><a href="#send" class="headerlink" title="send"></a>send</h4><p>viewStore可以发送一个action到store，store中的reducer会接受并处理</p>
 <blockquote>
 <p>ViewStore不是线程安全的，因此send方法一定要在主线程调用</p>
 </blockquote>
-<h2 id="2-func-scope-lt-LocalState-LocalAction-gt"><a href="#2-func-scope-lt-LocalState-LocalAction-gt" class="headerlink" title="2. func scope&lt;LocalState, LocalAction&gt;"></a>2. <strong>func</strong> scope&lt;LocalState, LocalAction&gt;</h2><p>通过全局的Store获取local Store中的state或者action</p>
+<h4 id="binding"><a href="#binding" class="headerlink" title="binding"></a>binding</h4><ul>
+<li>初始化时传入get函数（获取state）和set函数（发送action）</li>
+<li>有关联值的枚举，如果只写关联值以外的部分，可以当做函数来使用：比如 <code>viewStore.binding(get: { $0.text }, send: BindingBasicsAction.textChange)</code> 中<code>BindingBasicsAction.textChange</code> 就是一个输入为 String， 输出为 BindingBasicsAction 实例的函数</li>
+</ul>
+<h2 id="2-scope"><a href="#2-scope" class="headerlink" title="2. scope"></a>2. scope</h2><p>通过全局的Store获取local Store中的state或者action</p>
 <ul>
 <li>参数<ul>
 <li>toLocalState：修改local state</li>
@@ -535,6 +538,7 @@
 </ul>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Application state made from local states.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AppState</span> </span>&#123; <span class="keyword">var</span> login: <span class="type">LoginState</span>, ... &#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AppAction</span> </span>&#123; <span class="keyword">case</span> login(<span class="type">LoginAction</span>), ... &#125;</span><br><span class="line"><span class="comment">// A store that runs the entire application.</span></span><br><span class="line"><span class="keyword">let</span> store = <span class="type">Store</span>(initialState: <span class="type">AppState</span>(), reducer: appReducer, environment: ())</span><br><span class="line"><span class="comment">// Construct a login view by scoping the store to one that works with only login domain.</span></span><br><span class="line"><span class="keyword">let</span> loginView = <span class="type">LoginView</span>(</span><br><span class="line">    store: store.scope(</span><br><span class="line">        state: &#123; $<span class="number">0</span>.login &#125;,	<span class="comment">//取出AppState中的login</span></span><br><span class="line">        action: &#123; <span class="type">AppAction</span>.login($<span class="number">0</span>) &#125;	<span class="comment">//用loginAction生成AppAction</span></span><br><span class="line">    )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
+<h2 id="3-IfLetStore"><a href="#3-IfLetStore" class="headerlink" title="3. IfLetStore"></a>3. IfLetStore</h2><p>判断当前store中的State是不是可选的</p>
 
       
     </div>
@@ -567,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/iOS-%E5%B0%8F%E5%8A%9F%E8%83%BD.html" rel="next" title="iOS小功能">
-                <i class="fa fa-chevron-left"></i> iOS小功能
+              <a href="/Note.html" rel="next" title="Note">
+                <i class="fa fa-chevron-left"></i> Note
               </a>
             
           </div>
@@ -577,8 +581,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Note.html" rel="prev" title="Note">
-                Note <i class="fa fa-chevron-right"></i>
+              <a href="/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95.html" rel="prev" title="职业发展">
+                职业发展 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +660,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -667,7 +671,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -733,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、State"><span class="nav-number">1.</span> <span class="nav-text">一、State</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Action"><span class="nav-number">2.</span> <span class="nav-text">二、Action</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、Environment"><span class="nav-number">3.</span> <span class="nav-text">三、Environment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、Reducer-lt-State-Action-Environment-gt"><span class="nav-number">4.</span> <span class="nav-text">四、Reducer&lt;State, Action, Environment&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-func-combine-reducers-Reducer…-gt-Reducer"><span class="nav-number">4.1.</span> <span class="nav-text">1. func combine(_ reducers: Reducer…) -&gt; Reducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-func-pullback-lt-GlobalState-GlobalAction-GlobalEnvironment-gt"><span class="nav-number">4.2.</span> <span class="nav-text">2. func pullback&lt;GlobalState, GlobalAction, GlobalEnvironment&gt;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Store-lt-State-Action-gt"><span class="nav-number">5.</span> <span class="nav-text">五、Store&lt;State, Action&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-WithViewStore-lt-State-Action-Content-gt"><span class="nav-number">5.1.</span> <span class="nav-text">1. WithViewStore&lt;State, Action, Content&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-ViewStore-lt-State-Action-gt"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1 ViewStore&lt;State, Action&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#viewStore可以访问到state的属性"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">viewStore可以访问到state的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#func-send-action-Action"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">func send(_ action: Action)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-func-scope-lt-LocalState-LocalAction-gt"><span class="nav-number">5.2.</span> <span class="nav-text">2. func scope&lt;LocalState, LocalAction&gt;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、State"><span class="nav-number">1.</span> <span class="nav-text">一、State</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Action"><span class="nav-number">2.</span> <span class="nav-text">二、Action</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、Environment"><span class="nav-number">3.</span> <span class="nav-text">三、Environment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、Reducer"><span class="nav-number">4.</span> <span class="nav-text">四、Reducer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-combine"><span class="nav-number">4.1.</span> <span class="nav-text">1. combine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-pullback"><span class="nav-number">4.2.</span> <span class="nav-text">2. pullback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-optional"><span class="nav-number">4.3.</span> <span class="nav-text">3. optional</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Store"><span class="nav-number">5.</span> <span class="nav-text">五、Store</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-WithViewStore"><span class="nav-number">5.1.</span> <span class="nav-text">1. WithViewStore</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-ViewStore"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1 ViewStore</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#viewStore可以访问到state的属性"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">viewStore可以访问到state的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#send"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">send</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#binding"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">binding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-scope"><span class="nav-number">5.2.</span> <span class="nav-text">2. scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-IfLetStore"><span class="nav-number">5.3.</span> <span class="nav-text">3. IfLetStore</span></a></li></ol></li></ol></div>
             
 
           </div>
