@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="gab4jOdmJt" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="L0sNOT9b93zGdJBP3JyfKdDNXAVabwgGQKmdrLonIQw" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="I4xdzT5qdf" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vim," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.startvim 命令vim 自动补全tab 模式切换i - insert esc - normal mode : - command-line mode 退出:q, :quit :w, :write :wq :q! 帮助:h 打开文件vim file1 file2 file3 ... vim +&lt;cmd1&gt; +&lt;cmd2&gt; file - 打开文件并执行命令 vim -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim">
+<meta property="og:url" content="https://mrconfused.github.io/Vim.html">
+<meta property="og:site_name" content="出自幽谷，迁于乔木">
+<meta property="og:description" content="1.startvim 命令vim 自动补全tab 模式切换i - insert esc - normal mode : - command-line mode 退出:q, :quit :w, :write :wq :q! 帮助:h 打开文件vim file1 file2 file3 ... vim +&lt;cmd1&gt; +&lt;cmd2&gt; file - 打开文件并执行命令 vim -">
+<meta property="article:published_time" content="2021-01-30T06:30:20.956Z">
+<meta property="article:modified_time" content="2021-07-04T14:50:15.043Z">
+<meta property="article:author" content="LTP">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>Vim | 出自幽谷，迁于乔木</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?760eb72b67b1d20ac62682067b9c35d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">出自幽谷，迁于乔木</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有匪君子，如切如磋，如琢如磨</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mrconfused.github.io/Vim.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LTP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="出自幽谷，迁于乔木">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Vim</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-07-04T22:50:15+08:00">
+                2021-07-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/Xcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Xcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-start"><a href="#1-start" class="headerlink" title="1.start"></a>1.start</h1><h2 id="vim-命令"><a href="#vim-命令" class="headerlink" title="vim 命令"></a>vim 命令</h2><p><code>vim</code></p>
+<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><p><code>tab</code></p>
+<h2 id="模式切换"><a href="#模式切换" class="headerlink" title="模式切换"></a>模式切换</h2><p><code>i</code> - insert</p>
+<p><code>esc</code> - normal mode</p>
+<p><code>:</code> - command-line mode</p>
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p><code>:q</code>, <code>:quit</code></p>
+<p><code>:w</code>, <code>:write</code></p>
+<p><code>:wq</code></p>
+<p><code>:q!</code></p>
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p><code>:h</code></p>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><p><code>vim file1 file2 file3 ...</code></p>
+<p><code>vim +&lt;cmd1&gt; +&lt;cmd2&gt; file</code> - 打开文件并执行命令</p>
+<p><code>vim -c &lt;cmd1&gt; -c &lt;cmd2&gt; file</code> - 和上述命令一样</p>
+<h2 id="打开多窗口"><a href="#打开多窗口" class="headerlink" title="打开多窗口"></a>打开多窗口</h2><p><code>vim -o</code> - 打开两个水平窗口</p>
+<p><code>vim -O</code> - 打开两个垂直窗口</p>
+<p><code>vim -o5 file1 file2</code> - 水平打开五个，前两个打开指定文件</p>
+<h2 id="挂起"><a href="#挂起" class="headerlink" title="挂起"></a>挂起</h2><p><code>Ctrl-Z</code>, <code>:stop</code>, <code>:suspend</code></p>
+<p>恢复：<code>fg</code></p>
+<h1 id="2-Buffers-Windows-and-Tabs"><a href="#2-Buffers-Windows-and-Tabs" class="headerlink" title="2.Buffers, Windows, and Tabs"></a>2.Buffers, Windows, and Tabs</h1><h2 id="buffers"><a href="#buffers" class="headerlink" title="buffers"></a>buffers</h2><p>首先要在<code>.vimrc</code>文件中添加<code>set hidden</code>。否则每次切换buffer都不会保存内容。</p>
+<p>如果没有.vimrc文件，要创建他：在vim中输入<code>:h vimrc</code>查看要创建的位置，创建完成之后在文件中添加<code>set hidden</code>，输入<code>:w</code>保存，然后输入<code>:source %</code>执行当前文件。</p>
+<p>每打开一个文件，就会创建一个buffer</p>
+<p><code>:buffers</code> - 查看所有的buffer</p>
+<p><code>:bnext</code>,  <code>Crtl-i</code></p>
+<p><code>:bprevious</code>,  <code>Ctrl-o</code></p>
+<p><code>:buffer file</code>, <code>:buffer num</code>, - 切换buffer</p>
+<p><code>:bdelete file/num</code> - 删除</p>
+<p><code>:qall</code>, <code>:qall!</code>, <code>:wqall</code> - 关闭所有buffer</p>
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p><code>:split file</code>, <code>:vsplit file</code>, <code>:new file</code> - 创建新的窗口</p>
+<p><code>Ctrl-w v</code> - 创建垂直切分窗口</p>
+<p><code>Ctrl-w s</code> - 创建水平切分窗口</p>
+<p><code>Ctrl-w h/j/k/l</code> - 切换窗口</p>
+<p><code>Ctrl-w c</code> - 关闭窗口</p>
+<p><code>Ctrl-w o</code> - 关闭其他窗口</p>
+<h2 id="Tabs"><a href="#Tabs" class="headerlink" title="Tabs"></a>Tabs</h2><p>是多个窗口的集合，但是当关闭tab时，文件仍然存在buffer中，没有被关闭。</p>
+<p><code>:tabnew file</code> - 创建新的tab</p>
+<p><code>:tabclose</code></p>
+<p><code>:tabnext</code>， <code>gt</code>, <code>3gt</code></p>
+<p><code>:tabprevious</code>, <code>gT</code></p>
+<p><code>:tablast</code></p>
+<p><code>:tabfirst</code></p>
+<p><code>vim -p file1 file2</code> - 打开多个tab</p>
+<h1 id="3-搜索文件"><a href="#3-搜索文件" class="headerlink" title="3.搜索文件"></a>3.搜索文件</h1><h2 id="vim中打开并编辑文件"><a href="#vim中打开并编辑文件" class="headerlink" title="vim中打开并编辑文件"></a>vim中打开并编辑文件</h2><p><code>:edit file</code></p>
+<p><code>:edit *&lt;tab&gt;</code> - 当前文件夹所有文件</p>
+<p><code>:edit *.txt &lt;tab&gt;</code> - txt文件</p>
+<p><code>:edit **/*.md &lt;tab&gt;</code> - 当前目录及子目录下的所有md文件</p>
+<p>edit也可以打开目录（使用的是vim的内置文件管理器<code>netrw</code>）</p>
+<h2 id="find-搜索"><a href="#find-搜索" class="headerlink" title=":find 搜索"></a>:find 搜索</h2><p>find在path中搜索文件，而edit并不是。</p>
+<h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><p><code>:set path?</code> - 查看path</p>
+<p><code>:set path+={path}</code> - 添加path（例如：<code>:set path+=/Users/ltp/**</code>find会在ltp及其子目录下查找），也可以把该命令加到vimrc中，方便以后修改</p>
+<h2 id="grep-搜索"><a href="#grep-搜索" class="headerlink" title=":grep 搜索"></a>:grep 搜索</h2><p>在文件中搜索。</p>
+<p><code>:vim /{patten}/ file</code> - vim内置的grep，是:vimgrep的缩写</p>
+<h3 id="quickfix"><a href="#quickfix" class="headerlink" title="quickfix"></a>quickfix</h3><ul>
+<li><p>:vim指令使用的是<code>quickfix</code>操作，因此可以用quickfix指令查看搜索结果：</p>
+<ul>
+<li><pre><code class="bash">:copen        Open the quickfix window
+:cclose       Close the quickfix window
+:cl        列出所有匹配
+:cn        下一个匹配
+:cnf    下一个文件
+:cp        上一个匹配
+:cpf    上一个文件
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">* </span>:vim会把搜到的结果写入内存，匹配较多时会耗费大量时间</span><br><span class="line"></span><br><span class="line"><span class="code">`:grep "&#123;patten&#125;" file`</span> - 使用bash的grep指令进行搜索，也是使用<span class="code">`quickfix`</span>指令查看搜索结果</span><br><span class="line"></span><br><span class="line"><span class="section">## netrw 管理文件</span></span><br><span class="line"></span><br><span class="line">进入netrw：</span><br><span class="line"></span><br><span class="line"><span class="bullet">* </span><span class="code">`vim &#123;path&#125;`</span> - 外部进入netrw</span><br><span class="line"><span class="bullet">* </span><span class="code">`:edit &#123;path&#125;`</span> - vim内进入netrw</span><br><span class="line"><span class="bullet">* </span><span class="code">`:Explore`</span> - 不用指定path，打开当前所在目录</span><br><span class="line"><span class="bullet">* </span><span class="code">`:Sexplore`</span> - 在屏幕上半部分进入netrw</span><br><span class="line"><span class="bullet">* </span><span class="code">`:Vexplore`</span> - 在屏幕右半部分进入netrw</span><br><span class="line"></span><br><span class="line"><span class="code">`%`</span> - 创建文件</span><br><span class="line"></span><br><span class="line"><span class="code">`d`</span> - 创建目录</span><br><span class="line"></span><br><span class="line"><span class="code">`R`</span> - 重命名目录</span><br><span class="line"></span><br><span class="line"><span class="code">`D`</span> - 删除目录</span><br><span class="line"></span><br><span class="line"><span class="section">## Fzf &amp; ripGrep</span></span><br><span class="line"></span><br><span class="line">用第三方插件进行搜索效率更高</span><br><span class="line"></span><br><span class="line"><span class="section">### 安装</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">* </span>下载 [<span class="string">fzf</span>](<span class="link">https://github.com/junegunn/fzf</span>) 和 [<span class="string">ripgrep</span>](<span class="link">https://github.com/BurntSushi/ripgrep</span>) </span><br><span class="line"></span><br><span class="line"><span class="bullet">* </span>告诉fzf默认使用ripgrep进行搜索</span><br><span class="line"></span><br><span class="line">  在<span class="code">`.zshrc`</span>文件中加入下面代码：</span><br><span class="line"></span><br><span class="line">  <span class="code">```</span>bash</span><br><span class="line">  if type rg &amp;&gt; /dev/null; then</span><br><span class="line"><span class="code">    export FZF_DEFAULT_COMMAND='rg --files'</span></span><br><span class="line"><span class="code">    export FZF_DEFAULT_OPTS='-m'</span></span><br><span class="line">  fi</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+</ul>
+</li>
+<li><p>安装vim插件管理器<a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">vim-plug</a>，并按照教程在<code>.vimrc</code>中配置好。</p>
+</li>
+<li><p>在<code>.vimrc</code>中加入</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Plug</span> 'junegunn/fzf.vim'</span><br><span class="line"><span class="type">Plug</span> 'junegunn/fzf', &#123; '<span class="keyword">do</span>': &#123; -&gt; fzf#install() &#125; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>:so $MYVIMSC</code> 重新加载vimrc</p>
+</li>
+<li><p><code>:PlugInstall</code> 安装vimrc中加入的插件</p>
+</li>
+</ul>
+<h3 id="Fzf符号"><a href="#Fzf符号" class="headerlink" title="Fzf符号"></a>Fzf符号</h3><ul>
+<li><code>^</code> is a prefix exact match. To search for a phrase starting with “welcome”: <code>^welcome</code>.</li>
+<li><code>$</code> is a suffix exact match. To search for a phrase ending with “my friends”: <code>friends$</code>.</li>
+<li><code>&#39;</code> is an exact match. To search for the phrase “welcome my friends”: <code>&#39;welcome my friends</code>.</li>
+<li><code>|</code> is an “or” match. To search for either “friends” or “foes”: <code>friends | foes</code>.</li>
+<li><code>!</code> is an inverse match. To search for phrase containing “welcome” and not “friends”: <code>welcome !friends</code></li>
+</ul>
+<h3 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h3><p><code>:Files</code></p>
+<p>可以给该指令设置快捷键：在<code>.vimrc</code>中加入<code>nnoremap &lt;silent&gt; &lt;C-f&gt; :Files&lt;CR&gt;</code>，之后即可使用<code>Ctrl-f</code></p>
+<p> <a href="https://github.com/junegunn/fzf.vim#commands" target="_blank" rel="noopener">fzf的其他指令</a></p>
+<p>设置其他快捷键：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">nnoremap &lt;silent&gt; &lt;Leader&gt;b :Buffers&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;C<span class="_">-f</span>&gt; :Files&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;Leader&gt;f :Rg&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;Leader&gt;/ :BLines&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;Leader&gt;<span class="string">' :Marks&lt;CR&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;silent&gt; &lt;Leader&gt;g :Commits&lt;CR&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;silent&gt; &lt;Leader&gt;H :Helptags&lt;CR&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;silent&gt; &lt;Leader&gt;hh :History&lt;CR&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;silent&gt; &lt;Leader&gt;h: :History:&lt;CR&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;silent&gt; &lt;Leader&gt;h/ :History/&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="用rg代替grep"><a href="#用rg代替grep" class="headerlink" title="用rg代替grep"></a>用rg代替grep</h3><p>上面讲过，在vim中使用:grep调用的是外部的bash指令，我们可以手动替换为rg</p>
+<p>在vimrc中加入：<code>set grepprg=rg\ --vimgrep\ --smart-case\ --follow</code></p>
+<h3 id="在多个文件中搜索和替换"><a href="#在多个文件中搜索和替换" class="headerlink" title="在多个文件中搜索和替换"></a>在多个文件中搜索和替换</h3><ol>
+<li><code>:grep &quot;pizza&quot;</code> - 收缩有pizza的文件，</li>
+<li><code>:cfdo %s/pizza/donut/g | update</code> - 将quickfix中的文件执行替换操作并保存</li>
+</ol>
+<p>手动选择要替换的文件：</p>
+<ol>
+<li>清空buffer：退出vim或者执行<code>:%bd | e#</code> - (<code>%bd</code> 删除所有的bufer， <code>e#</code> 打开之前的文件)</li>
+<li>执行<code>:Files</code></li>
+<li>使用<tab>选择需要替换的文件</li>
+<li>执行<code>:bufdo %s/pizza/donut/g | update</code> - 将buffer中的文件执行替换操作并保存</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag"><i class="fa fa-tag"></i> vim</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Note.html" rel="next" title="Note">
+                <i class="fa fa-chevron-left"></i> Note
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/The%20Composable%20Architecture.html" rel="prev" title="The Composable Architecture">
+                The Composable Architecture <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+		<div class="post-spread">
+		  
+		</div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/avatar.jpg"
+                alt="LTP" />
+            
+              <p class="site-author-name" itemprop="name">LTP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MrConfused" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liutianpeng_cs@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/playlist?list=LLvAZqNn-b97237v1dLcT1Qg" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-start"><span class="nav-number">1.</span> <span class="nav-text">1.start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-命令"><span class="nav-number">1.1.</span> <span class="nav-text">vim 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动补全"><span class="nav-number">1.2.</span> <span class="nav-text">自动补全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式切换"><span class="nav-number">1.3.</span> <span class="nav-text">模式切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#退出"><span class="nav-number">1.4.</span> <span class="nav-text">退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助"><span class="nav-number">1.5.</span> <span class="nav-text">帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件"><span class="nav-number">1.6.</span> <span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开多窗口"><span class="nav-number">1.7.</span> <span class="nav-text">打开多窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂起"><span class="nav-number">1.8.</span> <span class="nav-text">挂起</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Buffers-Windows-and-Tabs"><span class="nav-number">2.</span> <span class="nav-text">2.Buffers, Windows, and Tabs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#buffers"><span class="nav-number">2.1.</span> <span class="nav-text">buffers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows"><span class="nav-number">2.2.</span> <span class="nav-text">windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tabs"><span class="nav-number">2.3.</span> <span class="nav-text">Tabs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-搜索文件"><span class="nav-number">3.</span> <span class="nav-text">3.搜索文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim中打开并编辑文件"><span class="nav-number">3.1.</span> <span class="nav-text">vim中打开并编辑文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-搜索"><span class="nav-number">3.2.</span> <span class="nav-text">:find 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#path"><span class="nav-number">3.2.1.</span> <span class="nav-text">path</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-搜索"><span class="nav-number">3.3.</span> <span class="nav-text">:grep 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quickfix"><span class="nav-number">3.3.1.</span> <span class="nav-text">quickfix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fzf符号"><span class="nav-number">3.3.2.</span> <span class="nav-text">Fzf符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找文件"><span class="nav-number">3.3.3.</span> <span class="nav-text">查找文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用rg代替grep"><span class="nav-number">3.3.4.</span> <span class="nav-text">用rg代替grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在多个文件中搜索和替换"><span class="nav-number">3.3.5.</span> <span class="nav-text">在多个文件中搜索和替换</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LTP</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

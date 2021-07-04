@@ -95,14 +95,14 @@
 
 
 
-<meta name="description" content="1.">
+<meta name="description" content="1. for-await-in1for try await event in endpointURL.lines   可以中断循环：break&#x2F;continue  可以和其他任务同步进行：  let iteration1 &#x3D; async {     for await quake in quakes { } } let iteration2 &#x3D; async {     do {         f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WWDC21-Concurrency-AsncSequence">
 <meta property="og:url" content="https://mrconfused.github.io/WWDC21-Concurrency-AsncSequence.html">
 <meta property="og:site_name" content="出自幽谷，迁于乔木">
-<meta property="og:description" content="1.">
+<meta property="og:description" content="1. for-await-in1for try await event in endpointURL.lines   可以中断循环：break&#x2F;continue  可以和其他任务同步进行：  let iteration1 &#x3D; async {     for await quake in quakes { } } let iteration2 &#x3D; async {     do {         f">
 <meta property="article:published_time" content="2021-06-27T10:44:55.000Z">
-<meta property="article:modified_time" content="2021-06-27T10:51:04.823Z">
+<meta property="article:modified_time" content="2021-07-03T13:37:33.217Z">
 <meta property="article:author" content="LTP">
 <meta name="twitter:card" content="summary">
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T18:51:04+08:00">
-                2021-06-27
+              <time title="更新于" itemprop="dateModified" datetime="2021-07-03T21:37:33+08:00">
+                2021-07-03
               </time>
             
           </span>
@@ -456,7 +456,55 @@
       
 
       
-        <h1 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h1>
+        <h1 id="1-for-await-in"><a href="#1-for-await-in" class="headerlink" title="1. for-await-in"></a>1. for-await-in</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="keyword">try</span> await event <span class="keyword">in</span> endpointURL.lines</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>可以中断循环：<code>break/continue</code></p>
+</li>
+<li><p>可以和其他任务同步进行：</p>
+<ul>
+<li><pre><code class="swift"><span class="keyword">let</span> iteration1 = async {
+    <span class="keyword">for</span> await quake <span class="keyword">in</span> quakes { }
+}
+<span class="keyword">let</span> iteration2 = async {
+    <span class="keyword">do</span> {
+        <span class="keyword">for</span> <span class="keyword">try</span> await quake <span class="keyword">in</span> quakeDownload { }
+    } <span class="keyword">catch</span> { }
+}
+&lt;!--￼<span class="number">1</span>--&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-AsycnSequence-APIs"><a href="#3-AsycnSequence-APIs" class="headerlink" title="3. AsycnSequence APIs"></a>3. AsycnSequence APIs</h1><ul>
+<li><p><code>FileHandle.standardInput.bytes.lines</code></p>
+</li>
+<li><p><code>URLSession.shared.bytes(from: url)</code></p>
+<ul>
+<li><pre><code class="swift"><span class="keyword">let</span> (bytes, response) = <span class="keyword">try</span> await <span class="type">URLSession</span>.shared.bytes(from: url)
+<span class="keyword">guard</span> <span class="keyword">let</span> httpResponse = response <span class="keyword">as</span>? <span class="type">HTTPURLResponse</span>,
+      httpResponse.statusCode == <span class="number">200</span> <span class="comment">/* OK */</span>
+<span class="keyword">else</span> {
+    <span class="keyword">throw</span> <span class="type">MyNetworkingError</span>.invalidServerResponse
+}
+<span class="keyword">for</span> <span class="keyword">try</span> await byte <span class="keyword">in</span> bytes {
+    ...
+}
+&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Other Operations: <code>map、max、prefix、...</code></p>
+</li>
+</ul>
+<h1 id="4-BuildYourOwn-AsyncStream"><a href="#4-BuildYourOwn-AsyncStream" class="headerlink" title="4. BuildYourOwn - AsyncStream"></a>4. BuildYourOwn - AsyncStream</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> quakes = <span class="type">AsyncStream</span>(<span class="type">Quake</span>.<span class="keyword">self</span>) &#123; continuation <span class="keyword">in</span></span><br><span class="line">    quakeHandlerFunc &#123; quake <span class="keyword">in</span></span><br><span class="line">        continuation.yield(quake)</span><br><span class="line">    &#125;</span><br><span class="line">    continuation.onTermination = &#123; <span class="number">_</span> <span class="keyword">in</span></span><br><span class="line">        stopFunc()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
       
     </div>
     
@@ -489,6 +537,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/WWDC21-Concurrency-Structured.html" rel="prev" title="WWDC21-Concurrency-Structured">
+                WWDC21-Concurrency-Structured <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,7 +624,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -594,7 +646,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -649,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-for-await-in"><span class="nav-number">1.</span> <span class="nav-text">1. for-await-in</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-AsycnSequence-APIs"><span class="nav-number">2.</span> <span class="nav-text">3. AsycnSequence APIs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-BuildYourOwn-AsyncStream"><span class="nav-number">3.</span> <span class="nav-text">4. BuildYourOwn - AsyncStream</span></a></li></ol></div>
             
 
           </div>
